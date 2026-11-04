@@ -171,9 +171,9 @@ Relative day ranges are planning windows, not hard submission dates. A task may 
 
 | ID | Phase / task | Window | Owner role | Dependencies | Deliverable / acceptance criteria | Status |
 |---|---|---:|---|---|---|---|
-| P0.1 | Confirm charter, workflow, stakeholders, permitted actions, and success measures | D1–2 | Product/Research lead | None | Signed decision log; one bounded use case; explicit non-goals and release criteria | Not started |
-| P0.2 | Verify event rules, model eligibility, licenses, hosting needs, and current library versions | D1–2 | Research/Infra | P0.1 | Source links and access/licensing notes recorded; event dates separated from project plan | Not started |
-| P0.3 | Select model and compute profile; smoke-test inference, tool schema, and memory | D1–3 | ML/Infra | P0.2 | Reproducible environment; model ID/revision and resource profile pinned | Not started |
+| P0.1 | Confirm charter, workflow, stakeholders, permitted actions, and success measures | D1–2 | Product/Research lead | None | Signed decision log; one bounded use case (`references/domain_spec.md`); explicit non-goals and release criteria | Done |
+| P0.2 | Verify event rules, model eligibility, licenses, hosting needs, and current library versions | D1–2 | Research/Infra | P0.1 | Cohere Tiny Aya verified (CC-BY-NC license, gated HF repo); rules and notes in `references/hardware_profile.md` | Done |
+| P0.3 | Select model and compute profile; smoke-test inference, tool schema, and memory | D1–3 | ML/Infra | P0.2 | `CohereLabs/tiny-aya-global` (3.35B) pinned; Apple M5 MPS local + A100 remote profile in `configs/model_config.yaml` | Done |
 | P0.4 | Inspect AgentTune/AuditKIT docs, current default branches, relevant PRs and known issues | D1–3 | ML + Evaluation | P0.2 | Compatibility matrix and pin file; known metric/trainer caveats recorded | Not started |
 | P1.1 | Specify tool API schemas, permissions, deterministic outcomes, limits, and audit events | D3–5 | Agent/Backend | P0.1 | Tool contract and threat assumptions reviewed; invalid/disallowed calls rejected outside model | Not started |
 | P1.2 | Implement minimal task environment and seeded task generator | D3–6 | Agent/Backend | P1.1 | Same task gives stable outcome; reset/replay works; tool results are logged | Not started |
@@ -286,9 +286,9 @@ For a team of up to three, combine roles by workload and explicitly name a backu
 
 | ID | Decision | Options / chosen value | Owner | Needed by | Evidence / rationale | Status |
 |---|---|---|---|---|---|---|
-| D1 | Initial workflow and tool permissions | `TBD` (recommend deterministic, read-only lookup/calculation) | Product | D2 | User value, verifiability, risk | Open |
-| D2 | Exact Cohere model and revision | `TBD` | ML | D3 | Compatibility, license/access, VRAM, latency | Open |
-| D3 | Compute availability and budget | `TBD` (the workbook’s A100 is an example, not confirmed) | Infra | D3 | Actual GPU, credits, runtime cap | Open |
+| D1 | Initial workflow and tool permissions | Procurement & Inventory Analytics (deterministic lookup + calculation); read-only tools | Product | D2 | Fully deterministic ground truth, zero external side effects, closed-world state (see `references/domain_spec.md`) | Decided |
+| D2 | Exact Cohere model and revision | `CohereLabs/tiny-aya-global` (3.35B), CC-BY-NC license; 8B as scale fallback | ML | D3 | Fits 16GB local RAM (~6.7GB in fp16), CC-BY-NC license, Aya tool format (`references/hardware_profile.md`) | Decided |
+| D3 | Compute availability and budget | Dual profile: local Apple Silicon M5 (16GB, MPS) for testing + remote A100 (40GB) for training | Infra | D3 | Local Apple M5 verified (16GB unified RAM, MPS: True); remote A100 for SFT/GRPO post-training | Decided |
 | D4 | Dataset and benchmark splits | `TBD` | Data/Eval | D7 | Provenance, license, contamination/leakage | Open |
 | D5 | Primary metric and release thresholds | `TBD after E0 baseline` | Product/Eval | D10 | Practical effect and safety margin | Open |
 | D6 | SFT/RL algorithm and run budget | `TBD after integration spike` | ML | D16 | Reproducibility, reward validity, cost | Open |

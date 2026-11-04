@@ -1,0 +1,39 @@
+# Model Configuration: Cohere Labs Open-Weights Agent
+# Traceability: Maps to Decisions D2, D3 and Task TASK-M0-02
+
+model:
+  name: "CohereLabs/tiny-aya-global"
+  family: "Aya"
+  parameters: "3.35B"
+  license: "CC-BY-NC-4.0"
+  huggingface_url: "https://huggingface.co/CohereLabs/tiny-aya-global"
+  gated: true
+  revision: "main"
+  context_window: 8192
+  chat_template: "command-r"
+  dtype: "bfloat16"
+
+fallbacks:
+  base_pretrained: "CohereLabs/tiny-aya-base"
+  high_compute_scale: "CohereForAI/aya-expanse-8b"
+  offline_mock: "lexsi-mock-policy-v1"
+
+local_execution:
+  platform: "Apple Silicon M5"
+  memory_total_gb: 16
+  accelerator: "mps"
+  estimated_weights_vram_gb: 6.7
+  batch_size: 1
+  max_new_tokens: 512
+  temperature: 0.1
+  top_p: 0.9
+
+remote_training:
+  target_cluster: "Hugging Face Jobs / Cloud A100"
+  accelerator_type: "NVIDIA A100-SXM4-40GB"
+  count: 1
+  distributed_backend: "accelerate"
+  training_precision: "bfloat16"
+  gradient_accumulation_steps: 4
+  learning_rate: 2.0e-5
+  optimizer: "adamw_torch"
