@@ -1,0 +1,28 @@
+# Task Split Specification and Provenance Manifest
+# Traceability: Maps to Decision D4, M0-07, and TASK-M0-06
+
+metadata:
+  domain: "Procurement & Inventory Analytics"
+  generator_module: "src.environment.task_generator"
+  seed: 42
+  license: "Apache-2.0"
+  provenance: "Synthetic closed-world relational generator"
+
+partition_policy:
+  isolation_level: "Entity and Template Disjoint"
+  train:
+    templates: ["T1_inventory_value", "T2_vendor_approved_spend"]
+    categories: ["Hardware", "Software"]
+    vendors: ["VND-100", "VND-101", "VND-102", "VND-103", "VND-104", "VND-105"]
+    count: 20
+  val:
+    templates: ["T1_inventory_value", "T2_vendor_approved_spend"]
+    categories: ["Hardware", "Software"]
+    vendors: ["VND-106", "VND-107"]
+    count: 10
+  test:
+    templates: ["T3_vendor_rating_check", "T4_budget_cap_verification"]
+    categories: ["Services", "Logistics"]
+    vendors: ["VND-108", "VND-109", "VND-110", "VND-111"]
+    count: 10
+    status: "Permanently Sequestered (Locked Holdout)"

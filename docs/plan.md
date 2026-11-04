@@ -176,8 +176,8 @@ Relative day ranges are planning windows, not hard submission dates. A task may 
 | P0.3 | Select model and compute profile; smoke-test inference, tool schema, and memory | D1–3 | ML/Infra | P0.2 | `CohereLabs/tiny-aya-global` (3.35B) pinned; Apple M5 MPS local + A100 remote profile in `configs/model_config.yaml` | Done |
 | P0.4 | Inspect AgentTune/AuditKIT docs, current default branches, relevant PRs and known issues | D1–3 | ML + Evaluation | P0.2 | Documented in `references/agenttune_notes.md` & `references/auditkit_notes.md`; verified in `src/utils/compatibility.py` | Done |
 | P1.1 | Specify tool API schemas, permissions, deterministic outcomes, limits, and audit events | D3–5 | Agent/Backend | P0.1 | Pydantic ToolContracts in `src/environment/tools.py` & sandboxed engine in `src/environment/sandbox.py` | Done |
-| P1.2 | Implement minimal task environment and seeded task generator | D3–6 | Agent/Backend | P1.1 | Same task gives stable outcome; reset/replay works; tool results are logged | Not started |
-| P1.3 | Build dataset and benchmark split with provenance and leakage checks | D4–7 | Data lead | P1.1 | Versioned train/validation/locked-test manifests; licenses and hashes recorded | Not started |
+| P1.2 | Implement minimal task environment and seeded task generator | D3–6 | Agent/Backend | P1.1 | Deterministic seeded generator in `src/environment/task_generator.py`; tested in `tests/test_generator.py` | Done |
+| P1.3 | Build dataset and benchmark split with provenance and leakage checks | D4–7 | Data lead | P1.1 | Disjoint entity & template partitions in `configs/task_splits.yaml`; leakage test passing | Done |
 | P1.4 | Define failure taxonomy and annotation guide; label baseline sample | D5–7 | Evaluation + Research | P1.2 | Mutually understandable categories; reviewer agreement and unresolved cases recorded | Not started |
 | P2.1 | Integrate AuditKIT evaluation and validate selected metrics on fixtures | D6–8 | Evaluation lead | P1.2 | Metric smoke-test report, sample traces, independent check for headline predicates | Not started |
 | P2.2 | Run base-model evaluation on validation and test protocol; freeze baseline | D7–9 | Evaluation + ML | P2.1, P1.3 | Raw traces, RunResult/config, exact counts and baseline report archived | Not started |
@@ -289,7 +289,7 @@ For a team of up to three, combine roles by workload and explicitly name a backu
 | D1 | Initial workflow and tool permissions | Procurement & Inventory Analytics (deterministic lookup + calculation); read-only tools | Product | D2 | Fully deterministic ground truth, zero external side effects, closed-world state (see `references/domain_spec.md`) | Decided |
 | D2 | Exact Cohere model and revision | `CohereLabs/tiny-aya-global` (3.35B), CC-BY-NC license; 8B as scale fallback | ML | D3 | Fits 16GB local RAM (~6.7GB in fp16), CC-BY-NC license, Aya tool format (`references/hardware_profile.md`) | Decided |
 | D3 | Compute availability and budget | Dual profile: local Apple Silicon M5 (16GB, MPS) for testing + remote A100 (40GB) for training | Infra | D3 | Local Apple M5 verified (16GB unified RAM, MPS: True); remote A100 for SFT/GRPO post-training | Decided |
-| D4 | Dataset and benchmark splits | `TBD` | Data/Eval | D7 | Provenance, license, contamination/leakage | Open |
+| D4 | Dataset and benchmark splits | Disjoint splits: Train (Hardware/Software, 6 vendors), Val (2 vendors), Locked Test (Services/Logistics, 4 vendors) | Data/Eval | D7 | Entity and template isolation proven; provenance in `configs/task_splits.yaml` | Decided |
 | D5 | Primary metric and release thresholds | `TBD after E0 baseline` | Product/Eval | D10 | Practical effect and safety margin | Open |
 | D6 | SFT/RL algorithm and run budget | `TBD after integration spike` | ML | D16 | Reproducibility, reward validity, cost | Open |
 | D7 | Public deployment target and hosting | `TBD` | Infra | D20 | Availability, privacy, quota, maintenance | Open |
