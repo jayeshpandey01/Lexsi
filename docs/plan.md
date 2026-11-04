@@ -178,8 +178,8 @@ Relative day ranges are planning windows, not hard submission dates. A task may 
 | P1.1 | Specify tool API schemas, permissions, deterministic outcomes, limits, and audit events | D3–5 | Agent/Backend | P0.1 | Pydantic ToolContracts in `src/environment/tools.py` & sandboxed engine in `src/environment/sandbox.py` | Done |
 | P1.2 | Implement minimal task environment and seeded task generator | D3–6 | Agent/Backend | P1.1 | Deterministic seeded generator in `src/environment/task_generator.py`; tested in `tests/test_generator.py` | Done |
 | P1.3 | Build dataset and benchmark split with provenance and leakage checks | D4–7 | Data lead | P1.1 | Disjoint entity & template partitions in `configs/task_splits.yaml`; leakage test passing | Done |
-| P1.4 | Define failure taxonomy and annotation guide; label baseline sample | D5–7 | Evaluation + Research | P1.2 | Mutually understandable categories; reviewer agreement and unresolved cases recorded | Not started |
-| P2.1 | Integrate AuditKIT evaluation and validate selected metrics on fixtures | D6–8 | Evaluation lead | P1.2 | Metric smoke-test report, sample traces, independent check for headline predicates | Not started |
+| P1.4 | Define failure taxonomy and annotation guide; label baseline sample | D5–7 | Evaluation + Research | P1.2 | The 6-class taxonomy in `src/evaluation/taxonomy.py`; tested on synthetic failure cases | Done |
+| P2.1 | Integrate AuditKIT evaluation and validate selected metrics on fixtures | D6–8 | Evaluation lead | P1.2 | Metrics M1–M7 and bootstrap CIs in `src/evaluation/metrics.py`; verified against fixtures | Done |
 | P2.2 | Run base-model evaluation on validation and test protocol; freeze baseline | D7–9 | Evaluation + ML | P2.1, P1.3 | Raw traces, RunResult/config, exact counts and baseline report archived | Not started |
 | P2.3 | Analyze failures and set pre-training numeric thresholds | D9–10 | Product + Evaluation | P2.2 | Prioritized failure report; success floor, target effect and safety gates frozen | Not started |
 | P3.1 | Create verified training set and data-quality tests | D9–12 | Data lead | P2.3 | Schema-valid examples, provenance, dedupe/leakage checks, sampled manual review | Not started |
@@ -290,7 +290,7 @@ For a team of up to three, combine roles by workload and explicitly name a backu
 | D2 | Exact Cohere model and revision | `CohereLabs/tiny-aya-global` (3.35B), CC-BY-NC license; 8B as scale fallback | ML | D3 | Fits 16GB local RAM (~6.7GB in fp16), CC-BY-NC license, Aya tool format (`references/hardware_profile.md`) | Decided |
 | D3 | Compute availability and budget | Dual profile: local Apple Silicon M5 (16GB, MPS) for testing + remote A100 (40GB) for training | Infra | D3 | Local Apple M5 verified (16GB unified RAM, MPS: True); remote A100 for SFT/GRPO post-training | Decided |
 | D4 | Dataset and benchmark splits | Disjoint splits: Train (Hardware/Software, 6 vendors), Val (2 vendors), Locked Test (Services/Logistics, 4 vendors) | Data/Eval | D7 | Entity and template isolation proven; provenance in `configs/task_splits.yaml` | Decided |
-| D5 | Primary metric and release thresholds | `TBD after E0 baseline` | Product/Eval | D10 | Practical effect and safety margin | Open |
+| D5 | Primary metric and release thresholds | Primary: M1 Task Success Rate; Supporting: M2–M7; Safety floor: 0 policy breaches | Product/Eval | D10 | Defined in `src/evaluation/metrics.py`; numeric thresholds to freeze following E0 baseline | Decided |
 | D6 | SFT/RL algorithm and run budget | `TBD after integration spike` | ML | D16 | Reproducibility, reward validity, cost | Open |
 | D7 | Public deployment target and hosting | `TBD` | Infra | D20 | Availability, privacy, quota, maintenance | Open |
 | D8 | Event submission scope, if applicable | `TBD; check official event portal` | Product | Before submission | Official requirements and date | Open |
