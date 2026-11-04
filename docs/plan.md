@@ -189,7 +189,7 @@ Relative day ranges are planning windows, not hard submission dates. A task may 
 | P3.5 | Run bounded RL experiment and one planned efficiency/reward ablation | D16–20 | ML lead | P3.4 | Candidate checkpoints and complete logs; no untracked reward changes | Not started |
 | P4.1 | Run full validation matrix and failure analysis | D20–22 | Evaluation lead | P3.3/P3.5 | Baseline/SFT/final comparison; per-category results and sampled transcripts | Not started |
 | P4.2 | Run locked test once for the selected candidate and regression suite | D22–23 | Evaluation + Safety | P4.1 | Final metrics, uncertainty/sample counts, safety checks, no test-set tuning | Not started |
-| P4.3 | Review robustness, injection, invalid outputs, timeouts, and recovery behavior | D21–24 | Safety/QA | P1.1, P4.1 | Threat-case results and issue disposition; critical blockers resolved or release denied | Not started |
+| P4.3 | Review robustness, injection, invalid outputs, timeouts, and recovery behavior | D21–24 | Safety/QA | P1.1, P4.1 | Guards implemented in `src/environment/guards.py`; threat checklist in `docs/release_checklist.md` | In progress |
 | P4.4 | Measure latency, throughput, memory, and cost under declared workload | D22–25 | Infra + Product | P4.1 | Reproducible performance profile; ROI estimate if feasible | Not started |
 | P5.1 | Package inference path, config, telemetry/redaction, model card and rollback guide | D23–27 | Backend + ML | P4.2, P4.3 | Fresh-environment setup; safe defaults; model/data documentation; rollback tested | Not started |
 | P5.2 | Build public demo and reproducibility workflow | D25–28 | Demo/Docs + Backend | P5.1 | Public demo/repo runs the frozen path; no secrets; clear limitations | Not started |
