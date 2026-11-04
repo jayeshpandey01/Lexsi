@@ -159,4 +159,19 @@ If any discrepancy, bug, sub-optimal pattern, or risk is found:
 
 ---
 
+## 4. Interactive Notebook Verification Protocol (`notebooks/`)
+
+Every phase of development must maintain active verification through executable notebooks in `notebooks/`:
+
+1. **Mandatory Verification Mirror:** In parallel with modular code in `src/` and unit tests in `tests/`, all development must be verifiable through executable Jupyter notebooks in `notebooks/`.
+2. **Zero Prose & Zero Commentary Invariant:** 
+   - Notebooks must contain **executable code cells only**.
+   - **No markdown cells** and **no inline comments** are permitted inside notebook files.
+   - All instructions, architecture rationale, mathematical formulations, and engineering protocols must be documented exclusively in `instruction.md` and `system_design.md`.
+3. **End-to-End Verification Scope:**
+   - Notebooks must execute the active pipeline from end to end: loading database fixtures, executing sandboxed tools, generating isolated task splits, orchestrating agent episodes, verifying redaction filters, and computing AuditKIT M1–M7 evaluation metrics.
+   - Any failure or discrepancy in the notebook constitutes an immediate Phase Gate blocker.
+
+---
+
 *Adherence to this document is mandatory across all turns. Maintain 10/10 quality at all times.*
