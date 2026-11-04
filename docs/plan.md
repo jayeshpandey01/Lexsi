@@ -339,14 +339,14 @@ Update this section at each project review.
 
 | Area | Status | Current evidence / link | Next action | Owner |
 |---|---|---|---|---|
-| Charter and use case | Not started | — | Resolve D1 | Product |
-| Model and compute access | Not started | — | Resolve D2–D3 | ML/Infra |
-| AgentTune/AuditKIT compatibility | Not started | — | Pin and smoke-test both libraries | ML/Eval |
-| Task environment and dataset | Not started | — | Build minimal deterministic workflow | Agent/Data |
-| Baseline and metric validation | Not started | — | Run E0 and freeze criteria | Evaluation |
-| Fine-tuning | Not started | — | Gate on data/reward readiness | ML |
-| Safety and release review | Not started | — | Define gate evidence and owner | Safety/Product |
-| Public demo and artifacts | Not started | — | Confirm hosting and publication permissions | Infra/Docs |
+| Charter and use case | Done | `references/domain_spec.md` (Procurement & Inventory Analytics) | Complete M1 baseline | Product |
+| Model and compute access | Done | `configs/model_config.yaml` (`CohereLabs/tiny-aya-global` 3.35B, M5 MPS) | Complete M1 baseline | ML/Infra |
+| AgentTune/AuditKIT compatibility | Done | `src/utils/compatibility.py`, `references/agenttune_notes.md`, `references/auditkit_notes.md` | Execute M1 evaluation | ML/Eval |
+| Task environment and dataset | Done | `src/environment/task_generator.py`, `configs/task_splits.yaml` (0 leakage) | Freeze task manifests | Agent/Data |
+| Baseline and metric validation | In progress | Metrics M1–M7 in `src/evaluation/metrics.py`; Gate G0 cleared | Run E0 base rollout | Evaluation |
+| Fine-tuning | Not started | Gated on M1 baseline & M2 data | Prepare SFT pipeline | ML |
+| Safety and release review | In progress | `src/environment/guards.py`, `docs/release_checklist.md` | Monitor Gate G1 | Safety/Product |
+| Public demo and artifacts | Not started | Gated on M4/M5 | Wire demo harness | Infra/Docs |
 
 ---
 
