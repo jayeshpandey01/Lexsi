@@ -1,0 +1,24 @@
+{
+  "manifest_version": "2.0.0",
+  "dataset_name": "procurement_sft_train_v2",
+  "split": "train",
+  "generator": "OracleTeacherPolicyV2 (src/data/sft_builder_v2.py)",
+  "source_manifest": "/Users/jayesh/Documents/Lexsi/configs/manifests/task_manifest_train_v2.json",
+  "license": "CC-BY-NC-4.0 derivative research custody",
+  "created_seed": 42,
+  "sample_count": 220,
+  "deduped_sample_count": 203,
+  "deduplication_ratio": 0.9227,
+  "dataset_sha256": "03eb631667b783c00427439c6356482733b346c96495d6b4ac60bf6b0166b5d6",
+  "template_distribution": {
+    "T1_inventory_value": 10,
+    "T1_sku_value": 20,
+    "T1_inventory_metric": 18,
+    "T1_budget_check": 16,
+    "T2_vendor_approved_spend": 30,
+    "T2_vendor_status_spend": 54,
+    "T2_vendor_order_metric": 18,
+    "T2_vendor_spend_cap_check": 54
+  },
+  "isolation_verified": true
+}

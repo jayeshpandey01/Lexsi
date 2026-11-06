@@ -36,13 +36,13 @@ Track 3 challenges participants to post-train open-weights language models into 
 
 | Event Phase | Official Dates | Team Plan Window | Focus / Deliverable |
 |:---|:---|:---|:---|
-| **Build & Submission** | Nov 1 – Nov 14, 2024 | D1 – D14 | Post-training, benchmark evaluation, artifact generation |
-| **Judging Period** | Nov 15 – Nov 16, 2024 | D15 – D16 | Evaluation verification and safety audit |
-| **Shortlist Proof Work** | Nov 17 – Nov 21, 2024 | D17 – D21 | Reproducibility verification and deep-dive audits |
-| **Demo Day** | Nov 22, 2024 | D22 | Public pitch, live demonstration, and Q&A |
-| **Project Horizon** | 30-Day Project Plan | D1 – D30 | Comprehensive research roadmap documented in [`docs/plan.md`](/Users/jayesh/Documents/Lexsi/docs/plan.md) |
+| **Build & Submission** | Nov 1 – Nov 14, 2026 (AoE) | D1 – D14 | Post-training, benchmark evaluation, artifact generation |
+| **Judging Period** | Nov 15 – Nov 16, 2026 | D15 – D16 | Evaluation verification and safety audit |
+| **Shortlist Proof Work** | Nov 17 – Nov 21, 2026 | D17 – D21 | Reproducibility verification and deep-dive audits |
+| **Demo Day** | Nov 22, 2026 | D22 | Public pitch, live demonstration, and Q&A |
+| **Project Horizon** | 30-Day Research Horizon | D31 – D60 | Comprehensive M5 research roadmap documented in [`docs/M5.md`](file:///Users/jayesh/Documents/Lexsi/docs/M5.md) |
 
-*Note: Team size is limited to 1–3 members. At least one member must remain active on the official event Discord.*
+*Note: Team size is limited to 1–3 members. At least one member must remain active on the official event Discord. The November 14, 2026 AoE deadline does NOT waive evaluation rigor, safety gates, licensing compliance, or the prohibition against unsupported claims.*
 
 ---
 
@@ -102,12 +102,31 @@ Track 3 judging evaluates models across four principal dimensions:
 
 ---
 
-## 6. Pre-Submission Verification Checklist
+## 6. Official Requirement-to-Evidence Matrix (M5 Audit Snapshot)
+
+> **Audit Date:** 2026-11-07<br>
+> **Controlling Standard:** [`docs/M5.md`](file:///Users/jayesh/Documents/Lexsi/docs/M5.md) §4.1<br>
+> **Status Taxonomy:** `DONE` (Fully satisfied & verified) | `MISSING` (Work package planned or in progress) | `BLOCKED` (Gated by missing dependency, license, or human approval)
+
+| Official Hackathon Requirement | Current Project Evidence | M5 Audit Status | Specific Blocker / Action Required |
+|:---|:---|:---:|:---|
+| **1. Dense Open-Weights Cohere Model & Track 3 Toolchain** | Cohere Tiny Aya 3.35B SFT artifact (`sft_aya_3b_001`); AgentTune/AuditKIT integration in `src/utils/compatibility.py` | **DONE** | Model and pipeline meet Track 3 eligibility rules. |
+| **2. Public Repository / Demo** | Local git repository clean; `scripts/run_demo.py` exercises deterministic harness, sandbox, and guards | **DONE (Local)** / **GATED (Public)** | Public GitHub publication requires authorized human sign-off; demo is harness-only (model serving blocked locally). |
+| **3. Multiple Before / After Metrics** | SFT candidate has validation metrics ($M_1=0/10$); historical Command R baseline (`baseline_run_001`) is incommensurable | **MISSING / BLOCKED** | Matched untuned `tiny-aya-global` base rollout is blocked locally (no weights/libs); requires Kaggle 2×T4 rollout in M5.P4. No causal claims permitted until completed. |
+| **4. Demonstrated Capability Improvement** | M4 candidate `sft_aya_3b_001` achieved $M_1=0.0\%$, $M_2=0.0\%$, 10/10 `EarlyTerminationFailure` | **MISSING** | Capability remediation in progress (M5.P2–P4). If candidate fails floors ($M_1 \ge 40\%$), non-submission or failure disclosure is mandatory. |
+| **5. Public Hugging Face Collections** | LoRA adapter (`a73583f...`) and SFT dataset retained locally; CC-BY-NC-4.0 review documented in `docs/license_review.md` | **BLOCKED / GATED** | Remote HF upload requires formal leadership authorization and repository setup. |
+| **6. Executive Abstract (< 500 words)** | Abstract draft outline exists in `references/model_card.md` | **MISSING** | Word-counted final abstract will be finalized in M5.P5 after candidate evaluation. |
+| **7. Clean Reproduction from Fresh Clone** | README reproduction notes and unit tests (`pytest -q`, 166 passing) verified; rollback smoke test archived | **MISSING** | Formal fresh-clone test script (`scripts/verify_reproducibility.sh`) to be executed under M5.P5. |
+| **8. Zero Test Leakage / Integrity Guards** | Locked test (`configs/manifests/task_manifest_test.json`, SHA-256 `d86265f0...`) permanently sequestered; `LockedTestExportError` active | **DONE** | Verified 100% compliant; test split sealed. |
+
+---
+
+## 7. Pre-Submission Verification Checklist
 
 - [ ] All 7 core metrics evaluated and reported with 95% bootstrap confidence intervals.
-- [ ] Base model baseline and post-trained candidate evaluated on identical validation splits.
+- [ ] Matched base model baseline and post-trained candidate evaluated on identical validation splits.
 - [ ] Training datasets in `data/sft/` pass split isolation audit with 0% test leakage.
 - [ ] Repository passes 100% of automated unit tests (`pytest -v`).
-- [ ] Hugging Face repository URLs verified and public.
+- [ ] Hugging Face repository URLs verified and public (upon authorized approval).
 - [ ] No secrets or unredacted keys present in git history or artifacts.
 

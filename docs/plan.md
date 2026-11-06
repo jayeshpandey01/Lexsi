@@ -192,12 +192,19 @@ Relative day ranges are planning windows, not hard submission dates. A task may 
 | P4.2 | Candidate decision and locked-test release benchmark (M4.P4) | D22–23 | Evaluation + Safety | P4.1, P4.3, P4.4 | Formal DEFER_LOCKED_TEST decision recorded in `docs/M4_P4_candidate_decision.md`; candidate ineligible (M1=0.0% < 40%, M2=0.0% < 50%); locked test manifest unaccessed and preserved sealed (SHA-256 `d86265f0...`) | Done (Candidate Ineligible; Locked Test Deferred) |
 | P4.3 | Review robustness, injection, invalid outputs, timeouts, and recovery behavior (M4.P2) | D21–24 | Safety/QA | P1.1, P4.1 | 33 adversarial probes executed across 6 threat vectors (`results/runs/m4_p2_robustness_review/`); 100% passed; 0 guard bypasses; documented in `docs/M4_P2_robustness_report.md` | Done (33/33 Probes Passed; 0 Bypasses) |
 | P4.4 | Measure latency, throughput, memory, and cost under declared workload (M4.P3) | D22–25 | Infra + Product | P4.1 | Bounded operational profile established (`results/runs/m4_p3_operational_profile/`); training: 28.2 min on 2x T4; local model serving: BLOCKED (missing weights/libs, zero fabricated data); harness latency: ~0.005 ms in-memory, ~0.19 ms SQLite; 0.0% timeouts | Done (Profiled: Training, Blocked Serving, Measured Harness) |
-| P5.1 | Package inference path, config, telemetry/redaction, model card and rollback guide | D23–27 | Backend + ML | P4.2, P4.3 | Fresh-environment setup; safe defaults; model/data documentation; rollback tested | Not started |
-| P5.2 | Build public demo and reproducibility workflow | D25–28 | Demo/Docs + Backend | P5.1 | Public demo/repo runs the frozen path; no secrets; clear limitations | Not started |
-| P5.3 | Publish permitted models/adapters, datasets, logs and evaluation artifacts | D26–29 | Release lead | P4.2, P5.1 | Public HF collections and repository links verified; licenses and redaction checked | Not started |
-| P5.4 | Release review and production-readiness decision | D29–30 | Product + ML + Safety | P5.1–P5.3 | Gate checklist complete; go, limited pilot, or no-go decision documented | Not started |
+| P5.1 | Package inference path, config, telemetry/redaction, model card and rollback guide | D23–27 | Backend + ML | P4.2, P4.3 | Research package assembled; model card created (`references/model_card.md`) with adapter SHA-256 (`a73583f3...`); data card updated (`references/data_card.md`) with verified hash (`14f7de32...`); `.env.example` safe defaults; local model serving documented as BLOCKED (missing weights/libs); rollback guide documented for research package | Done (Research Package Assembled; Model Serving Blocked; G4 Pending) |
+| P5.2 | Build public demo and reproducibility workflow | D25–28 | Demo/Docs + Backend | P5.1 | Safe, deterministic demonstration script implemented (`scripts/run_demo.py`); exercises relational tool sandbox, runtime guards, allowlist rejection, delimiter escaping, and multi-term reward scoring; prominently displays notice that local model serving is unavailable and executes labeled reference sequence without mock substitution; root `README.md` documents exact reproduction commands tied to existing run artifacts | Done (Harness Demo Implemented; Serving Blocked) |
+| P5.3 | Publish permitted models/adapters, datasets, logs and evaluation artifacts | D26–29 | Release lead | P4.2, P5.1 | External public publishing (Hugging Face / cloud upload) is BLOCKED / NOT AUTHORIZED; Cohere CC-BY-NC-4.0 base license access terms and Gate G4 review pending; adapter weights and Olist raw data retained locally under research custody; locked test split remains sealed and deferred; package artifacts preserved locally | Blocked / Deferred (Local Package Only; External Distribution Unauthorized; Gate G4 Pending) |
+| P5.4 | Release review and production-readiness decision | D29–30 | Product + ML + Safety | P5.1–P5.3 | Candidate `sft_aya_3b_001` failed pre-registered capability floor (M1=0.0% < 40.0%, M2=0.0% < 50.0%); production promotion is BLOCKED; locked test deferred; comprehensive M4.P5 packaging report (`docs/M4_P5_packaging_report.md`) assembled; Gate G4 review record prepared (`docs/M4_P6_gate_review.md`) — PENDING human reviewer signatures | Review Prepared (Gate G4 Unsigned — Human Signatures Required; NO-GO Recommended) |
 | P6.1 | Operate limited pilot; monitor drift and collect reviewed failures | Post-D30 | Operations + Evaluation | P5.4 go | Weekly health and failure report; incident and rollback path exercised as needed | Deferred |
 | P6.2 | Add self-healing data generation/retraining only with human approval and locked eval | Post-D30 | ML + Safety | P6.1 evidence | Repair proposal is reviewable; no automatic deployment; release gates remain unchanged | Deferred |
+| M5.P0 | Approve follow-on research cycle and freeze scope/resources | D31–32 | Product / Research Lead | Gate G4 NO-GO | Scoped 30-day non-production research cycle; named owners assigned in §7.1; compute/access plan approved in `docs/m5_implementation_plan.md` and `docs/M5.md`; decisions D-M5-1 through D-M5-6 authorized | CLEARED (Approved by Leadership; Scope/Resources Frozen; Roles Assigned) |
+| M5.P1 | Diagnose tool-use failure and preregister remediation | D32–34 | ML + Systems Architect | M5.P0, M4 evidence | End-to-end data/generation trace across 15 artifacts; 5 competing falsifiable hypotheses formulated; research notes with literature citations; 5-condition bounded experiment matrix preregistered; base comparator feasibility assessed; delimiter atomicity verified in `tests/test_delimiter_atomicity.py` (4/4 passed); tokenizer special-token segmentation bug resolved (`docs/M5_P1_failure_diagnosis.md`) | CLEARED (Analysis & Probe Tests Completed) |
+| M5.P2 | Approve data plan and candidate controls | D34–36 | Data + Evaluation Lead | M5.P1 | Official 2026 hackathon requirements audited in `references/requirements.md`; train-only synthetic dataset `procurement_sft_train_v2` generated (220 samples, 203 unique trajectories, 92.3% deduplication, 0 test leakage); verified with `tests/test_sft_v2_isolation.py` (5/5 passed) | CLEARED (Dataset Generated & Isolation Verified) |
+| M5.P3 | Build approved dataset and run bounded candidate training | D36–42 | ML + Infra Lead | M5.P2, Leadership approval | Remote Kaggle 2×T4 runbook staged in `notebooks/kaggle_m5_training.ipynb` covering Condition C1 (matched base rollout), Condition C2 (attention-only LoRA), and Condition C3 (all-linear LoRA) with fail-closed loss/timeout traps and artifact zipping | Staged / Ready for Remote Execution |
+| M5.P4 | Evaluate frozen candidate on validation and analyze failures | D42–46 | Evaluation Lead | M5.P3, Preregistered protocol | M1–M7 with denominators, per-task outcomes, failure traces, uncertainty, matched base status, explicit eligibility decision | Proposed / Gated |
+| M5.P5 | Independent safety, reproducibility, and candidate review | D46–50 | Safety + QA Lead | M5.P4, M4.P2 controls | Review record with blockers, artifact provenance, redaction/license status, and recommendation; no locked-test access | Proposed |
+| M5.P6 | Close M5 and decide next research step | D50–60 | Project Leadership + Leads | M5.P5, Human review | Signed research decision: stop, revise via a new approved cycle, or request a separately gated locked-test protocol if all entry floors are met | Proposed |
 
 ### 4.1 Phase gates
 
@@ -207,7 +214,7 @@ Relative day ranges are planning windows, not hard submission dates. A task may 
 | G1: Evaluation trusted | End D9 | Baseline can be replayed; key metrics pass fixtures and independent checks. | **CLEARED** (`results/runs/baseline_run_001/`, 94 tests passing) | Fix measurement first; no training claim. |
 | G2: Data and reward trusted | End D13 | Data split/provenance verified; reward has gaming tests and external outcome correlation. | **REVISE / CONDITIONAL CLEARANCE** (`docs/M2_report.md`) | SFT data, collator, and evaluation spine cleared. RL blocked pending full 3.35B GPU training & matched base rollout. |
 | G3: Training adds value | End D20 | Candidate improves pre-registered validation measures without critical safety regression. | **NO-GO / SFT-ONLY (CLOSED: REMEDIATION R1–R5 COMPLETED; M1 FLOOR UNMET)** (`docs/M3_report.md`) | Real 3.35B SFT trained on Kaggle 2x T4 (`sft_aya_3b_001`, 30.7 MB); validation M1=0.0% (EarlyTerminationFailure); RL blocked due to reward sparsity; Milestone 3 closed; transition to M4 packaging under SFT-only fallback. |
-| G4: Release decision | End D30 | Locked test, safety, reproducibility, deployment and rollback evidence reviewed. | Pending (Milestone 4) | No production promotion; document gaps and next experiment. |
+| G4: Release decision | End D30 | Locked test, safety, reproducibility, deployment and rollback evidence reviewed. | **REVIEW PREPARED — PENDING HUMAN SIGNATURES** (`docs/M4_P6_gate_review.md`): Recommended NO-GO; primary capability floor unmet (M1=0.0% < 40%, M2=0.0% < 50%, 10/10 EarlyTerminationFailure); 7/9 criteria PASS (rollback verified in `results/runs/rollback_smoke_001/`; named roles assigned in §7.1); external distribution BLOCKED; locked test DEFERRED/SEALED. Gate G4 is not closed until authorized human reviewers sign `docs/M4_P6_gate_review.md`. | No production promotion; document gaps and next experiment. |
 
 ---
 
@@ -274,12 +281,12 @@ Do not multiply runs beyond the compute and review budget. If RL is infeasible, 
 
 ### 7.1 Suggested roles
 
-| Role | Accountable for | Suggested owner |
+| Role | Accountable for | Assigned owner |
 |---|---|---|
-| Product / research lead | Charter, use case, decisions, success criteria, report narrative | `TBD` |
-| Agent / training lead | AgentTune integration, data-to-training flow, SFT/RL, model artifacts | `TBD` |
-| Evaluation / safety lead | AuditKIT, benchmark integrity, failure analysis, safety gates | `TBD` |
-| Infra / release lead (can be shared) | Environment, compute, deployment/demo, HF/GitHub publishing, rollback | `TBD` |
+| Product / research lead | Charter, use case, decisions, success criteria, report narrative | Jayesh |
+| Agent / training lead | AgentTune integration, data-to-training flow, SFT/RL, model artifacts | Jayesh |
+| Evaluation / safety lead | AuditKIT, benchmark integrity, failure analysis, safety gates | Jayesh |
+| Infra / release lead (can be shared) | Environment, compute, deployment/demo, HF/GitHub publishing, rollback | Jayesh |
 
 For a team of up to three, combine roles by workload and explicitly name a backup for release/evaluation review. Separate model training from final test access where practical.
 
@@ -287,14 +294,20 @@ For a team of up to three, combine roles by workload and explicitly name a backu
 
 | ID | Decision | Options / chosen value | Owner | Needed by | Evidence / rationale | Status |
 |---|---|---|---|---|---|---|
-| D1 | Initial workflow and tool permissions | Procurement & Inventory Analytics (deterministic lookup + calculation); read-only tools | Product | D2 | Fully deterministic ground truth, zero external side effects, closed-world state (see `references/domain_spec.md`) | Decided |
-| D2 | Exact Cohere model and revision | `CohereLabs/tiny-aya-global` (3.35B), CC-BY-NC license; 8B as scale fallback | ML | D3 | Fits 16GB local RAM (~6.7GB in fp16), CC-BY-NC license, Aya tool format (`references/hardware_profile.md`) | Decided |
-| D3 | Compute availability and budget | Dual profile: local Apple Silicon M5 (16GB, MPS) for testing + remote A100 (40GB) for training | Infra | D3 | Local Apple M5 verified (16GB unified RAM, MPS: True); remote A100 for SFT/GRPO post-training | Decided |
-| D4 | Dataset and benchmark splits | Disjoint splits: Train (Hardware/Software, 6 vendors), Val (2 vendors), Locked Test (Services/Logistics, 4 vendors) | Data/Eval | D7 | Entity and template isolation proven; provenance in `configs/task_splits.yaml` | Decided |
-| D5 | Primary metric and release thresholds | Primary: M1 Task Success Rate; Supporting: M2–M7; Safety floor: 0 policy breaches | Product/Eval | D10 | Defined in `src/evaluation/metrics.py`; numeric thresholds to freeze following E0 baseline | Decided |
-| D6 | SFT/RL algorithm and run budget | `TBD after integration spike` | ML | D16 | Reproducibility, reward validity, cost | Open |
-| D7 | Public deployment target and hosting | `TBD` | Infra | D20 | Availability, privacy, quota, maintenance | Open |
-| D8 | Event submission scope, if applicable | `TBD; check official event portal` | Product | Before submission | Official requirements and date | Open |
+| D1 | Initial workflow and tool permissions | Procurement & Inventory Analytics (deterministic lookup + calculation); read-only tools | Product (Jayesh) | D2 | Fully deterministic ground truth, zero external side effects, closed-world state (see `references/domain_spec.md`) | Decided |
+| D2 | Exact Cohere model and revision | `CohereLabs/tiny-aya-global` (3.35B), CC-BY-NC license; `CohereForAI/aya-expanse-8b` as scale fallback | ML (Jayesh) | D3 | Fits 16GB local RAM (~6.7GB in fp16), CC-BY-NC license, Aya tool format (`references/hardware_profile.md`) | Decided |
+| D3 | Compute availability and budget | Dual profile: local Apple Silicon M5 (16GB, MPS) for testing + Kaggle 2×T4 / Cloud A100 for training | Infra (Jayesh) | D3 | Local Apple M5 verified (16GB unified RAM, MPS: True); Kaggle 2×T4 QLoRA execution (28.2 min) verified | Decided |
+| D4 | Dataset and benchmark splits | Disjoint splits: Train (Hardware/Software, 6 vendors), Val (2 vendors), Locked Test (Services/Logistics, 4 vendors) | Data/Eval (Jayesh) | D7 | Entity and template isolation proven; provenance in `configs/task_splits.yaml` | Decided |
+| D5 | Primary metric and release thresholds | Primary: M1 Task Success Rate; Supporting: M2–M7; Safety floor: 0 policy breaches | Product/Eval (Jayesh) | D10 | Defined in `src/evaluation/metrics.py`; numeric thresholds to freeze following E0 baseline | Decided |
+| D6 | SFT/RL algorithm and run budget | SFT with LoRA (r=16/32, alpha=32/64) on ≥200 unique trajectories; RL via GRPO (G=4 rollouts) conditional on M1 ≥ 40% | ML (Jayesh) | D16 | Literature thresholds (FireAct, DeepSeekMath); prevents sparse reward collapse | Decided |
+| D7 | Public deployment target and hosting | Local research package + Hugging Face collection (`lexsi-track3-agent`) under CC-BY-NC-4.0 | Infra (Jayesh) | D20 | Non-commercial compliance, reproducible research package, ungated collection | Decided |
+| D8 | Event submission scope, if applicable | Track 3 Agentic Fine-tuning: AgentTune SFT/RL + AuditKIT diagnostic harness + Kaggle/Colab runbook | Product (Jayesh) | Before submission | Track 3 requirements, before/after metrics table, under 500-word abstract | Decided |
+| D-M5-1 | M5 follow-on research cycle & scope | Approved 30-day non-production research cycle (D31–D60) | Product Lead (Jayesh) | M5 Kickoff | Approved in `m5_implementation_plan.md` | Decided |
+| D-M5-2 | M5 operational role assignments | Jayesh assigned to all four operational roles (§7.1) | Research Lead (Jayesh) | M5 Kickoff | Unified role ownership verified | Decided |
+| D-M5-3 | Compute envelope authorization | Kaggle 2×T4 allocation capped at <= 2.5 GPU hours | Infra Lead (Jayesh) | M5 Kickoff | Budget estimated at ~1.2 GPU-h | Decided |
+| D-M5-4 | CC-BY-NC-4.0 derivative license review | Approved research package custody; external publishing gated | Legal / Infra (Jayesh) | M5 Kickoff | Full analysis in `docs/license_review.md` | Decided |
+| D-M5-5 | Train-only synthetic data expansion | Approved procurement_sft_train_v2 (>=200 trajectories) | Data Lead (Jayesh) | M5.P2 | Strict train/val/test entity isolation | Decided |
+| D-M5-6 | Preregistered experiment matrix | Approved 5-condition matrix C0–C4 and capability floors | Eval / Safety (Jayesh) | M5.P2 | Full spec in `docs/M5_P1_failure_diagnosis.md` | Decided |
 
 ### 7.3 Weekly review template
 
@@ -346,8 +359,8 @@ Update this section at each project review.
 | Task environment and harness (M1.P1 / M1.P2) | Done | Pre-execution validation boundary, call counters, per-call timeout, outcome verifier, recursive redaction, validated split config, machine manifests, locked-test export guard; 49 unit tests pass | Failure taxonomy & annotation guide (M1.P3) | Agent/Data |
 | Baseline and metric validation (M1.P4) | Done | M1–M7 metrics, paired bootstrap, `AuditKitAdapter`, run persistence in `results/runs/smoke_eval_001/`; 85 unit tests pass | Run E0 base rollout (M1.P5) | Evaluation |
 | Fine-tuning (SFT Feasibility) | Done (Conditional) | SFT collator, dry run, pilot, and candidate evaluation completed (`results/runs/sft_pilot_001/`, `docs/M2_report.md`) | Full 3.35B GPU SFT run required before RL | ML |
-| Safety and release review | In progress | `src/environment/guards.py`, `docs/release_checklist.md` | Monitor Gate G1 | Safety/Product |
-| Public demo and artifacts | Not started | Gated on M4/M5 | Wire demo harness | Infra/Docs |
+| Safety and release review | Review Prepared (G4 Unsigned) | `src/environment/guards.py`, `docs/release_checklist.md`, `docs/M4_P4_candidate_decision.md`, `docs/M4_P6_gate_review.md` | Human reviewer signatures required to close Gate G4 (see `docs/M4_P6_gate_review.md` §9) | Safety/Product |
+| Public demo and artifacts | Done (Research Package Assembled) | `scripts/run_demo.py`, `references/model_card.md`, `references/data_card.md`, `README.md`, `docs/M4_P5_packaging_report.md` | Human Gate G4 Review (External Distribution Deferred) | Infra/Docs |
 
 ---
 

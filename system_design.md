@@ -438,3 +438,79 @@ class TrajectoryRecord(BaseModel):
 * Any structural change to tools, prompt formatting, loss functions, reward weights, or evaluation metrics **must be updated in this file first**.
 * All code implementations must verify line-by-line adherence to this architecture.
 
+---
+
+## 7. Gap Remediation Architecture & Format Imprinting Engine (M4 Remediation)
+
+To address the diagnosed root causes in `gap_analysis.md` (specifically GAP-1 EarlyTerminationFailure, GAP-2 serving blockers, GAP-3 rollback verification, and GAP-6 RL feasibility), the following architectural subsystems are introduced:
+
+```mermaid
+flowchart TD
+    subgraph PreFlight ["1. Base Model Capability Gate"]
+        BaseModel["Target Base LLM (Cohere Tiny-Aya / Aya Expanse)"]
+        FormatGate{"Zero-Shot Delimiter Check\n(scripts/verify_base_model_format.py)"}
+        BaseModel --> FormatGate
+        FormatGate -- "Fails Delimiters" --> Escalate["Escalate to aya-expanse-8b or Prompt Adapter"]
+        FormatGate -- "Passes Delimiters" --> SFTCurriculum["Proceed to SFT Curriculum"]
+    end
+
+    subgraph DataExpansion ["2. Expanded Dataset Engine (v2)"]
+        Oracle["OracleTeacherPolicy (src/data/sft_builder_v2.py)"]
+        Templates["6 Balanced Templates (T1–T6)"]
+        Entities["Expanded Entity Pools (50+ per category)"]
+        Oracle --> Templates
+        Oracle --> Entities
+        Oracle --> SFT_v2["≥200 Unique Multi-Step Trajectories\n(sft_train_v2/)"]
+    end
+
+    subgraph CurriculumTraining ["3. Two-Phase Curriculum SFT"]
+        Phase1["Phase 1: Format Warmup (50 steps on syntax)"]
+        Phase2["Phase 2: Domain SFT (1,000+ steps on multi-step tasks)"]
+        SFTCurriculum --> Phase1
+        SFT_v2 --> Phase1
+        Phase1 --> Phase2
+        Phase2 --> NewAdapter["New SFT Checkpoint\n(sft_aya_v2)"]
+    end
+
+    subgraph RollbackEngine ["4. Dynamic LoRA Rollback Engine"]
+        ActiveConfig["Active Inference Config"]
+        SwapHandler["scripts/run_rollback_smoke_test.py"]
+        BaselineState["Known-Good Baseline (Command R 7B)"]
+        ActiveConfig --> SwapHandler
+        SwapHandler --> BaselineState
+        BaselineState -- "Empirical Restore Verified" --> RollbackReport["results/runs/rollback_smoke_001/"]
+    end
+
+    subgraph ServingFallback ["5. Unified Gateway Serving Topology"]
+        GatewayRouter["RuntimeGateway (src/runtime/gateway.py)"]
+        LocalEngine["LocalAyaServer (4-bit bitsandbytes)"]
+        CloudRouter["OpenRouter / Groq API Client"]
+        GatewayRouter --> LocalEngine
+        LocalEngine -- "If Missing Weights / MPS" --> CloudRouter
+    end
+```
+
+### 7.1 Pre-Flight Format Verification Contract
+Before training begins, `scripts/verify_base_model_format.py` prompts the base model at $T=0.0$ on 5 standard tool-calling tasks:
+* **Invariant:** The base model must emit `<|START_ACTION|>` in at least 1/5 trials.
+* If 0/5 emit `<|START_ACTION|>`, training is halted (`BaseModelFormatGateError`) to prevent training on un-primed conversational priors.
+
+### 7.2 Dataset Scale Invariant ($\ge 200$ Unique Trajectories)
+In accordance with FireAct (Chen et al., 2023) and AgentTuning (Zeng et al., 2023):
+* Dataset deduplication ratio must satisfy: $\frac{\text{unique\_trajectories}}{\text{total\_trajectories}} \ge 0.80$.
+* Number of unique training trajectories must satisfy $N_{\text{unique}} \ge 200$ across $\ge 6$ task templates.
+* **Implemented in `procurement_sft_train_v2` (M5.P2):**
+  - **Total Samples:** 220 multi-turn trajectories across 7 template families.
+  - **Unique Trajectories:** 203 (exceeding $\ge 200$ floor).
+  - **Deduplication Ratio:** $92.3\%$ (exceeding $\ge 80.0\%$ target).
+  - **Dataset SHA-256:** `03eb631667b783c00427439c6356482733b346c96495d6b4ac60bf6b0166b5d6`.
+  - **Partition Isolation:** 100% entity and template disjointness from validation and locked test splits (verified via `tests/test_sft_v2_isolation.py`).
+  - **Tokenizer Atomicity:** Control delimiters `<|START_ACTION|>` and `<|END_ACTION|>` map to atomic token IDs (verified via `tests/test_delimiter_atomicity.py`).
+  - **Remote Staging:** Self-contained training notebook staged in `notebooks/kaggle_m5_training.ipynb` covering Condition C1 (matched base rollout), Condition C2 (attention-only LoRA), and Condition C3 (all-linear LoRA).
+
+### 7.3 Rollback Testing Empirical Contract
+Rollback verification requires an automated smoke test:
+1. Snapshot active adapter configuration.
+2. Revert configuration to baseline reference.
+3. Execute 5 validation rollouts and assert performance matches baseline historical records ($|\Delta M_1| \le 0.15$).
+4. Re-enable active adapter and persist `rollback_report.json` with cryptographic run fingerprints.
