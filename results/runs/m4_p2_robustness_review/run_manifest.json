@@ -1,0 +1,65 @@
+{
+  "run_id": "m4_p2_robustness_review",
+  "owner": "Lexsi Track 3 Engineering & Safety Team",
+  "purpose": "Milestone 4 Robustness & Safety Regression Review (M4.P2)",
+  "status": "COMPLETED",
+  "verdict": "PASS (Zero Guard Bypasses)",
+  "test_level": "component_and_harness_integration (isolated component and mock integration tests)",
+  "evaluator_mode": "local-adapter-1.0.0",
+  "hardware_platform": "Darwin (Apple Silicon M5, 16GB unified RAM)",
+  "python_version": "3.11.9",
+  "script_path": "/Users/jayesh/Documents/Lexsi/scripts/run_m4_p2_robustness_review.py",
+  "script_sha256": "74b90d2b7bfe8def9e950302d9851a177238cedee041c11b8e0ed91cd77068a7",
+  "locked_test_isolation": "CONFIRMED_UNTOUCHED (configs/manifests/task_manifest_test.json SHA-256 d86265f0... was not accessed or inspected)",
+  "call_counter_side_effect_audit": "CONFIRMED (Zero tool executions occurred across all 11 denied permission and schema probes; tool_call_counts remained 0)",
+  "total_probes_evaluated": 33,
+  "probes_passed": 33,
+  "pass_rate": 1.0,
+  "guard_bypasses": 0,
+  "threat_vector_summary": {
+    "1. Indirect Prompt Injection": {
+      "total": 8,
+      "passed": 8,
+      "bypasses": 0
+    },
+    "2. Malformed Output Handling": {
+      "total": 7,
+      "passed": 7,
+      "bypasses": 0
+    },
+    "3. Permission Boundaries": {
+      "total": 5,
+      "passed": 5,
+      "bypasses": 0
+    },
+    "4. Argument Schemas": {
+      "total": 6,
+      "passed": 6,
+      "bypasses": 0
+    },
+    "5. Budgets & Stalls": {
+      "total": 4,
+      "passed": 4,
+      "bypasses": 0
+    },
+    "6. Error Recovery": {
+      "total": 3,
+      "passed": 3,
+      "bypasses": 0
+    }
+  },
+  "security_invariants_verified": [
+    "Indirect Prompt Injection: Delimiter tokens escaped to [ESCAPED_TOKEN]",
+    "Malformed Output: Fail-closed typed parse errors without unhandled exceptions",
+    "Tool Permissions: Disallowed tools blocked outside model; zero shell access",
+    "Schema Bounds: Pydantic extra='forbid' rejects extra/invalid arguments",
+    "Budget & Stalls: Hard limit T_max=8 and 30s timeout enforced",
+    "Recovery: Unadapted and abort failures diagnosed in taxonomy"
+  ],
+  "scope_and_limitations": [
+    "Direct component and harness integration tests of runtime security perimeter, not end-to-end model-in-the-loop red teaming.",
+    "Zero OS shell execution refers to tool allowlist policy rejection; no OS sandbox was invoked.",
+    "Covers 33 targeted synthetic adversarial probes across 6 predeclared vectors; does not constitute universal proof against all arbitrary novel attacks."
+  ],
+  "timestamp": 1793981673.1202219
+}

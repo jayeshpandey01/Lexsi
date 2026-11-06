@@ -1,0 +1,44 @@
+{
+  "manifest_version": "1.0.0",
+  "dataset_name": "procurement_sft_train_v1",
+  "split": "train",
+  "generator": "OracleTeacherPolicy (src/data/sft_builder.py)",
+  "source_manifest": "/Users/jayesh/Documents/Lexsi/configs/manifests/task_manifest_train.json",
+  "source_manifest_hash": "c8f0205584374b3d15591dda3ed681759f7894b507e588bda20855de9c772fe4",
+  "license": "not separately asserted (synthetic closed-world benchmark)",
+  "created_seed": 42,
+  "sample_count": 20,
+  "deduped_sample_count": 7,
+  "dataset_sha256": "14f7de32aa13d3905a0a6f3dc6cd0330f4e52774a7fc37a7b1f96da5be9f4573",
+  "stats": {
+    "total_tasks_processed": 20,
+    "accepted_trajectories_count": 20,
+    "rejected_count": 0,
+    "rejection_reasons": {},
+    "unique_trajectories_count": 7,
+    "duplicate_count": 13,
+    "template_distribution": {
+      "T1": 10,
+      "T2": 10
+    },
+    "entity_distribution": {},
+    "mean_steps_per_trajectory": 3.0,
+    "total_tool_calls": 40,
+    "token_length_summary": {
+      "min_tokens": 59.0,
+      "max_tokens": 259.0,
+      "mean_tokens": 177.8
+    }
+  },
+  "leakage_audit": {
+    "task_id_leakage": false,
+    "template_leakage_with_test": false,
+    "entity_leakage_with_val": false,
+    "entity_leakage_with_test": false,
+    "query_text_exact_match_leakage": false,
+    "max_jaccard_similarity_val": 0.9487,
+    "max_jaccard_similarity_test": 0.2486,
+    "is_isolation_verified": true,
+    "violations": []
+  }
+}

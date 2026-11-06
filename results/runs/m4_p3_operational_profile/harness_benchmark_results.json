@@ -1,0 +1,131 @@
+{
+  "run_id": "m4_p3_operational_profile",
+  "timestamp": 1793981680.3107462,
+  "platform": "Darwin (arm64, arm)",
+  "python_version": "3.11.9",
+  "harness_benchmarks": {
+    "workload_metadata": {
+      "validation_manifest": "/Users/jayesh/Documents/Lexsi/configs/manifests/task_manifest_val.json",
+      "validation_manifest_sha256": "51a4275e777dbe250c468af1a10e12cd221e47bd563a3b79d1b4619b25278ea8",
+      "task_count": 10,
+      "repetitions": 20,
+      "warmup_runs": 5,
+      "concurrency": 1,
+      "tool_timeout_seconds": 5.0,
+      "episode_deadline_seconds": 30.0,
+      "timeouts_observed": 0,
+      "timeout_rate": 0.0
+    },
+    "timing_distributions_ms": {
+      "tool_lookup_records_in_memory": {
+        "count": 20,
+        "mean": 0.0057,
+        "median": 0.0054,
+        "p95": 0.0067,
+        "min": 0.0051,
+        "max": 0.0095,
+        "std": 0.001
+      },
+      "tool_lookup_records_sqlite_db": {
+        "count": 20,
+        "mean": 0.3453,
+        "median": 0.3106,
+        "p95": 0.3982,
+        "min": 0.2921,
+        "max": 0.7167,
+        "std": 0.0927
+      },
+      "tool_compute_aggregate": {
+        "count": 20,
+        "mean": 0.0047,
+        "median": 0.0044,
+        "p95": 0.0061,
+        "min": 0.0041,
+        "max": 0.0062,
+        "std": 0.0007
+      },
+      "tool_verify_constraint": {
+        "count": 20,
+        "mean": 0.0029,
+        "median": 0.0029,
+        "p95": 0.0035,
+        "min": 0.0027,
+        "max": 0.0035,
+        "std": 0.0002
+      },
+      "guard_sanitize_observation_clean": {
+        "count": 20,
+        "mean": 0.0049,
+        "median": 0.0044,
+        "p95": 0.007,
+        "min": 0.0042,
+        "max": 0.0093,
+        "std": 0.0013
+      },
+      "guard_sanitize_observation_injection": {
+        "count": 20,
+        "mean": 0.0007,
+        "median": 0.0006,
+        "p95": 0.0012,
+        "min": 0.0005,
+        "max": 0.0012,
+        "std": 0.0002
+      },
+      "guard_check_budget": {
+        "count": 20,
+        "mean": 0.0004,
+        "median": 0.0003,
+        "p95": 0.0005,
+        "min": 0.0003,
+        "max": 0.0008,
+        "std": 0.0001
+      },
+      "runtime_parse_action_json": {
+        "count": 20,
+        "mean": 0.005,
+        "median": 0.0045,
+        "p95": 0.0067,
+        "min": 0.004,
+        "max": 0.0095,
+        "std": 0.0013
+      },
+      "runtime_parse_prose_no_action": {
+        "count": 20,
+        "mean": 0.0027,
+        "median": 0.0025,
+        "p95": 0.0041,
+        "min": 0.0023,
+        "max": 0.0042,
+        "std": 0.0005
+      },
+      "harness_episode_t1_inventory": {
+        "count": 20,
+        "mean": 0.0109,
+        "median": 0.0105,
+        "p95": 0.0116,
+        "min": 0.0101,
+        "max": 0.0152,
+        "std": 0.0011
+      },
+      "harness_episode_t2_vendor_spend": {
+        "count": 20,
+        "mean": 0.007,
+        "median": 0.0067,
+        "p95": 0.0085,
+        "min": 0.0065,
+        "max": 0.0112,
+        "std": 0.0011
+      }
+    },
+    "throughput_profile": {
+      "mean_episode_latency_ms": 0.0089,
+      "throughput_episodes_per_sec": 111978.63,
+      "throughput_tool_calls_per_sec": 223957.26
+    },
+    "memory_profile_mb": {
+      "initial_process_rss_mb": 68.83,
+      "peak_process_rss_mb": 69.09,
+      "rss_delta_mb": 0.26
+    }
+  }
+}

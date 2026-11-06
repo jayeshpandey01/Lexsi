@@ -1,0 +1,239 @@
+{
+  "metadata": {
+    "title": "Synthetic Failure Taxonomy Calibration Dataset",
+    "taxonomy_version": "1.0.0",
+    "created_at": "2026-11-05T03:00:00Z",
+    "status": "synthetic_calibration_sample",
+    "notes": "Calibration fixtures for taxonomy verification; actual model baseline annotation is scheduled for M1.P5."
+  },
+  "samples": [
+    {
+      "annotation_id": "ann_syn_001",
+      "task_id": "task_val_T1_001",
+      "split": "val",
+      "taxonomy_version": "1.0.0",
+      "is_synthetic": true,
+      "evidence_step": 0,
+      "evidence_error_codes": ["TOOL_NOT_FOUND"],
+      "initial_label": "ToolSelectionFailure",
+      "reviewer_label": "ToolSelectionFailure",
+      "adjudicated_label": "ToolSelectionFailure",
+      "disagreement_outcome": "Unanimous agreement: invoked unregistered tool 'unregistered_database_query'.",
+      "evidence_summary": "Step 0 attempted to execute unrecognized tool, triggering TOOL_NOT_FOUND.",
+      "redacted_trace_snippet": {
+        "step_index": 0,
+        "action": {"tool_name": "unregistered_database_query", "arguments": {"query": "SELECT *"}},
+        "error": "TOOL_NOT_FOUND: Tool 'unregistered_database_query' is not recognized or authorized."
+      }
+    },
+    {
+      "annotation_id": "ann_syn_002",
+      "task_id": "task_val_T1_001",
+      "split": "val",
+      "taxonomy_version": "1.0.0",
+      "is_synthetic": true,
+      "evidence_step": 0,
+      "evidence_error_codes": ["DISALLOWED_TOOL"],
+      "initial_label": "ToolSelectionFailure",
+      "reviewer_label": "ToolSelectionFailure",
+      "adjudicated_label": "ToolSelectionFailure",
+      "disagreement_outcome": "Unanimous agreement: policy guard rejected prohibited admin tool.",
+      "evidence_summary": "Step 0 attempted prohibited action 'admin_drop_tables', rejected with DISALLOWED_TOOL.",
+      "redacted_trace_snippet": {
+        "step_index": 0,
+        "action": {"tool_name": "admin_drop_tables", "arguments": {}},
+        "error": "DISALLOWED_TOOL: Tool 'admin_drop_tables' is prohibited by current policy guard."
+      }
+    },
+    {
+      "annotation_id": "ann_syn_003",
+      "task_id": "task_val_T1_001",
+      "split": "val",
+      "taxonomy_version": "1.0.0",
+      "is_synthetic": true,
+      "evidence_step": 0,
+      "evidence_error_codes": ["SCHEMA_VALIDATION_ERROR"],
+      "initial_label": "ArgumentSchemaFailure",
+      "reviewer_label": "ArgumentSchemaFailure",
+      "adjudicated_label": "ArgumentSchemaFailure",
+      "disagreement_outcome": "Unanimous agreement: violation of extra='forbid' constraint.",
+      "evidence_summary": "Step 0 supplied unexpected parameter 'unsupported_flag', violating strict tool schema.",
+      "redacted_trace_snippet": {
+        "step_index": 0,
+        "action": {"tool_name": "lookup_records", "arguments": {"table": "inventory_items", "unsupported_flag": true}},
+        "error": "SCHEMA_VALIDATION_ERROR: Extra inputs are not permitted [extra_forbidden]"
+      }
+    },
+    {
+      "annotation_id": "ann_syn_004",
+      "task_id": "task_val_T1_001",
+      "split": "val",
+      "taxonomy_version": "1.0.0",
+      "is_synthetic": true,
+      "evidence_step": 0,
+      "evidence_error_codes": ["SEMANTIC_BOUND_ERROR"],
+      "initial_label": "ArgumentSchemaFailure",
+      "reviewer_label": "ArgumentSchemaFailure",
+      "adjudicated_label": "ArgumentSchemaFailure",
+      "disagreement_outcome": "Unanimous agreement: unsupported aggregation operation.",
+      "evidence_summary": "Step 0 invoked compute_aggregate with invalid operation 'invalid_op'.",
+      "redacted_trace_snippet": {
+        "step_index": 0,
+        "action": {"tool_name": "compute_aggregate", "arguments": {"values": [1.0], "operation": "invalid_op"}},
+        "error": "SEMANTIC_BOUND_ERROR: Operation 'invalid_op' not supported."
+      }
+    },
+    {
+      "annotation_id": "ann_syn_005",
+      "task_id": "task_val_T1_001",
+      "split": "val",
+      "taxonomy_version": "1.0.0",
+      "is_synthetic": true,
+      "evidence_step": 0,
+      "evidence_error_codes": [],
+      "initial_label": "DependencyOrderFailure",
+      "reviewer_label": "DependencyOrderFailure",
+      "adjudicated_label": "DependencyOrderFailure",
+      "disagreement_outcome": "Unanimous agreement: compute_aggregate executed before lookup_records.",
+      "evidence_summary": "Dependent aggregation tool invoked at step 0 before prerequisite lookup_records at step 1.",
+      "redacted_trace_snippet": {
+        "step_index": 0,
+        "action": {"tool_name": "compute_aggregate", "arguments": {"values": [10.0, 20.0], "operation": "sum"}},
+        "observation": 30.0
+      }
+    },
+    {
+      "annotation_id": "ann_syn_006",
+      "task_id": "task_val_T3_001",
+      "split": "val",
+      "taxonomy_version": "1.0.0",
+      "is_synthetic": true,
+      "evidence_step": 0,
+      "evidence_error_codes": [],
+      "initial_label": "DependencyOrderFailure",
+      "reviewer_label": "ToolSelectionFailure",
+      "adjudicated_label": "DependencyOrderFailure",
+      "disagreement_outcome": "Adjudicated: Reviewer initially mistook verify_constraint as incorrect tool; Arbiter confirmed verify_constraint is an expected tool called out of order prior to lookup.",
+      "evidence_summary": "verify_constraint invoked at step 0 before looking up vendor ratings at step 1.",
+      "redacted_trace_snippet": {
+        "step_index": 0,
+        "action": {"tool_name": "verify_constraint", "arguments": {"value": 4.5, "threshold": 4.0}},
+        "observation": true
+      }
+    },
+    {
+      "annotation_id": "ann_syn_007",
+      "task_id": "task_val_T1_001",
+      "split": "val",
+      "taxonomy_version": "1.0.0",
+      "is_synthetic": true,
+      "evidence_step": 0,
+      "evidence_error_codes": [],
+      "initial_label": "LoopingAndStallFailure",
+      "reviewer_label": "LoopingAndStallFailure",
+      "adjudicated_label": "LoopingAndStallFailure",
+      "disagreement_outcome": "Unanimous agreement: 3 identical calls with nested dictionary arguments.",
+      "evidence_summary": "Agent repeated identical lookup_records call 3 times consecutively without parameter change.",
+      "redacted_trace_snippet": {
+        "step_index": 0,
+        "action": {"tool_name": "lookup_records", "arguments": {"table": "vendors", "filters": {"category": "Software", "status": "active"}}},
+        "observation": [{"vendor_id": "VND-106"}]
+      }
+    },
+    {
+      "annotation_id": "ann_syn_008",
+      "task_id": "task_val_T1_001",
+      "split": "val",
+      "taxonomy_version": "1.0.0",
+      "is_synthetic": true,
+      "evidence_step": 0,
+      "evidence_error_codes": [],
+      "initial_label": "LoopingAndStallFailure",
+      "reviewer_label": "LoopingAndStallFailure",
+      "adjudicated_label": "LoopingAndStallFailure",
+      "disagreement_outcome": "Unanimous agreement: alternating 2-cycle tool loop (A -> B -> A -> B).",
+      "evidence_summary": "Agent entered alternating cyclic invocation pattern across 4 steps.",
+      "redacted_trace_snippet": {
+        "step_index": 2,
+        "action": {"tool_name": "lookup_records", "arguments": {"table": "vendors"}},
+        "observation": [{"vendor_id": "VND-106"}]
+      }
+    },
+    {
+      "annotation_id": "ann_syn_009",
+      "task_id": "task_val_T1_001",
+      "split": "val",
+      "taxonomy_version": "1.0.0",
+      "is_synthetic": true,
+      "evidence_step": null,
+      "evidence_error_codes": [],
+      "initial_label": "EarlyTerminationFailure",
+      "reviewer_label": "EarlyTerminationFailure",
+      "adjudicated_label": "EarlyTerminationFailure",
+      "disagreement_outcome": "Unanimous agreement: terminated with 0 tool calls.",
+      "evidence_summary": "Agent outputted answer directly without invoking required tools.",
+      "redacted_trace_snippet": {
+        "final_output": "The total is 500."
+      }
+    },
+    {
+      "annotation_id": "ann_syn_010",
+      "task_id": "task_val_T1_001",
+      "split": "val",
+      "taxonomy_version": "1.0.0",
+      "is_synthetic": true,
+      "evidence_step": 0,
+      "evidence_error_codes": [],
+      "initial_label": "EarlyTerminationFailure",
+      "reviewer_label": "EarlyTerminationFailure",
+      "adjudicated_label": "EarlyTerminationFailure",
+      "disagreement_outcome": "Unanimous agreement: omitted compute_aggregate expected tool.",
+      "evidence_summary": "Agent executed lookup_records but halted before executing compute_aggregate.",
+      "redacted_trace_snippet": {
+        "step_index": 0,
+        "action": {"tool_name": "lookup_records", "arguments": {"table": "inventory_items"}},
+        "final_output": "Done looking up."
+      }
+    },
+    {
+      "annotation_id": "ann_syn_011",
+      "task_id": "task_val_T1_001",
+      "split": "val",
+      "taxonomy_version": "1.0.0",
+      "is_synthetic": true,
+      "evidence_step": 1,
+      "evidence_error_codes": ["SCHEMA_VALIDATION_ERROR"],
+      "initial_label": "ToolRecoveryFailure",
+      "reviewer_label": "ArgumentSchemaFailure",
+      "adjudicated_label": "ToolRecoveryFailure",
+      "disagreement_outcome": "Adjudicated: Reviewer focused on the schema error code; Arbiter confirmed step 1 was an exact repeated call after error feedback, making ToolRecoveryFailure the higher-priority root cause under Precedence Hierarchy §3.",
+      "evidence_summary": "Step 1 repeated identical failing action after receiving error feedback at step 0.",
+      "redacted_trace_snippet": {
+        "step_index": 1,
+        "action": {"tool_name": "lookup_records", "arguments": {"table": "inventory_items", "bad_param": 123}},
+        "error": "SCHEMA_VALIDATION_ERROR: Extra inputs are not permitted"
+      }
+    },
+    {
+      "annotation_id": "ann_syn_012",
+      "task_id": "task_val_T1_001",
+      "split": "val",
+      "taxonomy_version": "1.0.0",
+      "is_synthetic": true,
+      "evidence_step": 1,
+      "evidence_error_codes": ["SCHEMA_VALIDATION_ERROR"],
+      "initial_label": "ToolRecoveryFailure",
+      "reviewer_label": "ToolRecoveryFailure",
+      "adjudicated_label": "ToolRecoveryFailure",
+      "disagreement_outcome": "Unanimous agreement: agent halted immediately following tool error without attempting recovery.",
+      "evidence_summary": "Agent aborted with final output at step 1 immediately after error observation at step 0.",
+      "redacted_trace_snippet": {
+        "step_index": 0,
+        "action": {"tool_name": "lookup_records", "arguments": {"table": "invalid_table"}},
+        "error": "SCHEMA_VALIDATION_ERROR: Value error, Table 'invalid_table' not found",
+        "final_output": "Aborted due to database error."
+      }
+    }
+  ]
+}
+

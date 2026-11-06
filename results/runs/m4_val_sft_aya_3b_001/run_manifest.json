@@ -1,0 +1,173 @@
+{
+  "run_id": "m4_val_sft_aya_3b_001",
+  "owner": "Lexsi Track 3 Engineering & Safety Team",
+  "purpose": "Milestone 4 Validation Matrix & Failure Analysis (M4.P1)",
+  "status": "COMPLETED_EVAL",
+  "candidate_status": "FAILED_CAPABILITY_CANDIDATE",
+  "candidate_eligibility": {
+    "eligible_for_promotion": false,
+    "eligible_for_locked_test": false,
+    "m1_observed": 0.0,
+    "m1_floor_required": 0.4,
+    "m2_observed": 0.0,
+    "m2_floor_required": 0.5,
+    "verdict": "REVISE / INELIGIBLE (Task success floor 40% unmet)",
+    "action": "DEFER_LOCKED_TEST \u2014 Candidate must not be evaluated on sequestered locked-test split."
+  },
+  "model_id": "CohereLabs/tiny-aya-global",
+  "adapter_name": "sft_aya_3b_001",
+  "adapter_path": "/Users/jayesh/Documents/Lexsi/results/runs/sft_aya_3b_001/checkpoint/adapter_model.safetensors",
+  "adapter_sha256": "a73583f3aade1026ec9d5d53813d2ff9ffa66d0a84a17ae07ef06e39000b2a8d",
+  "model_metadata": {
+    "base_model": "CohereLabs/tiny-aya-global",
+    "base_parameters": "3.35B",
+    "revision": "main",
+    "quantization": "4-bit NF4 with Double Quantization (bitsandbytes)",
+    "adapter_type": "LoRA (r=16, alpha=32, target_modules=[q_proj, k_proj, v_proj, o_proj])",
+    "adapter_size_bytes": 30709408,
+    "tokenizer_chat_template": "command-r",
+    "decoding_parameters": {
+      "temperature": 0.01,
+      "do_sample": false,
+      "max_new_tokens": 128,
+      "seed": 42
+    }
+  },
+  "hardware_metadata": {
+    "execution_platform": "Kaggle Free 2x NVIDIA Tesla T4 GPU Instance",
+    "evaluator_platform": "Darwin (Apple Silicon M5, 16GB unified RAM)",
+    "evaluator_mode": "local-adapter-1.0.0"
+  },
+  "dataset_provenance": {
+    "split": "val",
+    "split_manifest_path": "/Users/jayesh/Documents/Lexsi/configs/manifests/task_manifest_val.json",
+    "manifest_sha256": "51a4275e777dbe250c468af1a10e12cd221e47bd563a3b79d1b4619b25278ea8",
+    "task_count": 10,
+    "task_ids": [
+      "task_val_T1_inventory_value_000",
+      "task_val_T2_vendor_approved_spend_001",
+      "task_val_T1_inventory_value_002",
+      "task_val_T2_vendor_approved_spend_003",
+      "task_val_T1_inventory_value_004",
+      "task_val_T2_vendor_approved_spend_005",
+      "task_val_T1_inventory_value_006",
+      "task_val_T2_vendor_approved_spend_007",
+      "task_val_T1_inventory_value_008",
+      "task_val_T2_vendor_approved_spend_009"
+    ]
+  },
+  "runtime_controls": {
+    "max_steps_per_episode": 8,
+    "per_call_tool_timeout_seconds": 5.0,
+    "episode_deadline_seconds": 30.0,
+    "argument_validation": "Pydantic extra='forbid'",
+    "outcome_verifier_version": "1.0.0 (environment-owned predicate)",
+    "guards_active": [
+      "CallBudgetGuard",
+      "SafetyFilterGuard",
+      "ArgumentFormatGuard"
+    ]
+  },
+  "metrics_summary": {
+    "M1_task_success_rate": 0.0,
+    "M1_ci_95": 0.0,
+    "M2_tool_call_accuracy": 0.0,
+    "M3_schema_validity": 1.0,
+    "M4_call_order_validity": 1.0,
+    "M5_trajectory_step_efficiency": null,
+    "M6_redundant_call_rate": 0.0,
+    "M7_loop_and_stall_frequency": 0.0
+  },
+  "failure_taxonomy_distribution": {
+    "ToolSelectionFailure": 0,
+    "ArgumentSchemaFailure": 0,
+    "DependencyOrderFailure": 0,
+    "LoopingAndStallFailure": 0,
+    "EarlyTerminationFailure": 10,
+    "ToolRecoveryFailure": 0
+  },
+  "diagnosed_failures": [
+    {
+      "task_id": "task_val_T1_inventory_value_000",
+      "category": "EarlyTerminationFailure",
+      "confidence": 1.0,
+      "evidence": "Trajectory terminated with 0 tool calls executed before completing task.",
+      "root_cause_step": null,
+      "raw_output_snippet": "<|START_RESPONSE|>To calculate the total inventory valuation for all items in the 'Software' category, I will execute th"
+    },
+    {
+      "task_id": "task_val_T2_vendor_approved_spend_001",
+      "category": "EarlyTerminationFailure",
+      "confidence": 1.0,
+      "evidence": "Trajectory terminated with 0 tool calls executed before completing task.",
+      "root_cause_step": null,
+      "raw_output_snippet": "<|START_RESPONSE|>To determine the total approved purchase order expenditure for vendor 'VND-106', I will query the `pur"
+    },
+    {
+      "task_id": "task_val_T1_inventory_value_002",
+      "category": "EarlyTerminationFailure",
+      "confidence": 1.0,
+      "evidence": "Trajectory terminated with 0 tool calls executed before completing task.",
+      "root_cause_step": null,
+      "raw_output_snippet": "<|START_RESPONSE|>To calculate the total inventory valuation for all items in the 'Software' category, I will execute th"
+    },
+    {
+      "task_id": "task_val_T2_vendor_approved_spend_003",
+      "category": "EarlyTerminationFailure",
+      "confidence": 1.0,
+      "evidence": "Trajectory terminated with 0 tool calls executed before completing task.",
+      "root_cause_step": null,
+      "raw_output_snippet": "<|START_RESPONSE|>To determine the total approved purchase order expenditure for vendor 'VND-107', I will query the `pur"
+    },
+    {
+      "task_id": "task_val_T1_inventory_value_004",
+      "category": "EarlyTerminationFailure",
+      "confidence": 1.0,
+      "evidence": "Trajectory terminated with 0 tool calls executed before completing task.",
+      "root_cause_step": null,
+      "raw_output_snippet": "<|START_RESPONSE|>To calculate the total inventory valuation for all items in the 'Software' category, I will execute th"
+    },
+    {
+      "task_id": "task_val_T2_vendor_approved_spend_005",
+      "category": "EarlyTerminationFailure",
+      "confidence": 1.0,
+      "evidence": "Trajectory terminated with 0 tool calls executed before completing task.",
+      "root_cause_step": null,
+      "raw_output_snippet": "<|START_RESPONSE|>To determine the total approved purchase order expenditure for vendor 'VND-106', I will query the `pur"
+    },
+    {
+      "task_id": "task_val_T1_inventory_value_006",
+      "category": "EarlyTerminationFailure",
+      "confidence": 1.0,
+      "evidence": "Trajectory terminated with 0 tool calls executed before completing task.",
+      "root_cause_step": null,
+      "raw_output_snippet": "<|START_RESPONSE|>To calculate the total inventory valuation for all items in the 'Software' category, I will execute th"
+    },
+    {
+      "task_id": "task_val_T2_vendor_approved_spend_007",
+      "category": "EarlyTerminationFailure",
+      "confidence": 1.0,
+      "evidence": "Trajectory terminated with 0 tool calls executed before completing task.",
+      "root_cause_step": null,
+      "raw_output_snippet": "<|START_RESPONSE|>To determine the total approved purchase order expenditure for vendor 'VND-107', I will query the `pur"
+    },
+    {
+      "task_id": "task_val_T1_inventory_value_008",
+      "category": "EarlyTerminationFailure",
+      "confidence": 1.0,
+      "evidence": "Trajectory terminated with 0 tool calls executed before completing task.",
+      "root_cause_step": null,
+      "raw_output_snippet": "<|START_RESPONSE|>To calculate the total inventory valuation for all items in the 'Software' category, I will execute th"
+    },
+    {
+      "task_id": "task_val_T2_vendor_approved_spend_009",
+      "category": "EarlyTerminationFailure",
+      "confidence": 1.0,
+      "evidence": "Trajectory terminated with 0 tool calls executed before completing task.",
+      "root_cause_step": null,
+      "raw_output_snippet": "<|START_RESPONSE|>To determine the total approved purchase order expenditure for vendor 'VND-106', I will query the `pur"
+    }
+  ],
+  "fingerprint": "52ecf53351d031a92105d940c05a6a2eada2d503a6dbed6f595b5bb821743180",
+  "timestamp": 1793981667.3871381
+}

@@ -1,0 +1,43 @@
+{
+  "run_id": "m4_val_base_aya_3b_blocked",
+  "owner": "Lexsi Track 3 Engineering & Safety Team",
+  "purpose": "Milestone 4 Base-Model Comparator (CohereLabs/tiny-aya-global) Validation Evaluation",
+  "status": "BLOCKED_NO_ROLLOUT",
+  "model_id": "CohereLabs/tiny-aya-global",
+  "model_metadata": {
+    "repository": "CohereLabs/tiny-aya-global",
+    "parameters": "3.35B",
+    "revision": "main",
+    "chat_template": "command-r",
+    "dtype": "bfloat16"
+  },
+  "hardware_metadata": {
+    "platform": "Darwin (Apple Silicon M5, 16GB unified RAM)",
+    "python_version": "3.11.9",
+    "evaluator_mode": "local-adapter-1.0.0"
+  },
+  "blocker_details": {
+    "blocker_category": "COMPUTE_AND_DEPENDENCY_BLOCK",
+    "reason": "Untuned base model was not rolled out on the 10 validation tasks during the Kaggle 2x T4 GPU session, and cannot be loaded on the local Apple Silicon workstation due to missing runtime dependencies (transformers, peft) and absent 3.35B base model weights (~6.7 GB).",
+    "required_artifact": "Remote GPU rollout traces (baseline_aya_3b_001/val_rollout_traces.json) on held-out validation tasks.",
+    "owner": "ML Lead & Infra Lead",
+    "next_action": "Execute untuned base rollout on Kaggle 2x T4 or cloud A100 GPU cluster with identical prompt, tools, and decoding controls.",
+    "comparison_status": "UNFABRICATED \u2014 Causal comparative hypothesis testing against base is strictly omitted."
+  },
+  "exploratory_comparator_note": "baseline_run_001 (Command R 7B) exists in results/runs/baseline_run_001/ but is exploratory and represents a mismatched model architecture; it cannot serve as a matched Tiny Aya baseline.",
+  "split": "val",
+  "task_count": 10,
+  "task_ids": [
+    "task_val_T1_inventory_value_000",
+    "task_val_T2_vendor_approved_spend_001",
+    "task_val_T1_inventory_value_002",
+    "task_val_T2_vendor_approved_spend_003",
+    "task_val_T1_inventory_value_004",
+    "task_val_T2_vendor_approved_spend_005",
+    "task_val_T1_inventory_value_006",
+    "task_val_T2_vendor_approved_spend_007",
+    "task_val_T1_inventory_value_008",
+    "task_val_T2_vendor_approved_spend_009"
+  ],
+  "timestamp": 1793981667.383213
+}

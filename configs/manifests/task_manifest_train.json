@@ -1,0 +1,349 @@
+{
+  "split_name": "train",
+  "count": 20,
+  "is_locked": false,
+  "status": null,
+  "split_content_hash": "c8f0205584374b3d15591dda3ed681759f7894b507e588bda20855de9c772fe4",
+  "tasks": [
+    {
+      "task_id": "task_train_T1_inventory_value_000",
+      "split": "train",
+      "template_id": "T1_inventory_value",
+      "target_entities": {
+        "category": "Hardware"
+      },
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "provenance_hash": "1ec693c06b2671e0641d079b45523a7f81be02dffe24720fafbaf6566d7c444d",
+      "is_locked": false,
+      "oracle_answer": 113202.7,
+      "oracle_verdict": null,
+      "user_query": "Calculate the total inventory valuation for all items in the 'Hardware' category by querying inventory_items and summing unit_cost * stock_level."
+    },
+    {
+      "task_id": "task_train_T2_vendor_approved_spend_001",
+      "split": "train",
+      "template_id": "T2_vendor_approved_spend",
+      "target_entities": {
+        "vendor_id": "VND-100"
+      },
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "provenance_hash": "ea608eaefe121c20e6017636eaabc1724e4c10a086476ff0b7aafaaa579f600e",
+      "is_locked": false,
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "user_query": "Determine the total Approved purchase order expenditure for vendor 'VND-100'. Query purchase_orders and sum quantity * unit_price."
+    },
+    {
+      "task_id": "task_train_T1_inventory_value_002",
+      "split": "train",
+      "template_id": "T1_inventory_value",
+      "target_entities": {
+        "category": "Hardware"
+      },
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "provenance_hash": "e6fbd2e12b04b026075a3aba085c12b3d9e2efe5c28d91de628104dff367ec2b",
+      "is_locked": false,
+      "oracle_answer": 113202.7,
+      "oracle_verdict": null,
+      "user_query": "Calculate the total inventory valuation for all items in the 'Hardware' category by querying inventory_items and summing unit_cost * stock_level."
+    },
+    {
+      "task_id": "task_train_T2_vendor_approved_spend_003",
+      "split": "train",
+      "template_id": "T2_vendor_approved_spend",
+      "target_entities": {
+        "vendor_id": "VND-101"
+      },
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "provenance_hash": "4682debd46fbd34fe3ad86566565dc5a716211a4cc1c87934f546f2c93ee3ef1",
+      "is_locked": false,
+      "oracle_answer": 16611.29,
+      "oracle_verdict": null,
+      "user_query": "Determine the total Approved purchase order expenditure for vendor 'VND-101'. Query purchase_orders and sum quantity * unit_price."
+    },
+    {
+      "task_id": "task_train_T1_inventory_value_004",
+      "split": "train",
+      "template_id": "T1_inventory_value",
+      "target_entities": {
+        "category": "Hardware"
+      },
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "provenance_hash": "48cc606595c5987d45962d4ff1810db50c5945405dba4814c1c9eadf5ff6bb7f",
+      "is_locked": false,
+      "oracle_answer": 113202.7,
+      "oracle_verdict": null,
+      "user_query": "Calculate the total inventory valuation for all items in the 'Hardware' category by querying inventory_items and summing unit_cost * stock_level."
+    },
+    {
+      "task_id": "task_train_T2_vendor_approved_spend_005",
+      "split": "train",
+      "template_id": "T2_vendor_approved_spend",
+      "target_entities": {
+        "vendor_id": "VND-102"
+      },
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "provenance_hash": "f10e2fd01c8ba85c64611612486499988985f18b685d2fc3941800f78d3fb3a1",
+      "is_locked": false,
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "user_query": "Determine the total Approved purchase order expenditure for vendor 'VND-102'. Query purchase_orders and sum quantity * unit_price."
+    },
+    {
+      "task_id": "task_train_T1_inventory_value_006",
+      "split": "train",
+      "template_id": "T1_inventory_value",
+      "target_entities": {
+        "category": "Hardware"
+      },
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "provenance_hash": "dd7b9d134c502897361ac97e3d06ac9b1c5a74caca7953234709a20acc644859",
+      "is_locked": false,
+      "oracle_answer": 113202.7,
+      "oracle_verdict": null,
+      "user_query": "Calculate the total inventory valuation for all items in the 'Hardware' category by querying inventory_items and summing unit_cost * stock_level."
+    },
+    {
+      "task_id": "task_train_T2_vendor_approved_spend_007",
+      "split": "train",
+      "template_id": "T2_vendor_approved_spend",
+      "target_entities": {
+        "vendor_id": "VND-103"
+      },
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "provenance_hash": "e17a1bed3d5994d92d9f245b281d64f6dfe47534450307cf9dcc0ce34510100f",
+      "is_locked": false,
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "user_query": "Determine the total Approved purchase order expenditure for vendor 'VND-103'. Query purchase_orders and sum quantity * unit_price."
+    },
+    {
+      "task_id": "task_train_T1_inventory_value_008",
+      "split": "train",
+      "template_id": "T1_inventory_value",
+      "target_entities": {
+        "category": "Hardware"
+      },
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "provenance_hash": "3b61048a16919b65f89fe045b7e170825921d58680cee1c0e187421147203f0d",
+      "is_locked": false,
+      "oracle_answer": 113202.7,
+      "oracle_verdict": null,
+      "user_query": "Calculate the total inventory valuation for all items in the 'Hardware' category by querying inventory_items and summing unit_cost * stock_level."
+    },
+    {
+      "task_id": "task_train_T2_vendor_approved_spend_009",
+      "split": "train",
+      "template_id": "T2_vendor_approved_spend",
+      "target_entities": {
+        "vendor_id": "VND-104"
+      },
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "provenance_hash": "dc657eb5af4037f14a9c5cb5c0e4162cf85cbc9643ef53f447eeb6ec7e7ecc9d",
+      "is_locked": false,
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "user_query": "Determine the total Approved purchase order expenditure for vendor 'VND-104'. Query purchase_orders and sum quantity * unit_price."
+    },
+    {
+      "task_id": "task_train_T1_inventory_value_010",
+      "split": "train",
+      "template_id": "T1_inventory_value",
+      "target_entities": {
+        "category": "Hardware"
+      },
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "provenance_hash": "da28f65c08efc74236a4df91d09edf751477953b79715379d5123e8905b7ce61",
+      "is_locked": false,
+      "oracle_answer": 113202.7,
+      "oracle_verdict": null,
+      "user_query": "Calculate the total inventory valuation for all items in the 'Hardware' category by querying inventory_items and summing unit_cost * stock_level."
+    },
+    {
+      "task_id": "task_train_T2_vendor_approved_spend_011",
+      "split": "train",
+      "template_id": "T2_vendor_approved_spend",
+      "target_entities": {
+        "vendor_id": "VND-105"
+      },
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "provenance_hash": "9282d8eba235ecc0cb22bfda271863c436e3fc02e5b78d837556b622c22d2274",
+      "is_locked": false,
+      "oracle_answer": 12818.16,
+      "oracle_verdict": null,
+      "user_query": "Determine the total Approved purchase order expenditure for vendor 'VND-105'. Query purchase_orders and sum quantity * unit_price."
+    },
+    {
+      "task_id": "task_train_T1_inventory_value_012",
+      "split": "train",
+      "template_id": "T1_inventory_value",
+      "target_entities": {
+        "category": "Hardware"
+      },
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "provenance_hash": "09ce8d2780ad7922e7fff8beff0f45bbdd4fe589a7cab7a8a9fa7ab2758e68cc",
+      "is_locked": false,
+      "oracle_answer": 113202.7,
+      "oracle_verdict": null,
+      "user_query": "Calculate the total inventory valuation for all items in the 'Hardware' category by querying inventory_items and summing unit_cost * stock_level."
+    },
+    {
+      "task_id": "task_train_T2_vendor_approved_spend_013",
+      "split": "train",
+      "template_id": "T2_vendor_approved_spend",
+      "target_entities": {
+        "vendor_id": "VND-100"
+      },
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "provenance_hash": "a088b1438f10388735a21a2ec1c205f650a98fb95145690295aba3b4ce87b8d5",
+      "is_locked": false,
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "user_query": "Determine the total Approved purchase order expenditure for vendor 'VND-100'. Query purchase_orders and sum quantity * unit_price."
+    },
+    {
+      "task_id": "task_train_T1_inventory_value_014",
+      "split": "train",
+      "template_id": "T1_inventory_value",
+      "target_entities": {
+        "category": "Hardware"
+      },
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "provenance_hash": "769e0079ef70bbe4cf9177bbf87d7475922df312b5e83ac4d589838208e043c5",
+      "is_locked": false,
+      "oracle_answer": 113202.7,
+      "oracle_verdict": null,
+      "user_query": "Calculate the total inventory valuation for all items in the 'Hardware' category by querying inventory_items and summing unit_cost * stock_level."
+    },
+    {
+      "task_id": "task_train_T2_vendor_approved_spend_015",
+      "split": "train",
+      "template_id": "T2_vendor_approved_spend",
+      "target_entities": {
+        "vendor_id": "VND-101"
+      },
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "provenance_hash": "54e8f683d9ea5b7617a6ac918a99b12b6f339d13a36758dbbff070734abbd2ff",
+      "is_locked": false,
+      "oracle_answer": 16611.29,
+      "oracle_verdict": null,
+      "user_query": "Determine the total Approved purchase order expenditure for vendor 'VND-101'. Query purchase_orders and sum quantity * unit_price."
+    },
+    {
+      "task_id": "task_train_T1_inventory_value_016",
+      "split": "train",
+      "template_id": "T1_inventory_value",
+      "target_entities": {
+        "category": "Hardware"
+      },
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "provenance_hash": "dcab6c0476565e02ec4965b2f163edb3c0625db12f63fca4f5885c17585548fc",
+      "is_locked": false,
+      "oracle_answer": 113202.7,
+      "oracle_verdict": null,
+      "user_query": "Calculate the total inventory valuation for all items in the 'Hardware' category by querying inventory_items and summing unit_cost * stock_level."
+    },
+    {
+      "task_id": "task_train_T2_vendor_approved_spend_017",
+      "split": "train",
+      "template_id": "T2_vendor_approved_spend",
+      "target_entities": {
+        "vendor_id": "VND-102"
+      },
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "provenance_hash": "cdc112035345fd77e173ce908d7999d85f9e8844c63115f52ef302ad37ac9990",
+      "is_locked": false,
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "user_query": "Determine the total Approved purchase order expenditure for vendor 'VND-102'. Query purchase_orders and sum quantity * unit_price."
+    },
+    {
+      "task_id": "task_train_T1_inventory_value_018",
+      "split": "train",
+      "template_id": "T1_inventory_value",
+      "target_entities": {
+        "category": "Hardware"
+      },
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "provenance_hash": "68c190c4a4fdd9b9bf897c2aabd59e7f1a7023b6ec3824bfc913d75194d79e31",
+      "is_locked": false,
+      "oracle_answer": 113202.7,
+      "oracle_verdict": null,
+      "user_query": "Calculate the total inventory valuation for all items in the 'Hardware' category by querying inventory_items and summing unit_cost * stock_level."
+    },
+    {
+      "task_id": "task_train_T2_vendor_approved_spend_019",
+      "split": "train",
+      "template_id": "T2_vendor_approved_spend",
+      "target_entities": {
+        "vendor_id": "VND-103"
+      },
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "provenance_hash": "c4e7395a91a80b9c257cedb513e1614fc4c1db43551fbd223fbc77f29b9e8c6f",
+      "is_locked": false,
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "user_query": "Determine the total Approved purchase order expenditure for vendor 'VND-103'. Query purchase_orders and sum quantity * unit_price."
+    }
+  ]
+}

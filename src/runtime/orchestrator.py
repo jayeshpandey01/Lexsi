@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import json
-import re
 import time
 from typing import Any, Callable, Dict, List, Optional
 
@@ -11,7 +10,7 @@ from src.data.schemas import StepRecord, ToolCallAction, TrajectoryRecord
 from src.environment.guards import RuntimePolicyGuard
 from src.environment.sandbox import SandboxedToolEngine, ToolObservation
 from src.environment.schema import ToolExecutionError
-from src.environment.task_generator import TaskSpec
+from src.environment.task_generator import TaskSpec, verify_task_outcome
 from src.environment.tools import TOOL_CONTRACTS
 from src.runtime.parser import parse_agent_output
 
@@ -23,7 +22,8 @@ class EpisodeOrchestrator:
     - Cannot exceed configured step budget (T_max = 8) or time limit (30s).
     - Model text is never executed directly as shell commands.
     - All actions validated against permissions and schemas outside the model.
-    - Captures redacted, replayable trajectory records.
+    - Captures redacted, replayable trajectory records with complete provenance.
+    - Environment-owned task outcome verification.
     """
 
     def __init__(
@@ -31,10 +31,26 @@ class EpisodeOrchestrator:
         seed: int = 42,
         max_steps: int = 8,
         timeout_seconds: float = 30.0,
+        per_call_timeout_seconds: float = 5.0,
+        allowed_tools: Optional[List[str]] = None,
+        run_id: Optional[str] = None,
+        environment_version: str = "0.1.0",
+        use_database: bool = False,
     ) -> None:
         self.seed = seed
-        self.engine = SandboxedToolEngine(seed=seed)
-        self.guard = RuntimePolicyGuard(max_steps=max_steps, timeout_seconds=timeout_seconds)
+        self.run_id = run_id
+        self.environment_version = environment_version
+        self.engine = SandboxedToolEngine(
+            seed=seed,
+            allowed_tools=allowed_tools,
+            per_call_timeout_seconds=per_call_timeout_seconds,
+            use_database=use_database,
+        )
+        self.guard = RuntimePolicyGuard(
+            allowed_tools=set(allowed_tools) if allowed_tools else None,
+            max_steps=max_steps,
+            timeout_seconds=timeout_seconds,
+        )
 
     def _build_system_prompt(self) -> str:
         """Render system prompt describing available deterministic tools."""
@@ -119,54 +135,50 @@ class EpisodeOrchestrator:
                 break
 
             if action is not None:
-                # 4. Guard permission validation
-                try:
-                    self.guard.validate_tool_permission(action.tool_name)
-                    # 5. Sandboxed execution
-                    obs: ToolObservation = self.engine.execute(action.tool_name, action.arguments)
-                    step_elapsed = (time.perf_counter() - step_start) * 1000.0
+                # 4 & 5. Pre-execution validation & Sandboxed execution
+                obs: ToolObservation = self.engine.execute(action.tool_name, action.arguments)
+                step_elapsed = (time.perf_counter() - step_start) * 1000.0
 
-                    if obs.is_error:
-                        steps.append(
-                            StepRecord(
-                                step_index=current_step,
-                                thought=thought,
-                                action=action,
-                                error=f"{obs.error_code}: {obs.error_message}",
-                                elapsed_ms=round(step_elapsed, 2),
-                            )
-                        )
-                        dialog_history += f"\nObservation Error: {obs.error_message}"
-                    else:
-                        sanitized_res = self.guard.sanitize_observation(obs.result)
-                        steps.append(
-                            StepRecord(
-                                step_index=current_step,
-                                thought=thought,
-                                action=action,
-                                observation=obs.result,
-                                elapsed_ms=round(step_elapsed, 2),
-                            )
-                        )
-                        dialog_history += f"\nObservation: {sanitized_res}"
-
-                except ToolExecutionError as e:
-                    step_elapsed = (time.perf_counter() - step_start) * 1000.0
+                if obs.is_error:
                     steps.append(
                         StepRecord(
                             step_index=current_step,
                             thought=thought,
                             action=action,
-                            error=f"{e.error_code}: {e.message}",
+                            error=f"{obs.error_code}: {obs.error_message}",
                             elapsed_ms=round(step_elapsed, 2),
                         )
                     )
-                    break
+                    dialog_history += f"\n{model_output}\nObservation Error: {obs.error_message}"
+                else:
+                    sanitized_res = self.guard.sanitize_observation(obs.result)
+                    steps.append(
+                        StepRecord(
+                            step_index=current_step,
+                            thought=thought,
+                            action=action,
+                            observation=obs.result,
+                            elapsed_ms=round(step_elapsed, 2),
+                        )
+                    )
+                    dialog_history += f"\n{model_output}\nObservation: {sanitized_res}"
 
             current_step += 1
 
-        # Evaluate success predicate
-        is_success = self._evaluate_success(final_answer, task)
+        if final_answer is None and current_step >= self.guard.max_steps:
+            try:
+                self.guard.check_budget(current_step, start_time)
+            except ToolExecutionError as e:
+                steps.append(
+                    StepRecord(
+                        step_index=current_step,
+                        error=f"{e.error_code}: {e.message}",
+                        elapsed_ms=(time.time() - start_time) * 1000.0,
+                    )
+                )
+
+        # 6. Environment-owned outcome verification
+        is_success = verify_task_outcome(task, final_answer)
         raw_reward = 1.0 if is_success else 0.0
 
         return TrajectoryRecord(
@@ -179,27 +191,16 @@ class EpisodeOrchestrator:
             is_success=is_success,
             total_steps=len(steps),
             raw_reward=raw_reward,
+            run_id=self.run_id,
+            environment_version=self.environment_version,
+            metadata={
+                "max_steps": self.guard.max_steps,
+                "timeout_seconds": self.guard.timeout_seconds,
+                "allowed_tools": sorted(list(self.engine.allowed_tools)),
+            },
         )
 
     def _evaluate_success(self, final_answer: Optional[str], task: TaskSpec) -> bool:
-        """Deterministic predicate check comparing final answer to task oracle answer."""
-        if not final_answer:
-            return False
+        """Backwards-compatible delegate to environment-owned verify_task_outcome."""
+        return verify_task_outcome(task, final_answer)
 
-        # Extract floats from final response text
-        nums = re.findall(r"[-+]?(?:\d*\.\d+|\d+)", final_answer.replace(",", ""))
-        if not nums:
-            return False
-
-        for n_str in nums:
-            try:
-                val = float(n_str)
-                # Check within tolerance 1e-2 or 1% relative
-                abs_err = abs(val - task.oracle_answer)
-                rel_err = abs_err / (abs(task.oracle_answer) + 1e-5)
-                if abs_err <= 0.05 or rel_err <= 0.01:
-                    return True
-            except ValueError:
-                continue
-
-        return False

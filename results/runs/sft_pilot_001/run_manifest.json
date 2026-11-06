@@ -1,0 +1,20 @@
+{
+  "run_id": "sft_pilot_001",
+  "type": "sft_bounded_pilot",
+  "status": "COMPLETED",
+  "model_id": "CohereLabs/tiny-aya-global",
+  "training_split": "train",
+  "sample_count": 20,
+  "max_steps": 30,
+  "initial_loss": 8.1984,
+  "final_loss": 8.3615,
+  "mean_loss": 8.2411,
+  "trainable_parameters": 16384,
+  "total_parameters": 1047296,
+  "trainable_percentage": 1.5644,
+  "seed": 42,
+  "total_duration_seconds": 0.47,
+  "checkpoint_path": "/Users/jayesh/Documents/Lexsi/results/runs/sft_pilot_001/checkpoint",
+  "hardware": "Apple Silicon M5 (MPS/PyTorch)",
+  "baseline_comparison_status": "exploratory (matching base rollout required for M2.P5)"
+}

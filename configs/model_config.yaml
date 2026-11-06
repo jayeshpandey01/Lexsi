@@ -1,6 +1,18 @@
 # Model Configuration: Cohere Labs Open-Weights Agent
-# Traceability: Maps to Decisions D2, D3 and Task TASK-M0-02
+# Traceability: Maps to Decisions D2, D3, M1.P5 baseline, and M2.P1 reconciliation
 
+# 1. Exploratory Diagnostic Baseline Model (Serving Gateway / E0 Reference)
+active_baseline:
+  model_id: "cohere/command-r7b-12-2024"
+  provider: "openrouter"
+  revision: "12-2024"
+  temperature: 0.0
+  chat_template: "command-r"
+  context_window: 128000
+  evaluated_run_id: "baseline_run_001"
+  status: "Exploratory diagnostic baseline (Command R 7B); excluded from causal before/after claims against Aya 3.35B"
+
+# 2. Local Weights Target Architecture (Offline Training Target)
 model:
   name: "CohereLabs/tiny-aya-global"
   family: "Aya"
@@ -37,3 +49,4 @@ remote_training:
   gradient_accumulation_steps: 4
   learning_rate: 2.0e-5
   optimizer: "adamw_torch"
+

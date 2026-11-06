@@ -1,0 +1,38 @@
+{
+  "run_id": "candidate_val_eval_001",
+  "owner": "Lexsi Track 3 Engineering & Safety Team",
+  "purpose": "Milestone 2 SFT Candidate (M2.P5) Validation Split Evaluation",
+  "status": "COMPLETED",
+  "model_id": "CohereLabs/tiny-aya-global-sft-candidate",
+  "candidate_type": "adapter_double",
+  "adapter_checkpoint": "results/runs/sft_pilot_001/checkpoint",
+  "evaluator_mode": "local-adapter-1.0.0",
+  "split": "val",
+  "task_count": 2,
+  "task_ids": [
+    "task_val_T1_inventory_value_000",
+    "task_val_T2_vendor_approved_spend_001"
+  ],
+  "manifest_sha256": "51a4275e777dbe250c468af1a10e12cd221e47bd563a3b79d1b4619b25278ea8",
+  "fingerprint": "481993d8fca633bc26c5e899216e78c50862ab52831a4edc8d2e79f2d545b286",
+  "start_timestamp": 1793981653.200712,
+  "completion_timestamp": 1793981653.350823,
+  "total_duration_seconds": 0.14,
+  "failures_diagnosed": [],
+  "paired_comparison_vs_baseline_001": {
+    "metric_name": "M1_task_success_rate",
+    "baseline_mean": 0.0,
+    "candidate_mean": 1.0,
+    "delta": 1.0,
+    "ci_lower": 1.0,
+    "ci_upper": 1.0,
+    "p_value": 0.0,
+    "is_significant": true,
+    "sample_count": 2,
+    "method": "paired_bootstrap_resampling (B=10000)",
+    "caveats": [
+      "Small sample size (N=2 < 30): descriptive comparison recommended; asymptotic properties unverified."
+    ]
+  },
+  "comparative_status": "exploratory (baseline_run_001 used 7B; matching 3.35B baseline required for release gate)"
+}

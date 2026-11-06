@@ -1,0 +1,27 @@
+{
+  "run_id": "smoke_eval_val_001",
+  "model_id": "cohere/command-r7b-12-2024",
+  "split": "val",
+  "is_smoke": true,
+  "task_count": 2,
+  "task_ids": [
+    "task_val_T1_inventory_value_000",
+    "task_val_T2_vendor_approved_spend_001"
+  ],
+  "manifest_sha256": "51a4275e777dbe250c468af1a10e12cd221e47bd563a3b79d1b4619b25278ea8",
+  "fingerprint": "00fadb233e1b415f7cd9f5216944f41b1d7d00cf1415540e370073f08613c9a6",
+  "start_timestamp": 1793889080.400707,
+  "completion_timestamp": 1793889091.052353,
+  "total_duration_seconds": 10.64,
+  "environment_version": "0.1.0",
+  "database_backend": "Turso Cloud libSQL (AWS ap-south-1)",
+  "failures_diagnosed": [
+    {
+      "task_id": "task_val_T1_inventory_value_000",
+      "category": "EarlyTerminationFailure",
+      "confidence": 1.0,
+      "evidence": "Trajectory terminated with 0 tool calls executed before completing task.",
+      "root_cause_step": 0
+    }
+  ]
+}

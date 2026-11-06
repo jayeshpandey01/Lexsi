@@ -5,11 +5,17 @@ from __future__ import annotations
 import hashlib
 import json
 import time
-from typing import Any, Dict, List, Optional
-from pydantic import BaseModel, Field
+from typing import Any, Dict, List, Optional, Tuple
+from pydantic import BaseModel, ConfigDict, Field
 
 from src.data.redaction import redact_data, redact_text
 from src.utils.compatibility import AgentTuneEvent, AgentTuneEventLog
+
+
+class LockedTestExportError(Exception):
+    """Raised when an attempt is made to project or export locked test tasks into training data."""
+
+    pass
 
 
 class ToolCallAction(BaseModel):
@@ -43,12 +49,15 @@ class TrajectoryRecord(BaseModel):
     is_success: bool = False
     total_steps: int = 0
     raw_reward: float = 0.0
+    run_id: Optional[str] = Field(None, description="Unique execution or experiment run identifier")
+    environment_version: str = Field("0.1.0", description="Version of the sandboxed tool environment")
+    metadata: Dict[str, Any] = Field(default_factory=dict, description="Execution and hardware provenance metadata")
     fingerprint: Optional[str] = None
 
     def model_post_init(self, __context: Any) -> None:
         """Compute state fingerprint if not provided."""
         if not self.fingerprint:
-            payload = f"{self.task_id}_{self.seed}_{len(self.steps)}_{self.is_success}"
+            payload = f"{self.task_id}_{self.seed}_{len(self.steps)}_{self.is_success}_{self.run_id}_{self.environment_version}"
             self.fingerprint = hashlib.sha256(payload.encode("utf-8")).hexdigest()
 
     def to_redacted_dict(self) -> Dict[str, Any]:
@@ -57,7 +66,16 @@ class TrajectoryRecord(BaseModel):
         return redact_data(raw_dict)  # type: ignore[no-any-return]
 
     def to_sharegpt_format(self) -> List[Dict[str, str]]:
-        """Project trajectory to ShareGPT format for supervised fine-tuning."""
+        """Project trajectory to ShareGPT format for supervised fine-tuning.
+
+        Enforces fail-closed guard: locked-test trajectories are strictly prohibited from export.
+        """
+        if self.task_id.startswith("task_test_") or self.metadata.get("is_locked") is True:
+            raise LockedTestExportError(
+                f"Cannot export trajectory for task '{self.task_id}' to ShareGPT training format: "
+                "Locked test split is permanently sequestered from training data."
+            )
+
         messages: List[Dict[str, str]] = []
 
         if self.system_prompt:
@@ -138,3 +156,99 @@ class TrajectoryRecord(BaseModel):
             seed=self.seed,
             events=events,
         )
+
+
+class TrainingInclusionPolicy(BaseModel):
+    """M2 training data inclusion and exclusion contract."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    allowed_splits: List[str] = Field(default_factory=lambda: ["train"])
+    require_verified_success: bool = True
+    require_zero_tool_errors: bool = True
+    require_call_order_valid: bool = True
+    max_steps_allowed: int = 8
+    disallowed_splits: List[str] = Field(default_factory=lambda: ["test", "val"])
+
+
+def filter_training_trajectories(
+    trajectories: List[TrajectoryRecord],
+    policy: Optional[TrainingInclusionPolicy] = None,
+) -> Tuple[List[TrajectoryRecord], List[Dict[str, str]]]:
+    """Filter candidate trajectories according to strict M2 inclusion and exclusion rules.
+
+    Returns:
+        (included_trajectories, quarantined_records)
+    Raises:
+        LockedTestExportError: If any trajectory originates from the locked test set.
+    """
+    pol = policy or TrainingInclusionPolicy()
+    included: List[TrajectoryRecord] = []
+    quarantined: List[Dict[str, str]] = []
+
+    for traj in trajectories:
+        # 1. Hard fail-closed locked-test guard
+        if traj.task_id.startswith("task_test_") or traj.metadata.get("split") == "test":
+            raise LockedTestExportError(
+                f"Attempted to include locked test-set trajectory '{traj.task_id}' in training data. "
+                "Locked test data is permanently sequestered from training and tuning (Gate G2)."
+            )
+
+        # 2. Check split
+        split = "train" if "task_train_" in traj.task_id else ("val" if "task_val_" in traj.task_id else traj.metadata.get("split", "unknown"))
+        if split not in pol.allowed_splits:
+            quarantined.append({
+                "task_id": traj.task_id,
+                "reason": f"Disallowed split: '{split}'. Only {pol.allowed_splits} permitted.",
+            })
+            continue
+
+        # 3. Verified success requirement
+        if pol.require_verified_success and not traj.is_success:
+            quarantined.append({
+                "task_id": traj.task_id,
+                "reason": "Trajectory failed environment outcome verification (is_success=False).",
+            })
+            continue
+
+        # 4. Zero tool errors requirement
+        if pol.require_zero_tool_errors:
+            has_error = any(step.error is not None for step in traj.steps)
+            if has_error:
+                quarantined.append({
+                    "task_id": traj.task_id,
+                    "reason": "Trajectory contains tool execution or schema error steps.",
+                })
+                continue
+
+        # 5. Step budget limit
+        if traj.total_steps > pol.max_steps_allowed:
+            quarantined.append({
+                "task_id": traj.task_id,
+                "reason": f"Step count ({traj.total_steps}) exceeds max allowable ({pol.max_steps_allowed}).",
+            })
+            continue
+
+        included.append(traj)
+
+    return included, quarantined
+
+
+def export_training_trajectories(
+    trajectories: List[TrajectoryRecord],
+    filter_with_policy: bool = False,
+    policy: Optional[TrainingInclusionPolicy] = None,
+) -> List[List[Dict[str, str]]]:
+    """Export trajectories to ShareGPT training format with fail-closed locked-test protection.
+
+    Raises LockedTestExportError if any trajectory originates from the locked test set.
+    """
+    to_export = trajectories
+    if filter_with_policy:
+        to_export, _ = filter_training_trajectories(trajectories, policy=policy)
+
+    exported: List[List[Dict[str, str]]] = []
+    for traj in to_export:
+        exported.append(traj.to_sharegpt_format())
+    return exported
+

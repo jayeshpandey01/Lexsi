@@ -1,0 +1,311 @@
+{
+  "run_id": "eval_pipeline_run_001",
+  "model_id": "CohereLabs/tiny-aya-global",
+  "evaluator_version": "local-adapter-1.0.0",
+  "split": "val",
+  "timestamp": 1793981716.1526048,
+  "sha256_fingerprint": "f2a0659ab86cb4033b0a5a0c42ef6c8dfb69917df18a6dfc68f13519d70f51c1",
+  "headline": {
+    "M1_task_success_rate": 0.0909,
+    "M2_tool_call_accuracy": 0.9091,
+    "M3_schema_validity": 0.7727,
+    "M4_call_order_validity": 0.2857,
+    "M5_trajectory_step_efficiency": 3.0,
+    "M6_redundant_call_rate": 0.2273,
+    "M7_loop_and_stall_frequency": 0.1818
+  },
+  "metrics": {
+    "M1_task_success_rate": {
+      "metric_name": "M1_task_success_rate",
+      "value": 0.0909,
+      "direction": "maximize",
+      "unit": "fraction",
+      "std": null,
+      "ci_lower": 0.0,
+      "ci_upper": 0.2727,
+      "sample_count": 11,
+      "unmeasured_count": 0,
+      "details": {}
+    },
+    "M2_tool_call_accuracy": {
+      "metric_name": "M2_tool_call_accuracy",
+      "value": 0.9091,
+      "direction": "maximize",
+      "unit": "fraction",
+      "std": null,
+      "ci_lower": null,
+      "ci_upper": null,
+      "sample_count": 11,
+      "unmeasured_count": 0,
+      "details": {
+        "call_precision": 0.9091,
+        "task_tool_coverage": 0.6364
+      }
+    },
+    "M3_schema_validity": {
+      "metric_name": "M3_schema_validity",
+      "value": 0.7727,
+      "direction": "maximize",
+      "unit": "fraction",
+      "std": null,
+      "ci_lower": null,
+      "ci_upper": null,
+      "sample_count": 11,
+      "unmeasured_count": 0,
+      "details": {}
+    },
+    "M4_call_order_validity": {
+      "metric_name": "M4_call_order_validity",
+      "value": 0.2857,
+      "direction": "maximize",
+      "unit": "fraction",
+      "std": null,
+      "ci_lower": null,
+      "ci_upper": null,
+      "sample_count": 11,
+      "unmeasured_count": 0,
+      "details": {}
+    },
+    "M5_trajectory_step_efficiency": {
+      "metric_name": "M5_trajectory_step_efficiency",
+      "value": 3.0,
+      "direction": "minimize",
+      "unit": "steps",
+      "std": null,
+      "ci_lower": null,
+      "ci_upper": null,
+      "sample_count": 1,
+      "unmeasured_count": 0,
+      "details": {}
+    },
+    "M6_redundant_call_rate": {
+      "metric_name": "M6_redundant_call_rate",
+      "value": 0.2273,
+      "direction": "minimize",
+      "unit": "fraction",
+      "std": null,
+      "ci_lower": null,
+      "ci_upper": null,
+      "sample_count": 11,
+      "unmeasured_count": 0,
+      "details": {}
+    },
+    "M7_loop_and_stall_frequency": {
+      "metric_name": "M7_loop_and_stall_frequency",
+      "value": 0.1818,
+      "direction": "minimize",
+      "unit": "fraction",
+      "std": null,
+      "ci_lower": null,
+      "ci_upper": null,
+      "sample_count": 11,
+      "unmeasured_count": 0,
+      "details": {}
+    }
+  },
+  "per_task_results": [
+    {
+      "task_id": "task_train_T1_inventory_value_000",
+      "template_id": "T1_inventory_value",
+      "is_success": false,
+      "total_steps": 2,
+      "executed_tools": [
+        "lookup_records"
+      ],
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "has_schema_error": true,
+      "has_order_error": false,
+      "is_stall": false,
+      "redundant_calls": 0,
+      "error_type": null,
+      "diagnosed_failure": "ToolRecoveryFailure"
+    },
+    {
+      "task_id": "task_val_T1_inventory_value_000",
+      "template_id": "T1_inventory_value",
+      "is_success": false,
+      "total_steps": 0,
+      "executed_tools": [],
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "has_schema_error": false,
+      "has_order_error": false,
+      "is_stall": false,
+      "redundant_calls": 0,
+      "error_type": "UNMEASURED_OR_DROPPED_TASK",
+      "diagnosed_failure": "EarlyTerminationFailure"
+    },
+    {
+      "task_id": "task_val_T2_vendor_approved_spend_001",
+      "template_id": "T2_vendor_approved_spend",
+      "is_success": false,
+      "total_steps": 0,
+      "executed_tools": [],
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "has_schema_error": false,
+      "has_order_error": false,
+      "is_stall": false,
+      "redundant_calls": 0,
+      "error_type": "UNMEASURED_OR_DROPPED_TASK",
+      "diagnosed_failure": "EarlyTerminationFailure"
+    },
+    {
+      "task_id": "task_val_T1_inventory_value_002",
+      "template_id": "T1_inventory_value",
+      "is_success": false,
+      "total_steps": 0,
+      "executed_tools": [],
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "has_schema_error": false,
+      "has_order_error": false,
+      "is_stall": false,
+      "redundant_calls": 0,
+      "error_type": "UNMEASURED_OR_DROPPED_TASK",
+      "diagnosed_failure": "EarlyTerminationFailure"
+    },
+    {
+      "task_id": "task_val_T2_vendor_approved_spend_003",
+      "template_id": "T2_vendor_approved_spend",
+      "is_success": false,
+      "total_steps": 0,
+      "executed_tools": [],
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "has_schema_error": false,
+      "has_order_error": false,
+      "is_stall": false,
+      "redundant_calls": 0,
+      "error_type": "UNMEASURED_OR_DROPPED_TASK",
+      "diagnosed_failure": "EarlyTerminationFailure"
+    },
+    {
+      "task_id": "task_val_T1_inventory_value_004",
+      "template_id": "T1_inventory_value",
+      "is_success": false,
+      "total_steps": 0,
+      "executed_tools": [],
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "has_schema_error": false,
+      "has_order_error": false,
+      "is_stall": false,
+      "redundant_calls": 0,
+      "error_type": "UNMEASURED_OR_DROPPED_TASK",
+      "diagnosed_failure": "EarlyTerminationFailure"
+    },
+    {
+      "task_id": "task_val_T2_vendor_approved_spend_005",
+      "template_id": "T2_vendor_approved_spend",
+      "is_success": false,
+      "total_steps": 0,
+      "executed_tools": [],
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "has_schema_error": false,
+      "has_order_error": false,
+      "is_stall": false,
+      "redundant_calls": 0,
+      "error_type": "UNMEASURED_OR_DROPPED_TASK",
+      "diagnosed_failure": "EarlyTerminationFailure"
+    },
+    {
+      "task_id": "task_val_T1_inventory_value_006",
+      "template_id": "T1_inventory_value",
+      "is_success": false,
+      "total_steps": 0,
+      "executed_tools": [],
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "has_schema_error": false,
+      "has_order_error": false,
+      "is_stall": false,
+      "redundant_calls": 0,
+      "error_type": "UNMEASURED_OR_DROPPED_TASK",
+      "diagnosed_failure": "EarlyTerminationFailure"
+    },
+    {
+      "task_id": "task_val_T2_vendor_approved_spend_007",
+      "template_id": "T2_vendor_approved_spend",
+      "is_success": false,
+      "total_steps": 0,
+      "executed_tools": [],
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "has_schema_error": false,
+      "has_order_error": false,
+      "is_stall": false,
+      "redundant_calls": 0,
+      "error_type": "UNMEASURED_OR_DROPPED_TASK",
+      "diagnosed_failure": "EarlyTerminationFailure"
+    },
+    {
+      "task_id": "task_val_T1_inventory_value_008",
+      "template_id": "T1_inventory_value",
+      "is_success": false,
+      "total_steps": 0,
+      "executed_tools": [],
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "has_schema_error": false,
+      "has_order_error": false,
+      "is_stall": false,
+      "redundant_calls": 0,
+      "error_type": "UNMEASURED_OR_DROPPED_TASK",
+      "diagnosed_failure": "EarlyTerminationFailure"
+    },
+    {
+      "task_id": "task_val_T2_vendor_approved_spend_009",
+      "template_id": "T2_vendor_approved_spend",
+      "is_success": false,
+      "total_steps": 0,
+      "executed_tools": [],
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "has_schema_error": false,
+      "has_order_error": false,
+      "is_stall": false,
+      "redundant_calls": 0,
+      "error_type": "UNMEASURED_OR_DROPPED_TASK",
+      "diagnosed_failure": "EarlyTerminationFailure"
+    }
+  ],
+  "failure_breakdown": {
+    "ToolSelectionFailure": 2,
+    "ArgumentSchemaFailure": 2,
+    "DependencyOrderFailure": 1,
+    "LoopingAndStallFailure": 2,
+    "EarlyTerminationFailure": 1,
+    "ToolRecoveryFailure": 2
+  },
+  "provenance_metadata": {
+    "task_count": 11,
+    "trajectory_count": 11,
+    "seed": 42,
+    "split": "val"
+  }
+}

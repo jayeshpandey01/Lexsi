@@ -38,7 +38,7 @@ Milestone 0 has established the complete foundational architecture, sandboxed to
    - Train and locked test sets share zero common vendor IDs, zero common categories, and zero common task templates.
 3. **AuditKIT Defensive Reliability:**
    - Implemented PR #18 / PR #6 defense against non-finite scores (resetting to 0.0 with typed logging).
-   - Implemented PR #9 paired-bootstrap confidence intervals for statistical significance.
+   - Implemented PR #9 uncertainty estimation (bootstrap confidence intervals for single-sample metrics and paired-bootstrap hypothesis testing engine for candidate comparisons).
 4. **End-to-End Orchestration & Trace Integrity:**
    - Demonstrated in `tests/test_e2e_smoke.py`: Task $\rightarrow$ Policy $\rightarrow$ Parser $\rightarrow$ Guard $\rightarrow$ Sandbox $\rightarrow$ Redacted Trace $\rightarrow$ AuditKIT Metric calculation.
    - Verified 100% test pass rate across 27 tests in 0.08s.
@@ -59,3 +59,28 @@ Milestone 0 has established the complete foundational architecture, sandboxed to
 - [x] End-to-end smoke test completed with serialized, replayable trace.
 
 **Gate G0 is hereby CLEARED. The repository is ready to transition to Milestone 1 (Evaluation & Baseline Foundation).**
+
+---
+
+## 4. Milestone 1 Baseline Run & Empirical Diagnosis (M1.P5 Addendum)
+
+The frozen base-model baseline ($E0$) has been evaluated on the held-out validation split (`val`) across 147,111 authentic production records from the Kaggle Olist dataset hosted on Turso Cloud (`https://lexsi-jayesh20.aws-ap-south-1.turso.io`):
+
+- **Model ID:** `cohere/command-r7b-12-2024` (frozen untuned base model at `temperature=0.0`)
+- **Evaluation Split:** `val` (10 tasks from `configs/manifests/task_manifest_val.json`)
+- **Run Directory:** `results/runs/baseline_run_001/`
+- **Content Fingerprint:** `5ae04a3a48f9f3c7a086d72dde464b7a6323326708fee4f68c952d187357819d`
+- **Headline AuditKIT Metrics:**
+  - `M1_task_success_rate`: **0.1000** (1/10) | 95% Bootstrap CI: `[0.0000, 0.3000]`
+  - `M2_tool_call_accuracy`: **0.0000** (0/10)
+  - `M3_schema_validity`: **1.0000** (1.0)
+  - `M4_call_order_validity`: **1.0000** (1.0)
+  - `M5_trajectory_step_efficiency`: **1.0000** (conditional on success)
+  - `M6_redundant_call_rate`: **0.0000** (0/10)
+  - `M7_loop_and_stall_frequency`: **0.0000** (0/10)
+- **Empirical Failure Diagnosis:**
+  - 9 out of 10 episodes resulted in `EarlyTerminationFailure` (100.0% of failures).
+  - *Root Cause Analysis:* The untuned Cohere base model emitted conversational explanations rather than formatting its intent into structured `<|START_ACTION|>{"name": ..., "arguments": ...}<|END_ACTION|>` tool calls, leading to 0 tool executions and premature termination.
+  - *Conclusion for M2:* Rigorously validates the necessity of **AgentTune Supervised Fine-Tuning (SFT)** in Milestone 2 to teach action-token formatting and tool schema compliance.
+
+

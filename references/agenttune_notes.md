@@ -81,3 +81,4 @@ AgentTune is a unified post-training framework designed for tool-using LLM agent
 ## 4. Verification & Compatibility Bridge
 
 To maintain 100% decoupling, `src/utils/compatibility.py` implements serialization routines to translate between Lexsi internal `TrajectoryRecord` objects and AgentTune EventLog specifications.
+

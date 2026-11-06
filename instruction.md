@@ -159,18 +159,23 @@ If any discrepancy, bug, sub-optimal pattern, or risk is found:
 
 ---
 
-## 4. Interactive Notebook Verification Protocol (`notebooks/`)
+## 4. Interactive Pipeline & Execution Notebook Protocol (`notebooks/verification.ipynb`)
 
-Every phase of development must maintain active verification through executable notebooks in `notebooks/`:
+Development maintains an end-to-end operational pipeline harness through `notebooks/verification.ipynb`:
 
-1. **Mandatory Verification Mirror:** In parallel with modular code in `src/` and unit tests in `tests/`, all development must be verifiable through executable Jupyter notebooks in `notebooks/`.
-2. **Zero Prose & Zero Commentary Invariant:** 
-   - Notebooks must contain **executable code cells only**.
-   - **No markdown cells** and **no inline comments** are permitted inside notebook files.
-   - All instructions, architecture rationale, mathematical formulations, and engineering protocols must be documented exclusively in `instruction.md` and `system_design.md`.
-3. **End-to-End Verification Scope:**
-   - Notebooks must execute the active pipeline from end to end: loading database fixtures, executing sandboxed tools, generating isolated task splits, orchestrating agent episodes, verifying redaction filters, and computing AuditKIT M1–M7 evaluation metrics.
-   - Any failure or discrepancy in the notebook constitutes an immediate Phase Gate blocker.
+1. **Unified Interactive Pipeline Harness:** Rather than an internal assertion checklist of completed milestone deliverables, the notebook is structured as an interactive, sequential workflow where executing each cell runs an active stage of the pipeline (data processing, sandboxed tool calling, agent episode orchestration, outcome verification, diagnostic failure taxonomy, AuditKIT evaluation, and training data export) and outputs clear, informative results.
+2. **Clear Stage Organization:** The notebook is structured into clear, logical stages:
+   - Stage 1: Runtime Setup & Database Initialization
+   - Stage 2: Sandboxed Tool Calling & Pre-Call Validation
+   - Stage 3: Task Generation, Split Partitioning & Isolation Audit
+   - Stage 4: Secret Redaction & Formatting
+   - Stage 5: Episode Orchestration & Agent Policy Loop
+   - Stage 6: Environment-Owned Outcome Verification
+   - Stage 7: Failure Taxonomy & Diagnostic Classifier
+   - Stage 8: AuditKIT Evaluation & Metrics Suite (M1–M7)
+   - Stage 9: Observability & Telemetry Tracing
+   - Stage 10: Post-Training Pipeline & SFT/RL Data Preparation
+3. **Reproducible Execution & Rich Outputs:** Every cell must run cleanly and output meaningful summaries, formatted tables, or inspectable trajectory records so that running the notebook provides an end-to-end demonstration of the reliable tool-using agent system.
 
 ---
 

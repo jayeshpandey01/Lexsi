@@ -63,8 +63,19 @@ wandb/
 checkpoints/
 models/
 
+# Large binaries, databases, and archives
+*.db
+*.sqlite
+*.sqlite3
+*.zip
+*.tar.gz
+*.tgz
+notebook66b4dc62e8.ipynb
+
 # Sensitive files
 .env
 .env.*
+!.env.example
 *.pem
 *.key
+

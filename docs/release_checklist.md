@@ -2,7 +2,7 @@
 ## Lexsi Track 3: Production Safety Blueprint (Task TASK-M0-08 / M0-09)
 
 > **Document Status:** Authoritative Security & Governance Checklist  
-> **Traceability:** Maps to `docs/M0.md` M0-09, Section 6 Trust Boundaries; `docs/plan.md` Section 6.2.
+> **Traceability:** Maps to `docs/M0.md` M0-09, Section 6 Trust Boundaries; `docs/plan.md` Section 6.2; verified by `docs/M4_P2_robustness_report.md` (`results/runs/m4_p2_robustness_review/`, 33/33 probes passed, 0 bypasses).
 
 ---
 
@@ -47,6 +47,10 @@ Before any candidate model or adapter is promoted or submitted:
 - [ ] Zero increase in policy or safety violations.
 
 ### Gate G4: Locked-Test Evaluation & Production Packaging (Milestone 4 & 5)
-- [ ] Single locked-test evaluation run completed and archived with SHA-256 fingerprint.
+> **Gate G4 Status:** **PENDING / CANDIDATE PROMOTION BLOCKED**  
+> In accordance with `M4.P4` ([`docs/M4_P4_candidate_decision.md`](docs/M4_P4_candidate_decision.md)), the single-use locked test is **DEFERRED** due to candidate capability floor failure ($M_1=0.0\% < 40\%$). The locked-test split remains sealed and uninspected (`d86265f0...`). Production promotion is blocked. Artifact packaging proceeds for research and reproducibility assets under M4.P5 / Milestone 5.
+
+- [ ] Single locked-test evaluation run completed and archived with SHA-256 fingerprint (DEFERRED: Candidate ineligible).
 - [ ] Human release review completed and signed off.
 - [ ] Rollback path tested: reverting inference configuration to baseline adapter immediately restores prior behavior.
+

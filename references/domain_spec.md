@@ -120,3 +120,4 @@ A trajectory $\tau$ achieves $R_{\text{outcome}}(\tau) = 1$ if and only if:
 3. **Absence of Tool Violations:** Zero unauthorized tools called, zero unhandled tool crashes.
 
 This predicate is entirely computed by the deterministic environment, eliminating uncalibrated LLM judge variance.
+

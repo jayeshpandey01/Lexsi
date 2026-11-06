@@ -79,3 +79,25 @@ def test_parser_empty_text() -> None:
     """Verify empty or whitespace strings return explicit error."""
     thought, action, answer, error = parse_agent_output("   \n\t  ")
     assert error == "EMPTY_MODEL_OUTPUT"
+
+
+def test_parser_openai_tool_calls_format() -> None:
+    """Verify OpenAI tool_calls wrapper payload parsing."""
+    text = '{"tool_calls": [{"function": {"name": "lookup_records", "arguments": {"table": "vendors"}}}]}'
+    thought, action, answer, error = parse_agent_output(text)
+    assert error is None
+    assert action is not None
+    assert action.tool_name == "lookup_records"
+    assert action.arguments == {"table": "vendors"}
+
+
+def test_parser_markdown_json_format() -> None:
+    """Verify Markdown code fenced JSON action parsing."""
+    text = '```json\n{"name": "compute_aggregate", "arguments": {"values": [10.0, 20.0], "operation": "sum"}}\n```'
+    thought, action, answer, error = parse_agent_output(text)
+    assert error is None
+    assert action is not None
+    assert action.tool_name == "compute_aggregate"
+    assert action.arguments["operation"] == "sum"
+
+

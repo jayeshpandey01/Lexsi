@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Literal, Optional
 from pydantic import BaseModel, Field
 
 
@@ -24,6 +24,12 @@ class ToolContract(BaseModel):
     parameters: List[ToolParameterSchema]
     is_stateful: bool = Field(False, description="Whether tool mutates environment state")
     idempotent: bool = Field(True, description="Whether repeated calls produce identical results")
+    permission_level: Literal["read_only", "write", "admin"] = Field(
+        "read_only", description="Access permission tier"
+    )
+    result_schema: Optional[Dict[str, Any]] = Field(
+        None, description="Schema definition of normalized return value"
+    )
 
 
 class ToolExecutionError(Exception):
@@ -52,8 +58,33 @@ class SchemaValidationError(ToolExecutionError):
         super().__init__(f"Argument schema validation failed: {details}", "SCHEMA_VALIDATION_ERROR")
 
 
+class SemanticBoundError(ToolExecutionError):
+    """Raised when argument values violate semantic or domain boundary constraints."""
+
+    def __init__(self, details: str) -> None:
+        super().__init__(f"Semantic constraint violation: {details}", "SEMANTIC_BOUND_ERROR")
+
+
 class DisallowedToolError(ToolExecutionError):
     """Raised when policy guard rejects a tool action due to permission breach."""
 
     def __init__(self, tool_name: str) -> None:
         super().__init__(f"Tool '{tool_name}' is prohibited by current policy guard.", "DISALLOWED_TOOL")
+
+
+class CallTimeoutError(ToolExecutionError):
+    """Raised when an individual tool invocation exceeds its per-call execution deadline."""
+
+    def __init__(self, tool_name: str, timeout_seconds: float) -> None:
+        super().__init__(
+            f"Tool '{tool_name}' exceeded per-call timeout limit of {timeout_seconds:.2f}s.",
+            "CALL_TIMEOUT",
+        )
+
+
+class ResetReplayError(ToolExecutionError):
+    """Raised when environment state reset or deterministic replay fails."""
+
+    def __init__(self, details: str) -> None:
+        super().__init__(f"Environment reset/replay failure: {details}", "RESET_REPLAY_ERROR")
+

@@ -1,0 +1,17 @@
+{
+  "run_id": "rl_ablation_smoke_001_c1",
+  "timestamp_iso": "2026-11-06T16:13:53Z",
+  "status": "COMPLETED_SMOKE_CHECK",
+  "purpose": "Offline RL Architecture Smoke Check (Plumbing Verification)",
+  "classification": "Plumbing smoke test only; NOT an RL feasibility claim on full-scale Tiny Aya (3.35B)",
+  "model_backend": "TinyAyaCausalLMDouble (Architectural Test Double)",
+  "reward_version": "m3-reward-v1.0",
+  "ablation_condition": "outcome_only",
+  "efficiency_coeff": 0.0,
+  "seed": 42,
+  "num_steps": 2,
+  "checkpoint_saved": true,
+  "checkpoint_reload_verified": true,
+  "hardware": "Apple Silicon M5 (Local MPS)",
+  "entry_gate_status": "BLOCKED AT ENTRY (Gate G2 REVISE / CONDITIONAL CLEARANCE)"
+}

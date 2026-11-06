@@ -57,3 +57,4 @@ def test_delimiter_sanitization() -> None:
     assert "<|END_ACTION|>" not in cleaned
     assert "<|SYSTEM_TOKEN|>" not in cleaned
     assert "[ESCAPED_TOKEN]" in cleaned
+

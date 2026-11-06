@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import re
-from typing import Any, Dict, List, Union
+from typing import Any, Dict, List, Set, Tuple, Union
 
 # Compiled regex patterns for redaction
 REDACTION_PATTERNS = [
@@ -23,6 +23,11 @@ REDACTION_PATTERNS = [
     ),
 ]
 
+# Keys in dictionaries that indicate secret or credential payloads
+SENSITIVE_KEY_PATTERN = re.compile(
+    r"(?i)(api[_-]?key|secret|password|access[_-]?token|auth|credential|private[_-]?key)"
+)
+
 
 def redact_text(text: str) -> str:
     """Apply compiled regex patterns to redact sensitive credentials and PII."""
@@ -35,11 +40,37 @@ def redact_text(text: str) -> str:
 
 
 def redact_data(data: Any) -> Any:
-    """Recursively scrub sensitive strings from nested dictionaries and lists."""
+    """Recursively scrub sensitive strings from nested dictionaries, lists, sets, and tuples.
+
+    Guarantees:
+    - Values mapped to secret-bearing keys (e.g. 'api_key', 'password') are redacted even if
+      the value string lacks inline key assignments.
+    - All string values undergo regex pattern redaction (tokens, private keys, emails).
+    - Benign domain payloads (vendor records, numerical metrics, inventory names) remain intact.
+    """
     if isinstance(data, str):
         return redact_text(data)
+
     if isinstance(data, dict):
-        return {k: redact_data(v) for k, v in data.items()}
+        sanitized_dict: Dict[str, Any] = {}
+        for k, v in data.items():
+            if isinstance(k, str) and SENSITIVE_KEY_PATTERN.search(k):
+                if isinstance(v, str) and v.strip():
+                    sanitized_dict[k] = "[REDACTED_CREDENTIAL]"
+                else:
+                    sanitized_dict[k] = redact_data(v)
+            else:
+                sanitized_dict[k] = redact_data(v)
+        return sanitized_dict
+
     if isinstance(data, list):
         return [redact_data(item) for item in data]
+
+    if isinstance(data, tuple):
+        return tuple(redact_data(item) for item in data)
+
+    if isinstance(data, set):
+        return {redact_data(item) for item in data}
+
     return data
+

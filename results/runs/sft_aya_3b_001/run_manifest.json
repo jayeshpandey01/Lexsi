@@ -1,0 +1,10 @@
+{
+  "run_id": "sft_aya_3b_001",
+  "model_id": "CohereLabs/tiny-aya-global",
+  "hardware": "Kaggle Tesla T4 GPU",
+  "status": "COMPLETED_REAL_SCALE",
+  "m1_verified_success": 0.0,
+  "m2_tool_selection": 0.0,
+  "num_train_tasks": 20,
+  "num_val_tasks": 10
+}

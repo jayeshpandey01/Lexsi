@@ -1,0 +1,8 @@
+metric_name,value,direction,unit,ci_lower,ci_upper,sample_count,unmeasured_count
+M1_task_success_rate,0.1000,maximize,fraction,0.0000,0.3000,10,0
+M2_tool_call_accuracy,0.0000,maximize,fraction,N/A,N/A,10,0
+M3_schema_validity,1.0000,maximize,fraction,N/A,N/A,10,0
+M4_call_order_validity,1.0000,maximize,fraction,N/A,N/A,10,0
+M5_trajectory_step_efficiency,1.0000,minimize,steps,N/A,N/A,1,0
+M6_redundant_call_rate,0.0000,minimize,fraction,N/A,N/A,10,0
+M7_loop_and_stall_frequency,0.0000,minimize,fraction,N/A,N/A,10,0

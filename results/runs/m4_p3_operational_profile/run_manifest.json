@@ -1,0 +1,199 @@
+{
+  "run_id": "m4_p3_operational_profile",
+  "owner": "Lexsi Track 3 Engineering & Safety Team",
+  "purpose": "Milestone 4 Operational Performance Profile (M4.P3)",
+  "status": "COMPLETED_PROFILED",
+  "execution_timestamp": 1793981680.3140988,
+  "hardware_environment": {
+    "workstation_platform": "Darwin (arm64, Darwin 27.2.0)",
+    "processor": "Apple Silicon M5 (16GB unified RAM)",
+    "python_version": "3.11.9",
+    "remote_training_platform": "Kaggle 2x NVIDIA Tesla T4 GPU (14.56 GB VRAM each, 32GB total)"
+  },
+  "dependency_hashes": {
+    "val_manifest": "51a4275e777dbe250c468af1a10e12cd221e47bd563a3b79d1b4619b25278ea8",
+    "sft_adapter": "a73583f3aade1026ec9d5d53813d2ff9ffa66d0a84a17ae07ef06e39000b2a8d",
+    "locked_test_guard": "d86265f067bafa112427390659d55ab48fe6831d68b88efb6952b8fd377c3f3e"
+  },
+  "locked_test_isolation": "CONFIRMED_UNTOUCHED (configs/manifests/task_manifest_test.json SHA-256 d86265f0... was not accessed or inspected)",
+  "training_profile": {
+    "run_id": "sft_aya_3b_001",
+    "model_id": "CohereLabs/tiny-aya-global",
+    "parameters": "3.35B (3,356,895,232)",
+    "trainable_parameters": "7,667,712 (0.2284%)",
+    "hardware": "Kaggle Free 2x NVIDIA Tesla T4 GPU Instance (14.56 GB VRAM each, 32GB total)",
+    "software_environment": "Python 3.13.16, PyTorch 2.11.0+cu130, bitsandbytes (4-bit NF4 double quant), LoRA r=16, alpha=32",
+    "training_workload": "20 synthetic procurement trajectories, 10 epochs, 200 optimization steps, batch size 1",
+    "wall_clock_time_seconds": 1691.9,
+    "wall_clock_time_minutes": 28.2,
+    "step_rate_steps_per_sec": 0.1182,
+    "mean_seconds_per_step": 8.46,
+    "loss_initial_step_10": 1.1233,
+    "loss_final_step_200": 0.3653,
+    "loss_mean": 0.4642,
+    "checkpoint_adapter_size_bytes": 30709408,
+    "checkpoint_adapter_sha256": "a73583f3aade1026ec9d5d53813d2ff9ffa66d0a84a17ae07ef06e39000b2a8d",
+    "compute_cost_estimate": "0.47 GPU hours per T4 (0.94 GPU-hr total), $0.00 direct cost (Kaggle Free Tier quota)"
+  },
+  "serving_profile": {
+    "status": "BLOCKED_LOCAL_GENERATION",
+    "local_workstation_model_serving": {
+      "platform": "Darwin (Apple Silicon M5, 16GB unified RAM)",
+      "status": "UNAVAILABLE",
+      "reason": "Live local token generation for CohereLabs/tiny-aya-global is blocked because the 3.35B base model weights (~6.7 GB) and runtime libraries ('transformers', 'peft') are not present in the local Python environment. Zero synthetic/mock test double was substituted to ensure zero data fabrication."
+    },
+    "remote_validation_findings": {
+      "source_run": "results/runs/m4_val_sft_aya_3b_001/",
+      "hardware": "Kaggle Tesla T4 GPU",
+      "eval_tasks": 10,
+      "observed_m1_task_success": 0.0,
+      "observed_m2_tool_selection": 0.0,
+      "failure_taxonomy": "10/10 EarlyTerminationFailure (emitted natural language and SQL prose; zero tool calls)",
+      "serving_viability": "INELIGIBLE \u2014 Model cannot serve as an autonomous tool-calling agent in production."
+    },
+    "baseline_comparison_boundary": {
+      "baseline_run_001": "cohere/command-r7b-12-2024 (7B Cloud API via Turso libSQL)",
+      "total_duration_10_tasks": "52.27s (~5.2s per task)",
+      "comparison_verdict": "INCOMMENSURABLE / EXPLORATORY \u2014 Command R is a 7B cloud API with network latency; it is not a matched comparator for self-hosted 3.35B Tiny Aya."
+    }
+  },
+  "harness_and_tools_profile": {
+    "workload_metadata": {
+      "validation_manifest": "/Users/jayesh/Documents/Lexsi/configs/manifests/task_manifest_val.json",
+      "validation_manifest_sha256": "51a4275e777dbe250c468af1a10e12cd221e47bd563a3b79d1b4619b25278ea8",
+      "task_count": 10,
+      "repetitions": 20,
+      "warmup_runs": 5,
+      "concurrency": 1,
+      "tool_timeout_seconds": 5.0,
+      "episode_deadline_seconds": 30.0,
+      "timeouts_observed": 0,
+      "timeout_rate": 0.0
+    },
+    "timing_distributions_ms": {
+      "tool_lookup_records_in_memory": {
+        "count": 20,
+        "mean": 0.0057,
+        "median": 0.0054,
+        "p95": 0.0067,
+        "min": 0.0051,
+        "max": 0.0095,
+        "std": 0.001
+      },
+      "tool_lookup_records_sqlite_db": {
+        "count": 20,
+        "mean": 0.3453,
+        "median": 0.3106,
+        "p95": 0.3982,
+        "min": 0.2921,
+        "max": 0.7167,
+        "std": 0.0927
+      },
+      "tool_compute_aggregate": {
+        "count": 20,
+        "mean": 0.0047,
+        "median": 0.0044,
+        "p95": 0.0061,
+        "min": 0.0041,
+        "max": 0.0062,
+        "std": 0.0007
+      },
+      "tool_verify_constraint": {
+        "count": 20,
+        "mean": 0.0029,
+        "median": 0.0029,
+        "p95": 0.0035,
+        "min": 0.0027,
+        "max": 0.0035,
+        "std": 0.0002
+      },
+      "guard_sanitize_observation_clean": {
+        "count": 20,
+        "mean": 0.0049,
+        "median": 0.0044,
+        "p95": 0.007,
+        "min": 0.0042,
+        "max": 0.0093,
+        "std": 0.0013
+      },
+      "guard_sanitize_observation_injection": {
+        "count": 20,
+        "mean": 0.0007,
+        "median": 0.0006,
+        "p95": 0.0012,
+        "min": 0.0005,
+        "max": 0.0012,
+        "std": 0.0002
+      },
+      "guard_check_budget": {
+        "count": 20,
+        "mean": 0.0004,
+        "median": 0.0003,
+        "p95": 0.0005,
+        "min": 0.0003,
+        "max": 0.0008,
+        "std": 0.0001
+      },
+      "runtime_parse_action_json": {
+        "count": 20,
+        "mean": 0.005,
+        "median": 0.0045,
+        "p95": 0.0067,
+        "min": 0.004,
+        "max": 0.0095,
+        "std": 0.0013
+      },
+      "runtime_parse_prose_no_action": {
+        "count": 20,
+        "mean": 0.0027,
+        "median": 0.0025,
+        "p95": 0.0041,
+        "min": 0.0023,
+        "max": 0.0042,
+        "std": 0.0005
+      },
+      "harness_episode_t1_inventory": {
+        "count": 20,
+        "mean": 0.0109,
+        "median": 0.0105,
+        "p95": 0.0116,
+        "min": 0.0101,
+        "max": 0.0152,
+        "std": 0.0011
+      },
+      "harness_episode_t2_vendor_spend": {
+        "count": 20,
+        "mean": 0.007,
+        "median": 0.0067,
+        "p95": 0.0085,
+        "min": 0.0065,
+        "max": 0.0112,
+        "std": 0.0011
+      }
+    },
+    "throughput_profile": {
+      "mean_episode_latency_ms": 0.0089,
+      "throughput_episodes_per_sec": 111978.63,
+      "throughput_tool_calls_per_sec": 223957.26
+    },
+    "memory_profile_mb": {
+      "initial_process_rss_mb": 68.83,
+      "peak_process_rss_mb": 69.09,
+      "rss_delta_mb": 0.26
+    }
+  },
+  "storage_and_memory_footprint": {
+    "base_model_weights_fp16": "approx. 6.70 GB (remote / uninstalled locally)",
+    "lora_adapter_weights": "30,709,408 bytes (30.7 MB)",
+    "lora_adapter_config": "1,133 bytes",
+    "validation_manifest_10_tasks": "6,647 bytes",
+    "training_data_20_trajectories": "14,888 bytes",
+    "evaluation_run_directory_size": "approx. 25 KB per evaluation run"
+  },
+  "scope_and_limitations": [
+    "Local model serving token generation benchmarks are BLOCKED and reported as UNAVAILABLE (no mock substitution).",
+    "Harness and tool latencies are measured under isolated in-memory and local SQLite conditions; network latency is 0.0ms.",
+    "Command R baseline (baseline_run_001) is exploratory and incommensurable due to mismatched 7B cloud architecture.",
+    "Workload is bounded to the 10 validation tasks; throughput and cost figures must not be extrapolated to massive production scale without larger distributed empirical trials."
+  ]
+}

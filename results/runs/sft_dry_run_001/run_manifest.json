@@ -1,0 +1,15 @@
+{
+  "run_id": "sft_dry_run_001",
+  "type": "dry_run",
+  "status": "COMPLETED",
+  "model_id": "CohereLabs/tiny-aya-global",
+  "trainable_parameters": 16384,
+  "total_parameters": 1047296,
+  "trainable_percentage": 1.5644,
+  "step_count": 2,
+  "final_loss": 8.3057,
+  "seed": 42,
+  "total_duration_seconds": 0.49,
+  "hardware": "Apple Silicon M5 (MPS/PyTorch)",
+  "verification_verdict": "DRY_RUN_PASSED_FINITE_GRADIENTS"
+}

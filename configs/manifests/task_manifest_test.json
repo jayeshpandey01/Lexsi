@@ -1,0 +1,189 @@
+{
+  "split_name": "test",
+  "count": 10,
+  "is_locked": true,
+  "status": "Permanently Sequestered (Locked Holdout)",
+  "split_content_hash": "50c8cec2b6872f9f1bde1527bd1cc1d8baed1817bf732f1a176d4a122942ab56",
+  "tasks": [
+    {
+      "task_id": "task_test_T3_vendor_rating_check_000",
+      "split": "test",
+      "template_id": "T3_vendor_rating_check",
+      "target_entities": {
+        "vendor_id": "VND-108"
+      },
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "provenance_hash": "9d396208367d9d7233a63f2e04c7b76a2236219c67ee12385636fbb69485f4eb",
+      "is_locked": true,
+      "oracle_answer": 97.01,
+      "oracle_verdict": null,
+      "user_query": "Evaluate vendor 'VND-108': Retrieve all purchase orders for this vendor and calculate the average unit purchase price across all placed orders."
+    },
+    {
+      "task_id": "task_test_T4_budget_cap_verification_001",
+      "split": "test",
+      "template_id": "T4_budget_cap_verification",
+      "target_entities": {
+        "category": "Services",
+        "budget_cap": 100000.0
+      },
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "provenance_hash": "bac5842948078041335a3ff5ddaeed274d4dd762c0154a7a10fc3a3fc2d3c528",
+      "is_locked": true,
+      "oracle_answer": 28196.5,
+      "oracle_verdict": true,
+      "user_query": "Audit 'Services' department spend: Verify whether the total expenditure on Approved/Fulfilled purchase orders is within the 2026-Q1 budget cap (100000.0). Return final spend and compliance verdict."
+    },
+    {
+      "task_id": "task_test_T3_vendor_rating_check_002",
+      "split": "test",
+      "template_id": "T3_vendor_rating_check",
+      "target_entities": {
+        "vendor_id": "VND-109"
+      },
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "provenance_hash": "28c3fe5a1e3837bbdfeb522b11b4df22e8492ab6a79b65f52f49e042014abb6e",
+      "is_locked": true,
+      "oracle_answer": 93.945,
+      "oracle_verdict": null,
+      "user_query": "Evaluate vendor 'VND-109': Retrieve all purchase orders for this vendor and calculate the average unit purchase price across all placed orders."
+    },
+    {
+      "task_id": "task_test_T4_budget_cap_verification_003",
+      "split": "test",
+      "template_id": "T4_budget_cap_verification",
+      "target_entities": {
+        "category": "Logistics",
+        "budget_cap": 125000.0
+      },
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "provenance_hash": "434b836b83c6a0785a5a356573dcbd6e648cca26c71f48b4ff780e38b7d9c5d9",
+      "is_locked": true,
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "user_query": "Audit 'Logistics' department spend: Verify whether the total expenditure on Approved/Fulfilled purchase orders is within the 2026-Q1 budget cap (125000.0). Return final spend and compliance verdict."
+    },
+    {
+      "task_id": "task_test_T3_vendor_rating_check_004",
+      "split": "test",
+      "template_id": "T3_vendor_rating_check",
+      "target_entities": {
+        "vendor_id": "VND-110"
+      },
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "provenance_hash": "daaeabb9d9ddfdf6ecc987999a6cde31eb7c07402fdb61404b5459e4a0135dc5",
+      "is_locked": true,
+      "oracle_answer": 43.75,
+      "oracle_verdict": null,
+      "user_query": "Evaluate vendor 'VND-110': Retrieve all purchase orders for this vendor and calculate the average unit purchase price across all placed orders."
+    },
+    {
+      "task_id": "task_test_T4_budget_cap_verification_005",
+      "split": "test",
+      "template_id": "T4_budget_cap_verification",
+      "target_entities": {
+        "category": "Services",
+        "budget_cap": 100000.0
+      },
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "provenance_hash": "b8a3496a49e4c0cb9d311f004be3b92a9014ceb4cb767998bdec4ed39ef6fd9d",
+      "is_locked": true,
+      "oracle_answer": 28196.5,
+      "oracle_verdict": true,
+      "user_query": "Audit 'Services' department spend: Verify whether the total expenditure on Approved/Fulfilled purchase orders is within the 2026-Q1 budget cap (100000.0). Return final spend and compliance verdict."
+    },
+    {
+      "task_id": "task_test_T3_vendor_rating_check_006",
+      "split": "test",
+      "template_id": "T3_vendor_rating_check",
+      "target_entities": {
+        "vendor_id": "VND-111"
+      },
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "provenance_hash": "5b7ca4d7c5f1dccaabd7942158d78103ef3545657bb7e0db6fa7b367ceb869ab",
+      "is_locked": true,
+      "oracle_answer": 122.89,
+      "oracle_verdict": null,
+      "user_query": "Evaluate vendor 'VND-111': Retrieve all purchase orders for this vendor and calculate the average unit purchase price across all placed orders."
+    },
+    {
+      "task_id": "task_test_T4_budget_cap_verification_007",
+      "split": "test",
+      "template_id": "T4_budget_cap_verification",
+      "target_entities": {
+        "category": "Logistics",
+        "budget_cap": 125000.0
+      },
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "provenance_hash": "2b40ab4efd347f8560e187d4d63b468f0c181af605251c1beb440de715ee67d3",
+      "is_locked": true,
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "user_query": "Audit 'Logistics' department spend: Verify whether the total expenditure on Approved/Fulfilled purchase orders is within the 2026-Q1 budget cap (125000.0). Return final spend and compliance verdict."
+    },
+    {
+      "task_id": "task_test_T3_vendor_rating_check_008",
+      "split": "test",
+      "template_id": "T3_vendor_rating_check",
+      "target_entities": {
+        "vendor_id": "VND-108"
+      },
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "provenance_hash": "a38f98e6356d5bea209176663bd6fb9d062983d7fdc92c3cb1574714ab07d95f",
+      "is_locked": true,
+      "oracle_answer": 97.01,
+      "oracle_verdict": null,
+      "user_query": "Evaluate vendor 'VND-108': Retrieve all purchase orders for this vendor and calculate the average unit purchase price across all placed orders."
+    },
+    {
+      "task_id": "task_test_T4_budget_cap_verification_009",
+      "split": "test",
+      "template_id": "T4_budget_cap_verification",
+      "target_entities": {
+        "category": "Services",
+        "budget_cap": 100000.0
+      },
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "provenance_hash": "c89eb7cc03692787607b4b3da6bd82463899691b675af54c4c0b0b7d3c7ac9bb",
+      "is_locked": true,
+      "oracle_answer": 28196.5,
+      "oracle_verdict": true,
+      "user_query": "Audit 'Services' department spend: Verify whether the total expenditure on Approved/Fulfilled purchase orders is within the 2026-Q1 budget cap (100000.0). Return final spend and compliance verdict."
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+run_id: rl_ablation_smoke_001_c2
+seed: 42
+num_steps: 2
+learning_rate: 0.0001
+weight_decay: 0.01
+baseline_decay: 0.9
+max_runtime_seconds: 60.0
+ablation_condition: outcome_plus_efficiency
+efficiency_coeff: -0.05
+output_dir: results/runs/rl_ablation_smoke_001/condition2_outcome_plus_efficiency

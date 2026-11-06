@@ -69,3 +69,55 @@ def test_e2e_malformed_rejection() -> None:
     assert trajectory.is_success is False
     assert len(trajectory.steps) == 1
     assert "SCHEMA_VALIDATION_ERROR" in (trajectory.steps[0].error or "")
+
+
+def test_e2e_deterministic_replay() -> None:
+    """Verify deterministic replay produces identical trajectory records under identical seeds."""
+    task = generate_task_instance("train", 0, seed=42)
+
+    def simple_policy(dialog: str) -> str:
+        if "lookup_records" not in dialog:
+            return '<|START_ACTION|>{"name": "lookup_records", "arguments": {"table": "vendors"}}<|END_ACTION|>'
+        return f"Calculated answer is {task.oracle_answer}."
+
+    orch1 = EpisodeOrchestrator(seed=42, run_id="replay_run_1")
+    traj1 = orch1.run_episode(task, simple_policy)
+
+    orch2 = EpisodeOrchestrator(seed=42, run_id="replay_run_1")
+    traj2 = orch2.run_episode(task, simple_policy)
+
+    assert traj1.is_success == traj2.is_success
+    assert traj1.total_steps == traj2.total_steps
+    assert traj1.final_output == traj2.final_output
+    assert traj1.steps[0].observation == traj2.steps[0].observation
+    assert traj1.fingerprint == traj2.fingerprint
+
+
+def test_e2e_t4_verdict_verification() -> None:
+    """Verify T4 budget cap task checks both numerical value and boolean compliance verdict."""
+    # Test split index 1 is T4_budget_cap_verification
+    task = generate_task_instance("test", 1, seed=42)
+    assert task.template_id == "T4_budget_cap_verification"
+    assert task.oracle_verdict is not None
+
+    orch = EpisodeOrchestrator(seed=42)
+
+    # 1. Correct spend and correct verdict -> Success
+    verdict_str = "within budget" if task.oracle_verdict else "exceeds budget and is non-compliant"
+    policy_correct = lambda d: f"Audited total spend is ${task.oracle_answer:.2f}. Status: {verdict_str}."
+    traj_correct = orch.run_episode(task, policy_correct)
+    assert traj_correct.is_success is True
+
+    # 2. Correct spend but inverted/wrong verdict -> Failure
+    wrong_verdict_str = "exceeds budget and is non-compliant" if task.oracle_verdict else "within budget and compliant"
+    policy_wrong_verdict = lambda d: f"Audited total spend is ${task.oracle_answer:.2f}. Status: {wrong_verdict_str}."
+    traj_wrong_verdict = orch.run_episode(task, policy_wrong_verdict)
+    assert traj_wrong_verdict.is_success is False
+
+
+def test_e2e_distinct_seeds_produce_distinct_tasks() -> None:
+    """Verify different seeds produce distinct task instances when generator contract specifies."""
+    task_seed_42 = generate_task_instance("train", 0, seed=42)
+    task_seed_99 = generate_task_instance("train", 0, seed=99)
+    assert task_seed_42.provenance_hash != task_seed_99.provenance_hash
+

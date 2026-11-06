@@ -1,0 +1,292 @@
+{
+  "run_id": "m4_val_sft_aya_3b_001",
+  "model_id": "CohereLabs/tiny-aya-global-sft_aya_3b_001",
+  "evaluator_version": "local-adapter-1.0.0",
+  "split": "val",
+  "timestamp": 1793981667.385858,
+  "sha256_fingerprint": "52ecf53351d031a92105d940c05a6a2eada2d503a6dbed6f595b5bb821743180",
+  "headline": {
+    "M1_task_success_rate": 0.0,
+    "M2_tool_call_accuracy": 0.0,
+    "M3_schema_validity": 1.0,
+    "M4_call_order_validity": 1.0,
+    "M5_trajectory_step_efficiency": null,
+    "M6_redundant_call_rate": 0.0,
+    "M7_loop_and_stall_frequency": 0.0
+  },
+  "metrics": {
+    "M1_task_success_rate": {
+      "metric_name": "M1_task_success_rate",
+      "value": 0.0,
+      "direction": "maximize",
+      "unit": "fraction",
+      "std": null,
+      "ci_lower": 0.0,
+      "ci_upper": 0.0,
+      "sample_count": 10,
+      "unmeasured_count": 0,
+      "details": {}
+    },
+    "M2_tool_call_accuracy": {
+      "metric_name": "M2_tool_call_accuracy",
+      "value": 0.0,
+      "direction": "maximize",
+      "unit": "fraction",
+      "std": null,
+      "ci_lower": null,
+      "ci_upper": null,
+      "sample_count": 10,
+      "unmeasured_count": 0,
+      "details": {
+        "call_precision": 0.0,
+        "task_tool_coverage": 0.0
+      }
+    },
+    "M3_schema_validity": {
+      "metric_name": "M3_schema_validity",
+      "value": 1.0,
+      "direction": "maximize",
+      "unit": "fraction",
+      "std": null,
+      "ci_lower": null,
+      "ci_upper": null,
+      "sample_count": 10,
+      "unmeasured_count": 0,
+      "details": {}
+    },
+    "M4_call_order_validity": {
+      "metric_name": "M4_call_order_validity",
+      "value": 1.0,
+      "direction": "maximize",
+      "unit": "fraction",
+      "std": null,
+      "ci_lower": null,
+      "ci_upper": null,
+      "sample_count": 10,
+      "unmeasured_count": 0,
+      "details": {}
+    },
+    "M5_trajectory_step_efficiency": {
+      "metric_name": "M5_trajectory_step_efficiency",
+      "value": null,
+      "direction": "minimize",
+      "unit": "steps",
+      "std": null,
+      "ci_lower": null,
+      "ci_upper": null,
+      "sample_count": 0,
+      "unmeasured_count": 10,
+      "details": {}
+    },
+    "M6_redundant_call_rate": {
+      "metric_name": "M6_redundant_call_rate",
+      "value": 0.0,
+      "direction": "minimize",
+      "unit": "fraction",
+      "std": null,
+      "ci_lower": null,
+      "ci_upper": null,
+      "sample_count": 10,
+      "unmeasured_count": 0,
+      "details": {}
+    },
+    "M7_loop_and_stall_frequency": {
+      "metric_name": "M7_loop_and_stall_frequency",
+      "value": 0.0,
+      "direction": "minimize",
+      "unit": "fraction",
+      "std": null,
+      "ci_lower": null,
+      "ci_upper": null,
+      "sample_count": 10,
+      "unmeasured_count": 0,
+      "details": {}
+    }
+  },
+  "per_task_results": [
+    {
+      "task_id": "task_val_T1_inventory_value_000",
+      "template_id": "T1_inventory_value",
+      "is_success": false,
+      "total_steps": 0,
+      "executed_tools": [],
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "has_schema_error": false,
+      "has_order_error": false,
+      "is_stall": false,
+      "redundant_calls": 0,
+      "error_type": null,
+      "diagnosed_failure": "EarlyTerminationFailure"
+    },
+    {
+      "task_id": "task_val_T2_vendor_approved_spend_001",
+      "template_id": "T2_vendor_approved_spend",
+      "is_success": false,
+      "total_steps": 0,
+      "executed_tools": [],
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "has_schema_error": false,
+      "has_order_error": false,
+      "is_stall": false,
+      "redundant_calls": 0,
+      "error_type": null,
+      "diagnosed_failure": "EarlyTerminationFailure"
+    },
+    {
+      "task_id": "task_val_T1_inventory_value_002",
+      "template_id": "T1_inventory_value",
+      "is_success": false,
+      "total_steps": 0,
+      "executed_tools": [],
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "has_schema_error": false,
+      "has_order_error": false,
+      "is_stall": false,
+      "redundant_calls": 0,
+      "error_type": null,
+      "diagnosed_failure": "EarlyTerminationFailure"
+    },
+    {
+      "task_id": "task_val_T2_vendor_approved_spend_003",
+      "template_id": "T2_vendor_approved_spend",
+      "is_success": false,
+      "total_steps": 0,
+      "executed_tools": [],
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "has_schema_error": false,
+      "has_order_error": false,
+      "is_stall": false,
+      "redundant_calls": 0,
+      "error_type": null,
+      "diagnosed_failure": "EarlyTerminationFailure"
+    },
+    {
+      "task_id": "task_val_T1_inventory_value_004",
+      "template_id": "T1_inventory_value",
+      "is_success": false,
+      "total_steps": 0,
+      "executed_tools": [],
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "has_schema_error": false,
+      "has_order_error": false,
+      "is_stall": false,
+      "redundant_calls": 0,
+      "error_type": null,
+      "diagnosed_failure": "EarlyTerminationFailure"
+    },
+    {
+      "task_id": "task_val_T2_vendor_approved_spend_005",
+      "template_id": "T2_vendor_approved_spend",
+      "is_success": false,
+      "total_steps": 0,
+      "executed_tools": [],
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "has_schema_error": false,
+      "has_order_error": false,
+      "is_stall": false,
+      "redundant_calls": 0,
+      "error_type": null,
+      "diagnosed_failure": "EarlyTerminationFailure"
+    },
+    {
+      "task_id": "task_val_T1_inventory_value_006",
+      "template_id": "T1_inventory_value",
+      "is_success": false,
+      "total_steps": 0,
+      "executed_tools": [],
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "has_schema_error": false,
+      "has_order_error": false,
+      "is_stall": false,
+      "redundant_calls": 0,
+      "error_type": null,
+      "diagnosed_failure": "EarlyTerminationFailure"
+    },
+    {
+      "task_id": "task_val_T2_vendor_approved_spend_007",
+      "template_id": "T2_vendor_approved_spend",
+      "is_success": false,
+      "total_steps": 0,
+      "executed_tools": [],
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "has_schema_error": false,
+      "has_order_error": false,
+      "is_stall": false,
+      "redundant_calls": 0,
+      "error_type": null,
+      "diagnosed_failure": "EarlyTerminationFailure"
+    },
+    {
+      "task_id": "task_val_T1_inventory_value_008",
+      "template_id": "T1_inventory_value",
+      "is_success": false,
+      "total_steps": 0,
+      "executed_tools": [],
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "has_schema_error": false,
+      "has_order_error": false,
+      "is_stall": false,
+      "redundant_calls": 0,
+      "error_type": null,
+      "diagnosed_failure": "EarlyTerminationFailure"
+    },
+    {
+      "task_id": "task_val_T2_vendor_approved_spend_009",
+      "template_id": "T2_vendor_approved_spend",
+      "is_success": false,
+      "total_steps": 0,
+      "executed_tools": [],
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "has_schema_error": false,
+      "has_order_error": false,
+      "is_stall": false,
+      "redundant_calls": 0,
+      "error_type": null,
+      "diagnosed_failure": "EarlyTerminationFailure"
+    }
+  ],
+  "failure_breakdown": {
+    "ToolSelectionFailure": 0,
+    "ArgumentSchemaFailure": 0,
+    "DependencyOrderFailure": 0,
+    "LoopingAndStallFailure": 0,
+    "EarlyTerminationFailure": 10,
+    "ToolRecoveryFailure": 0
+  },
+  "provenance_metadata": {
+    "task_count": 10,
+    "trajectory_count": 10,
+    "seed": 42,
+    "split": "val"
+  }
+}

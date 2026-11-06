@@ -1,0 +1,62 @@
+# Declarative Configuration: SFT Dry Run and Bounded Pilot (M2.P4)
+# Traceability: Maps to Decision D3, system_design.md Subsystem C, and docs/M2.md
+
+run:
+  seed: 42
+  experiment_name: "sft_pilot_001"
+  output_dir: "results/runs/sft_pilot_001"
+  dry_run_output_dir: "results/runs/sft_dry_run_001"
+  eval_comparison_baseline: "results/runs/baseline_run_001"
+  baseline_reconciliation_status: "exploratory"
+
+model:
+  model_id: "CohereLabs/tiny-aya-global"
+  family: "Aya"
+  parameters: "3.35B"
+  revision: "main"
+  torch_dtype: "bfloat16"
+  context_length: 2048
+  chat_template: "command-r"
+  action_start_token: "<|START_ACTION|>"
+  action_end_token: "<|END_ACTION|>"
+
+dataset:
+  train_manifest: "configs/manifests/task_manifest_train.json"
+  train_sharegpt_path: "data/sft/sft_train_sharegpt.json"
+  train_eventlog_path: "data/sft/sft_train_eventlog.json"
+  expected_dataset_sha256: "51f642c0d4d39464d922aa1bd580bf6e5068f42c61ed0300d4908f371c899a23"
+  split: "train"
+  prohibited_splits: ["val", "test"]
+
+lora:
+  enabled: true
+  r: 16
+  lora_alpha: 32
+  target_modules:
+    - "q_proj"
+    - "k_proj"
+    - "v_proj"
+    - "o_proj"
+  lora_dropout: 0.05
+  bias: "none"
+  task_type: "CAUSAL_LM"
+
+training:
+  learning_rate: 2.0e-5
+  lr_scheduler_type: "cosine"
+  warmup_ratio: 0.1
+  weight_decay: 0.01
+  optimizer: "adamw_torch"
+  per_device_train_batch_size: 1
+  gradient_accumulation_steps: 4
+  max_steps: 30
+  logging_steps: 1
+  save_strategy: "steps"
+  save_steps: 30
+
+stop_conditions:
+  max_loss_threshold: 15.0
+  fail_on_nan: true
+  max_runtime_minutes: 30
+  empty_target_fail_closed: true
+

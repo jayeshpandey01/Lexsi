@@ -1,0 +1,7 @@
+threat_vector,total_probes,passed_probes,pass_rate,guard_bypasses,verdict
+"1. Indirect Prompt Injection",8,8,1.0000,0,PASSED
+"2. Malformed Output Handling",7,7,1.0000,0,PASSED
+"3. Permission Boundaries",5,5,1.0000,0,PASSED
+"4. Argument Schemas",6,6,1.0000,0,PASSED
+"5. Budgets & Stalls",4,4,1.0000,0,PASSED
+"6. Error Recovery",3,3,1.0000,0,PASSED

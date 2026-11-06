@@ -61,3 +61,4 @@ If remote compute credits allow, the exact identical pipeline scales to `CohereF
 - Seed: Global seed `42` pinned across `torch`, `random`, `numpy`.
 - Runtime configs versioned in `configs/model_config.yaml`.
 - Pinned commit SHA will be logged in `results/runs/<run_id>/manifest.json`.
+

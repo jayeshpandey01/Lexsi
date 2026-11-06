@@ -3,17 +3,25 @@
 from __future__ import annotations
 
 import math
-from typing import Any, Dict, List, Literal
-from pydantic import BaseModel, Field, ValidationError
+from typing import Any, Dict, List, Literal, Type
+from pydantic import BaseModel, ConfigDict, Field, ValidationError
 
 from src.environment.schema import (
     SchemaValidationError,
+    SemanticBoundError,
     ToolContract,
+    ToolNotFoundError,
     ToolParameterSchema,
 )
 
 
-class LookupRecordsArgs(BaseModel):
+class StrictToolArgs(BaseModel):
+    """Base class enforcing strict rejection of unexpected/extraneous parameters."""
+
+    model_config = ConfigDict(extra="forbid")
+
+
+class LookupRecordsArgs(StrictToolArgs):
     """Arguments for lookup_records tool."""
 
     table: Literal["vendors", "inventory_items", "purchase_orders", "budget_caps"] = Field(
@@ -25,7 +33,7 @@ class LookupRecordsArgs(BaseModel):
     )
 
 
-class ComputeAggregateArgs(BaseModel):
+class ComputeAggregateArgs(StrictToolArgs):
     """Arguments for compute_aggregate tool."""
 
     values: List[float] = Field(
@@ -38,7 +46,7 @@ class ComputeAggregateArgs(BaseModel):
     )
 
 
-class VerifyConstraintArgs(BaseModel):
+class VerifyConstraintArgs(StrictToolArgs):
     """Arguments for verify_constraint tool."""
 
     actual: float = Field(..., description="Computed metric or actual spend")
@@ -53,15 +61,59 @@ class VerifyConstraintArgs(BaseModel):
     )
 
 
-def execute_lookup_records(
-    db: Dict[str, List[Dict[str, Any]]],
-    arguments: Dict[str, Any],
-) -> List[Dict[str, Any]]:
-    """Execute lookup_records query against the in-memory database."""
+ARGUMENT_MODELS: Dict[str, Type[StrictToolArgs]] = {
+    "lookup_records": LookupRecordsArgs,
+    "compute_aggregate": ComputeAggregateArgs,
+    "verify_constraint": VerifyConstraintArgs,
+}
+
+
+def validate_tool_arguments(tool_name: str, arguments: Dict[str, Any]) -> StrictToolArgs:
+    """Strictly validate tool arguments against Pydantic schema and semantic boundaries.
+
+    Guarantees:
+    - Enforces extra='forbid' to reject unexpected fields.
+    - Validates data types, required fields, and enum values.
+    - Enforces domain semantic bounds (finite floats, non-negative tolerances).
+    """
+    if tool_name not in ARGUMENT_MODELS:
+        raise ToolNotFoundError(tool_name)
+
+    if not isinstance(arguments, dict):
+        raise SchemaValidationError(f"Arguments must be a dictionary, got {type(arguments).__name__}")
+
+    model_cls = ARGUMENT_MODELS[tool_name]
     try:
-        args = LookupRecordsArgs.model_validate(arguments)
+        validated = model_cls.model_validate(arguments)
     except ValidationError as e:
         raise SchemaValidationError(str(e)) from e
+
+    # Domain semantic boundaries validation
+    if isinstance(validated, ComputeAggregateArgs):
+        if not validated.values and validated.operation != "count":
+            raise SchemaValidationError(f"Cannot perform '{validated.operation}' on empty values list.")
+        if not all(math.isfinite(v) for v in validated.values):
+            raise SemanticBoundError("All values in compute_aggregate must be finite real numbers.")
+    elif isinstance(validated, VerifyConstraintArgs):
+        if not math.isfinite(validated.actual) or not math.isfinite(validated.expected):
+            raise SemanticBoundError("Comparison values 'actual' and 'expected' must be finite numbers.")
+        if validated.tolerance < 0.0 or not math.isfinite(validated.tolerance):
+            raise SemanticBoundError(f"Tolerance must be non-negative and finite, got {validated.tolerance}.")
+
+    return validated
+
+
+def execute_lookup_records(
+    db: Dict[str, List[Dict[str, Any]]],
+    arguments: Dict[str, Any] | LookupRecordsArgs,
+) -> List[Dict[str, Any]]:
+    """Execute lookup_records query against the in-memory database."""
+    if isinstance(arguments, LookupRecordsArgs):
+        args = arguments
+    else:
+        validated = validate_tool_arguments("lookup_records", arguments)
+        assert isinstance(validated, LookupRecordsArgs)
+        args = validated
 
     if args.table not in db:
         raise SchemaValidationError(f"Table '{args.table}' does not exist.")
@@ -89,12 +141,14 @@ def execute_lookup_records(
     return results
 
 
-def execute_compute_aggregate(arguments: Dict[str, Any]) -> float:
+def execute_compute_aggregate(arguments: Dict[str, Any] | ComputeAggregateArgs) -> float:
     """Execute compute_aggregate arithmetic reduction."""
-    try:
-        args = ComputeAggregateArgs.model_validate(arguments)
-    except ValidationError as e:
-        raise SchemaValidationError(str(e)) from e
+    if isinstance(arguments, ComputeAggregateArgs):
+        args = arguments
+    else:
+        validated = validate_tool_arguments("compute_aggregate", arguments)
+        assert isinstance(validated, ComputeAggregateArgs)
+        args = validated
 
     if not args.values:
         if args.operation == "count":
@@ -122,12 +176,14 @@ def execute_compute_aggregate(arguments: Dict[str, Any]) -> float:
     raise SchemaValidationError(f"Unsupported operation '{args.operation}'.")
 
 
-def execute_verify_constraint(arguments: Dict[str, Any]) -> bool:
+def execute_verify_constraint(arguments: Dict[str, Any] | VerifyConstraintArgs) -> bool:
     """Execute verify_constraint numerical comparison."""
-    try:
-        args = VerifyConstraintArgs.model_validate(arguments)
-    except ValidationError as e:
-        raise SchemaValidationError(str(e)) from e
+    if isinstance(arguments, VerifyConstraintArgs):
+        args = arguments
+    else:
+        validated = validate_tool_arguments("verify_constraint", arguments)
+        assert isinstance(validated, VerifyConstraintArgs)
+        args = validated
 
     diff = args.actual - args.expected
     if args.comparison == "eq":
@@ -165,6 +221,8 @@ TOOL_CONTRACTS: Dict[str, ToolContract] = {
         ],
         is_stateful=False,
         idempotent=True,
+        permission_level="read_only",
+        result_schema={"type": "list", "items": {"type": "object"}},
     ),
     "compute_aggregate": ToolContract(
         name="compute_aggregate",
@@ -186,6 +244,8 @@ TOOL_CONTRACTS: Dict[str, ToolContract] = {
         ],
         is_stateful=False,
         idempotent=True,
+        permission_level="read_only",
+        result_schema={"type": "float"},
     ),
     "verify_constraint": ToolContract(
         name="verify_constraint",
@@ -219,5 +279,8 @@ TOOL_CONTRACTS: Dict[str, ToolContract] = {
         ],
         is_stateful=False,
         idempotent=True,
+        permission_level="read_only",
+        result_schema={"type": "boolean"},
     ),
 }
+

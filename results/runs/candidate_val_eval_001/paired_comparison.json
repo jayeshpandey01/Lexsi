@@ -1,0 +1,15 @@
+{
+  "metric_name": "M1_task_success_rate",
+  "baseline_mean": 0.0,
+  "candidate_mean": 1.0,
+  "delta": 1.0,
+  "ci_lower": 1.0,
+  "ci_upper": 1.0,
+  "p_value": 0.0,
+  "is_significant": true,
+  "sample_count": 2,
+  "method": "paired_bootstrap_resampling (B=10000)",
+  "caveats": [
+    "Small sample size (N=2 < 30): descriptive comparison recommended; asymptotic properties unverified."
+  ]
+}
