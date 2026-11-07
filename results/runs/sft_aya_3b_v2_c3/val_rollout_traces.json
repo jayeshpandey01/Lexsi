@@ -1,0 +1,82 @@
+[
+  {
+    "task_id": "task_val_T1_inventory_value_000",
+    "user_query": "Calculate the total inventory valuation for all items in the 'Software' category by querying inventory_items and summing unit_cost * stock_level.",
+    "generated_output": "The \"lookup_records\" tool will be used to query the 'inventory_items' table for items in the 'Software' category.<|END_OF_TURN_TOKEN|>",
+    "has_tool_action": false,
+    "is_success": false,
+    "oracle_answer": 102625.07
+  },
+  {
+    "task_id": "task_val_T2_vendor_approved_spend_001",
+    "user_query": "Determine the total Approved purchase order expenditure for vendor 'VND-106'. Query purchase_orders and sum quantity * unit_price.",
+    "generated_output": "The<|END_OF_TURN_TOKEN|>",
+    "has_tool_action": false,
+    "is_success": false,
+    "oracle_answer": 0.0
+  },
+  {
+    "task_id": "task_val_T1_inventory_value_002",
+    "user_query": "Calculate the total inventory valuation for all items in the 'Software' category by querying inventory_items and summing unit_cost * stock_level.",
+    "generated_output": "The \"lookup_records\" tool will be used to query the 'inventory_items' table for items in the 'Software' category.<|END_OF_TURN_TOKEN|>",
+    "has_tool_action": false,
+    "is_success": false,
+    "oracle_answer": 102625.07
+  },
+  {
+    "task_id": "task_val_T2_vendor_approved_spend_003",
+    "user_query": "Determine the total Approved purchase order expenditure for vendor 'VND-107'. Query purchase_orders and sum quantity * unit_price.",
+    "generated_output": "The<|END_OF_TURN_TOKEN|>",
+    "has_tool_action": false,
+    "is_success": false,
+    "oracle_answer": 0.0
+  },
+  {
+    "task_id": "task_val_T1_inventory_value_004",
+    "user_query": "Calculate the total inventory valuation for all items in the 'Software' category by querying inventory_items and summing unit_cost * stock_level.",
+    "generated_output": "The \"lookup_records\" tool will be used to query the 'inventory_items' table for items in the 'Software' category.<|END_OF_TURN_TOKEN|>",
+    "has_tool_action": false,
+    "is_success": false,
+    "oracle_answer": 102625.07
+  },
+  {
+    "task_id": "task_val_T2_vendor_approved_spend_005",
+    "user_query": "Determine the total Approved purchase order expenditure for vendor 'VND-106'. Query purchase_orders and sum quantity * unit_price.",
+    "generated_output": "The<|END_OF_TURN_TOKEN|>",
+    "has_tool_action": false,
+    "is_success": false,
+    "oracle_answer": 0.0
+  },
+  {
+    "task_id": "task_val_T1_inventory_value_006",
+    "user_query": "Calculate the total inventory valuation for all items in the 'Software' category by querying inventory_items and summing unit_cost * stock_level.",
+    "generated_output": "The \"lookup_records\" tool will be used to query the 'inventory_items' table for items in the 'Software' category.<|END_OF_TURN_TOKEN|>",
+    "has_tool_action": false,
+    "is_success": false,
+    "oracle_answer": 102625.07
+  },
+  {
+    "task_id": "task_val_T2_vendor_approved_spend_007",
+    "user_query": "Determine the total Approved purchase order expenditure for vendor 'VND-107'. Query purchase_orders and sum quantity * unit_price.",
+    "generated_output": "The<|END_OF_TURN_TOKEN|>",
+    "has_tool_action": false,
+    "is_success": false,
+    "oracle_answer": 0.0
+  },
+  {
+    "task_id": "task_val_T1_inventory_value_008",
+    "user_query": "Calculate the total inventory valuation for all items in the 'Software' category by querying inventory_items and summing unit_cost * stock_level.",
+    "generated_output": "The \"lookup_records\" tool will be used to query the 'inventory_items' table for items in the 'Software' category.<|END_OF_TURN_TOKEN|>",
+    "has_tool_action": false,
+    "is_success": false,
+    "oracle_answer": 102625.07
+  },
+  {
+    "task_id": "task_val_T2_vendor_approved_spend_009",
+    "user_query": "Determine the total Approved purchase order expenditure for vendor 'VND-106'. Query purchase_orders and sum quantity * unit_price.",
+    "generated_output": "The<|END_OF_TURN_TOKEN|>",
+    "has_tool_action": false,
+    "is_success": false,
+    "oracle_answer": 0.0
+  }
+]

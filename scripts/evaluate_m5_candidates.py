@@ -173,9 +173,9 @@ def compare_candidates_and_generate_report(
     lines = [
         "# Milestone 5 Candidate Evaluation & Comparative Benchmark Report (M5.P4)",
         "",
-        "> **Evaluation Date:** 2026-11-07  ",
-        "> **Controlling Specification:** [`docs/M5.md`](M5.md) §6, [`docs/m5_implementation_plan.md`](m5_implementation_plan.md)  ",
-        "> **Split Evaluated:** `val` ([`configs/manifests/task_manifest_val.json`](../configs/manifests/task_manifest_val.json), N=10)  ",
+        "> **Evaluation Date:** 2026-11-07<br>",
+        "> **Controlling Specification:** [`docs/M5.md`](M5.md) §6, [`docs/m5_implementation_plan.md`](m5_implementation_plan.md)<br>",
+        "> **Split Evaluated:** `val` ([`configs/manifests/task_manifest_val.json`](../configs/manifests/task_manifest_val.json), N=10)<br>",
         "",
         "## 1. Executive Summary & Comparative Results Table",
         "",

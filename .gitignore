@@ -62,6 +62,7 @@ wandb/
 *.gguf
 checkpoints/
 models/
+results/runs/**/tokenizer.json
 
 # Large binaries, databases, and archives
 *.db
