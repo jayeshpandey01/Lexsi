@@ -53,8 +53,13 @@ class OracleTeacherPolicyV2:
         self.task = task
         self.mock_db = mock_db or get_mock_database(seed=42)
 
+    def _get_variant(self, modulus: int = 5) -> int:
+        """Deterministic, seed-independent variant index from task_id hash."""
+        return int(hashlib.sha256(self.task.task_id.encode("utf-8")).hexdigest(), 16) % modulus
+
     def __call__(self, dialog: str) -> str:
         t_id = self.task.template_id
+        v_idx = self._get_variant(5)
 
         # -------------------------------------------------------------
         # 1. T1_inventory_value: Category inventory valuation
@@ -80,7 +85,16 @@ class OracleTeacherPolicyV2:
                     f'"arguments": {{"values": {vals}, "operation": "sum"}}}}'
                     f"<|END_ACTION|>"
                 )
-            return f"The total inventory valuation for items in the '{category}' category is ${self.task.oracle_answer:,.2f}."
+            # Diversified response phrasings
+            ans = self.task.oracle_answer
+            variants = [
+                f"The total inventory valuation for items in the '{category}' category is ${ans:,.2f}.",
+                f"Based on inventory_items records, items in the '{category}' category have a total valuation of ${ans:,.2f}.",
+                f"Audit calculation complete: items in the '{category}' category hold a total inventory value of ${ans:,.2f}.",
+                f"According to the database query, the aggregate valuation for '{category}' inventory is ${ans:,.2f}.",
+                f"Valuation assessment shows that inventory items in the '{category}' category total ${ans:,.2f}.",
+            ]
+            return variants[v_idx]
 
         # -------------------------------------------------------------
         # 2. T1_sku_value: Single SKU inventory valuation
@@ -106,7 +120,15 @@ class OracleTeacherPolicyV2:
                     f'"arguments": {{"values": {vals}, "operation": "sum"}}}}'
                     f"<|END_ACTION|>"
                 )
-            return f"The inventory valuation for SKU '{sku}' is ${self.task.oracle_answer:,.2f}."
+            ans = self.task.oracle_answer
+            variants = [
+                f"The inventory valuation for SKU '{sku}' is ${ans:,.2f}.",
+                f"Based on inventory records, SKU '{sku}' has a total valuation of ${ans:,.2f}.",
+                f"Audit result: total stock value for item '{sku}' is ${ans:,.2f}.",
+                f"According to the queried data, item '{sku}' holds a total inventory valuation of ${ans:,.2f}.",
+                f"Calculated valuation for inventory item '{sku}' is ${ans:,.2f}.",
+            ]
+            return variants[v_idx]
 
         # -------------------------------------------------------------
         # 3. T1_inventory_metric: Summary metric on category inventory
@@ -134,7 +156,15 @@ class OracleTeacherPolicyV2:
                     f'"arguments": {{"values": {vals}, "operation": "{op}"}}}}'
                     f"<|END_ACTION|>"
                 )
-            return f"The {op} of {metric_field} for items in the '{category}' category is {self.task.oracle_answer:,.2f}."
+            ans = self.task.oracle_answer
+            variants = [
+                f"The {op} of {metric_field} for items in the '{category}' category is {ans:,.2f}.",
+                f"Based on inventory records, the {op} {metric_field} for category '{category}' is {ans:,.2f}.",
+                f"Calculated aggregate metric: {op} of {metric_field} in category '{category}' is {ans:,.2f}.",
+                f"According to the inventory database, the {op} value for {metric_field} in '{category}' is {ans:,.2f}.",
+                f"Metric reduction result: {metric_field} ({op}) for items in '{category}' is {ans:,.2f}.",
+            ]
+            return variants[v_idx]
 
         # -------------------------------------------------------------
         # 4. T1_budget_check: Inventory valuation vs. allocated budget
@@ -176,10 +206,15 @@ class OracleTeacherPolicyV2:
                 )
             else:
                 verdict_str = "within budget" if self.task.oracle_verdict else "exceeds budget"
-                return (
-                    f"The total valuation of '{category}' inventory is ${self.task.oracle_answer:,.2f}, "
-                    f"which is {verdict_str} (budget cap: ${cap:,.2f})."
-                )
+                ans = self.task.oracle_answer
+                variants = [
+                    f"The total valuation of '{category}' inventory is ${ans:,.2f}, which is {verdict_str} (budget cap: ${cap:,.2f}).",
+                    f"Inventory budget verification: '{category}' valuation is ${ans:,.2f}, which is {verdict_str} against the ${cap:,.2f} cap.",
+                    f"Based on compliance checks, '{category}' inventory totals ${ans:,.2f} and is {verdict_str} (cap: ${cap:,.2f}).",
+                    f"Audit verification complete: valuation of ${ans:,.2f} for '{category}' inventory is {verdict_str} (budget cap: ${cap:,.2f}).",
+                    f"Compliance status: '{category}' inventory valuation of ${ans:,.2f} is {verdict_str} relative to the ${cap:,.2f} cap.",
+                ]
+                return variants[v_idx]
 
         # -------------------------------------------------------------
         # 5. T2_vendor_approved_spend: Vendor Approved PO spend
@@ -205,7 +240,15 @@ class OracleTeacherPolicyV2:
                     f'"arguments": {{"values": {vals}, "operation": "sum"}}}}'
                     f"<|END_ACTION|>"
                 )
-            return f"The total approved purchase order expenditure for vendor '{vendor_id}' is ${self.task.oracle_answer:,.2f}."
+            ans = self.task.oracle_answer
+            variants = [
+                f"The total approved purchase order expenditure for vendor '{vendor_id}' is ${ans:,.2f}.",
+                f"Based on purchase_orders records, vendor '{vendor_id}' has an approved spend of ${ans:,.2f}.",
+                f"Audit report: approved purchase order expenditures for vendor '{vendor_id}' sum to ${ans:,.2f}.",
+                f"According to the queried orders, vendor '{vendor_id}' has an approved expenditure of ${ans:,.2f}.",
+                f"Vendor audit complete: total approved spend for vendor '{vendor_id}' is ${ans:,.2f}.",
+            ]
+            return variants[v_idx]
 
         # -------------------------------------------------------------
         # 6. T2_vendor_status_spend: Vendor spend filtered by order status
@@ -232,7 +275,15 @@ class OracleTeacherPolicyV2:
                     f'"arguments": {{"values": {vals}, "operation": "sum"}}}}'
                     f"<|END_ACTION|>"
                 )
-            return f"The total {status} purchase order expenditure for vendor '{vendor_id}' is ${self.task.oracle_answer:,.2f}."
+            ans = self.task.oracle_answer
+            variants = [
+                f"The total {status} purchase order expenditure for vendor '{vendor_id}' is ${ans:,.2f}.",
+                f"Based on purchase order records, vendor '{vendor_id}' has a {status} spend of ${ans:,.2f}.",
+                f"Audit report: {status} purchase order expenditures for vendor '{vendor_id}' sum to ${ans:,.2f}.",
+                f"According to the database, {status} orders for vendor '{vendor_id}' total ${ans:,.2f}.",
+                f"Vendor order audit shows that {status} spend for vendor '{vendor_id}' is ${ans:,.2f}.",
+            ]
+            return variants[v_idx]
 
         # -------------------------------------------------------------
         # 7. T2_vendor_order_metric: Summary metric across vendor orders
@@ -260,7 +311,15 @@ class OracleTeacherPolicyV2:
                     f'"arguments": {{"values": {vals}, "operation": "{op}"}}}}'
                     f"<|END_ACTION|>"
                 )
-            return f"The {op} of {field_name} for vendor '{vendor_id}' across orders is {self.task.oracle_answer:,.2f}."
+            ans = self.task.oracle_answer
+            variants = [
+                f"The {op} of {field_name} for vendor '{vendor_id}' across orders is {ans:,.2f}.",
+                f"Based on purchase_orders records, the {op} {field_name} for vendor '{vendor_id}' is {ans:,.2f}.",
+                f"Calculated order metric: {op} of {field_name} for vendor '{vendor_id}' is {ans:,.2f}.",
+                f"According to purchase order records, vendor '{vendor_id}' has a {op} {field_name} of {ans:,.2f}.",
+                f"Order metric reduction: {field_name} ({op}) for vendor '{vendor_id}' is {ans:,.2f}.",
+            ]
+            return variants[v_idx]
 
         # -------------------------------------------------------------
         # 8. T2_vendor_spend_cap_check: Vendor spend vs budget threshold
@@ -302,10 +361,15 @@ class OracleTeacherPolicyV2:
                 )
             else:
                 verdict_str = "within budget" if self.task.oracle_verdict else "exceeds budget"
-                return (
-                    f"The total Approved expenditure for vendor '{vendor_id}' is ${self.task.oracle_answer:,.2f}, "
-                    f"which is {verdict_str} (budget cap: ${cap:,.2f})."
-                )
+                ans = self.task.oracle_answer
+                variants = [
+                    f"The total Approved expenditure for vendor '{vendor_id}' is ${ans:,.2f}, which is {verdict_str} (budget cap: ${cap:,.2f}).",
+                    f"Vendor budget audit: approved spend for vendor '{vendor_id}' is ${ans:,.2f}, which is {verdict_str} (cap: ${cap:,.2f}).",
+                    f"Based on compliance checks, vendor '{vendor_id}' approved expenditure totals ${ans:,.2f} and is {verdict_str} (cap: ${cap:,.2f}).",
+                    f"Audit verification complete: approved spend of ${ans:,.2f} for vendor '{vendor_id}' is {verdict_str} (budget cap: ${cap:,.2f}).",
+                    f"Compliance status: vendor '{vendor_id}' approved spend of ${ans:,.2f} is {verdict_str} relative to the ${cap:,.2f} cap.",
+                ]
+                return variants[v_idx]
 
         raise ValueError(f"Unsupported template '{t_id}' for oracle training generation.")
 

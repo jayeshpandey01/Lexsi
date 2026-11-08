@@ -308,6 +308,8 @@ For a team of up to three, combine roles by workload and explicitly name a backu
 | D-M5-4 | CC-BY-NC-4.0 derivative license review | Approved research package custody; external publishing gated | Legal / Infra (Jayesh) | M5 Kickoff | Full analysis in `docs/license_review.md` | Decided |
 | D-M5-5 | Train-only synthetic data expansion | Approved procurement_sft_train_v2 (>=200 trajectories) | Data Lead (Jayesh) | M5.P2 | Strict train/val/test entity isolation | Decided |
 | D-M5-6 | Preregistered experiment matrix | Approved 5-condition matrix C0–C4 and capability floors | Eval / Safety (Jayesh) | M5.P2 | Full spec in `docs/M5_P1_failure_diagnosis.md` | Decided |
+| D-M5-7 | Kaggle 2×T4 Execution & Ingestion | Kaggle production execution, multi-turn ReAct rollout, artifact archive | Infra Lead (Jayesh) | M5.P3 | `m5_kaggle_artifacts.zip` SHA-256 verified | Decided |
+| D-M5-8 | M5 Formal Research Decision | Documented NO-GO for model promotion ($M_2=0.0\% < 50.0\%$); sealed test split preserved | Research Lead (Jayesh) | M5.P6 | Full record in `docs/M5_P6_research_decision.md` | Decided |
 
 ### 7.3 Weekly review template
 
@@ -361,6 +363,7 @@ Update this section at each project review.
 | Fine-tuning (SFT Feasibility) | Done (Conditional) | SFT collator, dry run, pilot, and candidate evaluation completed (`results/runs/sft_pilot_001/`, `docs/M2_report.md`) | Full 3.35B GPU SFT run required before RL | ML |
 | Safety and release review | Review Prepared (G4 Unsigned) | `src/environment/guards.py`, `docs/release_checklist.md`, `docs/M4_P4_candidate_decision.md`, `docs/M4_P6_gate_review.md` | Human reviewer signatures required to close Gate G4 (see `docs/M4_P6_gate_review.md` §9) | Safety/Product |
 | Public demo and artifacts | Done (Research Package Assembled) | `scripts/run_demo.py`, `references/model_card.md`, `references/data_card.md`, `README.md`, `docs/M4_P5_packaging_report.md` | Human Gate G4 Review (External Distribution Deferred) | Infra/Docs |
+| M5 Remediation & Evaluation | Concluded (NO-GO) | Multi-turn ReAct rollout on Kaggle 2×T4; `docs/M5_P4_candidate_evaluation.md`, `docs/M5_P6_research_decision.md`; test split sealed | Hackathon submission alignment with transparent findings | Research/Eval |
 
 ---
 

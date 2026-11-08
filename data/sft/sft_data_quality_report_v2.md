@@ -2,7 +2,7 @@
 
 - **Dataset Identifier:** `procurement_sft_train_v2`
 - **Source Split:** `train` ([`configs/manifests/task_manifest_train_v2.json`](file:///Users/jayesh/Documents/Lexsi/configs/manifests/task_manifest_train_v2.json))
-- **Dataset SHA-256 Digest:** `03eb631667b783c00427439c6356482733b346c96495d6b4ac60bf6b0166b5d6`
+- **Dataset SHA-256 Digest:** `fb89865dcfd993e679acbac00ed361b209887a5253988e5937c8e45ab986a934`
 - **Generation Method:** Deterministic Oracle Teacher V2 Execution (seed=42)
 - **Isolation Standard:** 100% Entity Disjoint from Validation and Locked Test
 
@@ -11,8 +11,8 @@
 |:---|:---:|
 | Total Tasks Processed | **220** |
 | Accepted Trajectories | **220** (100.0%) |
-| Unique Trajectories | **203** |
-| Deduplication Ratio | **92.3%** (Target >= 80.0%) |
+| Unique Trajectories | **215** |
+| Deduplication Ratio | **97.7%** (Target >= 80.0%) |
 | Rejected / Quarantined | **0** (0.0%) |
 
 ## 2. Template Distribution (7 Families)

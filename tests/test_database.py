@@ -106,8 +106,11 @@ def test_turso_fail_fast_on_unauthorized_fallback() -> None:
     )
     db = DatabaseManager(settings=broken_settings)
 
-    with pytest.raises(CloudDatabaseConnectionError):
-        db.execute_query("SELECT 1")
+    try:
+        with pytest.raises(CloudDatabaseConnectionError):
+            db.execute_query("SELECT 1")
+    finally:
+        db.close_sync()
 
 
 def test_turso_authorized_fallback() -> None:
@@ -118,10 +121,13 @@ def test_turso_authorized_fallback() -> None:
         allow_local_db_fallback=True,
     )
     db = DatabaseManager(settings=broken_settings)
-    # Should not raise CloudDatabaseConnectionError; falls back to local SQLite
-    res = db.execute_query("SELECT 1 as num")
-    assert len(res) == 1
-    assert res[0]["num"] == 1
+    try:
+        # Should not raise CloudDatabaseConnectionError; falls back to local SQLite
+        res = db.execute_query("SELECT 1 as num")
+        assert len(res) == 1
+        assert res[0]["num"] == 1
+    finally:
+        db.close_sync()
 
 
 

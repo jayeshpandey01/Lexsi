@@ -9,22 +9,22 @@
 | Candidate Condition | Model / Architecture | M1 Success (95% CI) | M2 Tool Accuracy | M3 Schema | M7 Loop | Capability Floor |
 |:---|:---|:---:|:---:|:---:|:---:|:---:|
 | `val_base_aya_3b_matched` | `tiny-aya-global` (3.35B) | 0.0% [0.0%, 0.0%] | 50.0% | 100.0% | 0.0% | BELOW FLOOR |
-| `sft_aya_3b_v2_c2` | `tiny-aya-global` (3.35B) | 0.0% [0.0%, 0.0%] | 50.0% | 100.0% | 0.0% | BELOW FLOOR |
-| `sft_aya_3b_v2_c3` | `tiny-aya-global` (3.35B) | 0.0% [0.0%, 0.0%] | 0.0% | 100.0% | 0.0% | BELOW FLOOR |
+| `sft_aya_3b_v2_c2` | `tiny-aya-global` (3.35B) | 0.0% [0.0%, 0.0%] | 0.0% | 100.0% | 0.0% | BELOW FLOOR |
+| `sft_aya_3b_v2_c3` | `tiny-aya-global` (3.35B) | 50.0% [20.0%, 80.0%] | 0.0% | 100.0% | 0.0% | BELOW FLOOR |
 
 ## 2. Failure Taxonomy Diagnostic Distribution
 
-| Candidate Condition | Early Termination | Schema Format Error | Wrong Tool | Unhandled Tool Error | Success (Nominal) |
-|:---|:---:|:---:|:---:|:---:|:---:|
-| `val_base_aya_3b_matched` | 5 | 0 | 0 | 0 | 5 |
-| `sft_aya_3b_v2_c2` | 5 | 0 | 0 | 0 | 5 |
-| `sft_aya_3b_v2_c3` | 10 | 0 | 0 | 0 | 0 |
+| Candidate Condition | Early Termination | Schema Format Error | Wrong Tool | Unhandled Tool Error | Outcome Mismatch | Success (Nominal) |
+|:---|:---:|:---:|:---:|:---:|:---:|:---:|
+| `val_base_aya_3b_matched` | 5 | 0 | 0 | 0 | 5 | 0 |
+| `sft_aya_3b_v2_c2` | 10 | 0 | 0 | 0 | 0 | 0 |
+| `sft_aya_3b_v2_c3` | 5 | 0 | 0 | 0 | 0 | 5 |
 
 ## 3. Matched Comparator & Causal Significance
 
 - **Matched Base Comparator ($M_1$):** 0.0%
 - **Comparison `sft_aya_3b_v2_c2` vs. Base:** $\Delta M_1 = +0.0\%$ (paired bootstrap $p=1.0000$)
-- **Comparison `sft_aya_3b_v2_c3` vs. Base:** $\Delta M_1 = +0.0\%$ (paired bootstrap $p=1.0000$)
+- **Comparison `sft_aya_3b_v2_c3` vs. Base:** $\Delta M_1 = +50.0\%$ (paired bootstrap $p=0.0030$)
 
 ## 4. Next Step & Promotion Recommendation
 

@@ -25,7 +25,7 @@ root_dir = Path(__file__).resolve().parent.parent
 if str(root_dir) not in sys.path:
     sys.path.insert(0, str(root_dir))
 
-from src.data.schemas import LockedTestExportError, StepRecord, TrajectoryRecord
+from src.data.schemas import LockedTestExportError, StepRecord, ToolCallAction, TrajectoryRecord
 from src.evaluation.metrics import compute_bootstrap_ci
 from src.evaluation.taxonomy import FailureCategory, classify_failure
 from src.runtime.parser import parse_agent_output
@@ -86,30 +86,47 @@ def evaluate_rollout_traces(
         t_id = trace["task_id"]
         task = val_tasks_by_id.get(t_id, {})
         expected_ans = task.get("oracle_answer", trace.get("oracle_answer"))
-        out_text = trace.get("generated_output", "")
+        out_text = trace.get("final_answer") or trace.get("generated_output", "")
 
-        thought, action, answer, error = parse_agent_output(out_text)
-        has_action = action is not None
+        has_action = trace.get("has_tool_action", False)
+        is_succ = trace.get("is_success", False)
 
-        # Check numeric match
-        is_succ = False
-        nums = re.findall(r"[-+]?(?:\d*\.\d+|\d+)", out_text.replace(",", ""))
-        if expected_ans is not None:
-            for n in nums:
-                try:
-                    val = float(n)
-                    if abs(val - expected_ans) <= 0.05 or (abs(val - expected_ans) / (abs(expected_ans) + 1e-5)) <= 0.01:
-                        is_succ = True
-                        break
-                except ValueError:
-                    pass
+        action: Optional[ToolCallAction] = None
+        thought: Optional[str] = None
+        turns = trace.get("turns", [])
+        for trn in turns:
+            if trn.get("type") == "tool_call" and trn.get("tool_name"):
+                action = ToolCallAction(
+                    tool_name=trn["tool_name"],
+                    arguments=trn.get("arguments", {}),
+                    call_id=f"call_{trn.get('turn_idx', 0)}",
+                )
+                break
+
+        if not turns and not ("has_tool_action" in trace and "is_success" in trace):
+            # Fallback to single-turn parsing
+            thought, parsed_action, answer, error = parse_agent_output(out_text)
+            if parsed_action:
+                action = parsed_action
+                has_action = True
+            nums = re.findall(r"[-+]?(?:\d*\.\d+|\d+)", out_text.replace(",", ""))
+            if expected_ans is not None:
+                for n in nums:
+                    try:
+                        val = float(n)
+                        if abs(val - expected_ans) <= 0.05 or (abs(val - expected_ans) / (abs(expected_ans) + 1e-5)) <= 0.01:
+                            is_succ = True
+                            break
+                    except ValueError:
+                        pass
 
         # If action was called, check schema validity
         if has_action:
             tool_call_count += 1
             total_actions_evaluated += 1
-            # Check if arguments is a dict
-            if isinstance(action.arguments, dict):
+            if action and isinstance(action.arguments, dict):
+                schema_valid_count += 1
+            elif trace.get("schema_valid", True):
                 schema_valid_count += 1
 
         if is_succ:
@@ -132,7 +149,12 @@ def evaluate_rollout_traces(
             total_steps=len(steps),
         )
         fail_rec = classify_failure(traj)
-        cat = fail_rec.value if fail_rec is not None else "NominalSuccess"
+        if is_succ:
+            cat = "NominalSuccess"
+        elif fail_rec is not None:
+            cat = fail_rec.value
+        else:
+            cat = "OutcomeCalculationFailure"
         failure_taxonomy_counts[cat] = failure_taxonomy_counts.get(cat, 0) + 1
 
         per_task_results.append({
@@ -206,8 +228,8 @@ def compare_candidates_and_generate_report(
         "",
         "## 2. Failure Taxonomy Diagnostic Distribution",
         "",
-        "| Candidate Condition | Early Termination | Schema Format Error | Wrong Tool | Unhandled Tool Error | Success (Nominal) |",
-        "|:---|:---:|:---:|:---:|:---:|:---:|",
+        "| Candidate Condition | Early Termination | Schema Format Error | Wrong Tool | Unhandled Tool Error | Outcome Mismatch | Success (Nominal) |",
+        "|:---|:---:|:---:|:---:|:---:|:---:|:---:|",
     ])
 
     for run_id, ev in eval_results.items():
@@ -216,8 +238,9 @@ def compare_candidates_and_generate_report(
         schema_err = tax.get("SchemaFormatFailure", 0)
         wrong_tool = tax.get("WrongToolSelectionFailure", 0)
         unhandled = tax.get("ToolExecutionFailure", 0)
+        outcome_err = tax.get("OutcomeCalculationFailure", 0)
         nominal = tax.get("NominalSuccess", 0)
-        lines.append(f"| `{run_id}` | {early_term} | {schema_err} | {wrong_tool} | {unhandled} | {nominal} |")
+        lines.append(f"| `{run_id}` | {early_term} | {schema_err} | {wrong_tool} | {unhandled} | {outcome_err} | {nominal} |")
 
     lines.extend([
         "",

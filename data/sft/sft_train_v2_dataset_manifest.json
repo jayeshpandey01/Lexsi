@@ -7,9 +7,9 @@
   "license": "CC-BY-NC-4.0 derivative research custody",
   "created_seed": 42,
   "sample_count": 220,
-  "deduped_sample_count": 203,
-  "deduplication_ratio": 0.9227,
-  "dataset_sha256": "03eb631667b783c00427439c6356482733b346c96495d6b4ac60bf6b0166b5d6",
+  "deduped_sample_count": 215,
+  "deduplication_ratio": 0.9773,
+  "dataset_sha256": "fb89865dcfd993e679acbac00ed361b209887a5253988e5937c8e45ab986a934",
   "template_distribution": {
     "T1_inventory_value": 10,
     "T1_sku_value": 20,
