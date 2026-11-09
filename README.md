@@ -1,7 +1,7 @@
 # Lexsi Track 3: Agentic Fine-Tuning — Reliable and Efficient Tool-Using Agent
 
 [![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/release/python-3110/)
-[![Tests](https://img.shields.io/badge/pytest-159%20passed-brightgreen.svg)]()
+[![Tests](https://img.shields.io/badge/pytest-180%20passed-brightgreen.svg)]()
 [![Status](https://img.shields.io/badge/status-Research%20Package%20Only-orange.svg)]()
 [![Gate G4](https://img.shields.io/badge/Gate%20G4-PENDING%20%2F%20PROMOTION%20BLOCKED-red.svg)]()
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
@@ -119,12 +119,12 @@ python3 scripts/run_demo.py --mock-db
 python3 scripts/run_demo.py
 ```
 
-### B. Unit Test Suite (159 Tests Passing)
-Executes the comprehensive unit test suite covering tool contracts, schema validation, collator token masking, adversarial reward gaming, failure diagnosis, and database transactions:
+### B. Unit Test Suite (180 Tests Passing)
+Executes the comprehensive unit test suite covering tool contracts, schema validation, collator token masking, adversarial reward gaming, failure diagnosis, database transactions, multi-turn ReAct rollouts, and standalone tool execution:
 ```bash
 pytest -v
 ```
-*Expected Output:* `159 passed in ~1.85s`.
+*Expected Output:* `180 passed in ~3.0s`.
 
 ### C. SFT Dataset Generation & Leakage Audit
 Deterministically builds the 20-trajectory ShareGPT training dataset from the `train` split and verifies zero test leakage:
@@ -177,10 +177,10 @@ The following procedures require remote GPU infrastructure, gated model access, 
 > [!IMPORTANT]
 > **Do not run these commands locally without the required credentials and compute environment:**
 
-1. **Full-Scale 3.35B SFT Training (`notebooks/lexsi_kaggle_training.ipynb`):**
+1. **Full-Scale 3.35B SFT Training & Interactive Rollout (`notebooks/kaggle_m5_training.ipynb`):**
    - **Environment:** Requires 2× NVIDIA Tesla T4 GPUs (32GB VRAM total) on Kaggle or a cloud A100 GPU.
    - **Access Requirement:** Requires `HF_TOKEN` authenticated on Hugging Face with accepted license terms for gated model [`CohereLabs/tiny-aya-global`](https://huggingface.co/CohereLabs/tiny-aya-global).
-   - **Runtime:** ~28.2 minutes for 200 optimization steps.
+   - **Execution Capabilities:** Executes Condition C1 (matched base comparator), Condition C2 (calibrated attention LoRA), and Condition C3 (regularized all-linear LoRA) with embedded multi-turn interactive ReAct evaluation and packaging into `m5_kaggle_artifacts.zip`.
 2. **Turso Cloud Relational Sync (`src/data/seed_enterprise_scale.py`):**
    - **Requirement:** Requires active `TURSO_AUTH_TOKEN` and `DATABASE_URL` pointing to Turso Cloud libSQL.
    - **Default Behavior:** When omitted, the repository falls back safely to local SQLite.
@@ -206,10 +206,23 @@ All evaluations are conducted under identical controls using AuditKIT:
 *\*`baseline_run_001` evaluated Command R 7B via OpenRouter gateway as an exploratory diagnostic; it is not a matched comparator for Aya 3.35B.*<br>
 *\*\*`adapter_double` evaluates the local scripted test-double harness to verify plumbing and metrics calculation, not model capability.*
 
-### 6.2 Failure Taxonomy Diagnosis (`sft_aya_3b_001`)
+### 6.2 Milestone 5 Capability Remediation Benchmark Matrix (Cycle 2)
+
+Following M4's early termination diagnosis, Milestone 5 executed an empirical remediation cycle on Kaggle 2×T4 with a matched base comparator, multi-turn ReAct interaction, and regularized all-linear LoRA:
+
+| Candidate Condition | Model / Architecture | $M_1$ Task Success (95% CI) | $M_2$ Tool Accuracy | $M_3$ Schema Validity | $M_7$ Loop Rate | Capability Floor Status |
+|:---|:---|:---:|:---:|:---:|:---:|:---:|
+| `val_base_aya_3b_matched` | Untuned Base Aya 3.35B | 0.0% [0.0%, 0.0%] | **50.0%** | 100.0% | 0.0% | Baseline Comparator Control |
+| `sft_aya_3b_v2_c2` | Attention LoRA ($r=16, \alpha=32$) | 0.0% [0.0%, 0.0%] | 0.0% | 100.0% | 0.0% | **BELOW FLOOR** ($M_1 < 40\%, M_2 < 50\%$) |
+| `sft_aya_3b_v2_c3` | All-Linear LoRA ($r=8, \alpha=16$) | **50.0%** [20.0%, 80.0%] | **0.0%** | 100.0% | 0.0% | **BELOW FLOOR** ($M_2 = 0.0\% < 50\%$) |
+
+#### Forensic Discovery: The Zero-Spend Shortcut & Metric Gaming
+While Condition C3 nominally registered $M_1 = 50.0\%$, trajectory forensic analysis revealed that C3 bypassed interactive tool execution entirely ($M_2 = 0.0\%$). In `configs/manifests/task_manifest_val.json`, 5 of 10 tasks query vendors with zero approved orders (`oracle_answer: 0.0`). SFT caused C3 to memorize an output prior of `$0.00` on vendor queries, achieving 5/5 nominal successes on zero-spend tasks while scoring 0/5 on inventory tasks that required querying actual database items. Under the preregistered release protocol ($M_1 \ge 40\% \land M_2 \ge 50\%$), Milestone 5 recorded a **documented NO-GO decision** ([`docs/M5_P6_research_decision.md`](docs/M5_P6_research_decision.md)), and the locked test partition remains sealed.
+
+### 6.3 Failure Taxonomy Diagnosis (`sft_aya_3b_001`)
 Across all 10 held-out validation tasks, `sft_aya_3b_001` exhibited **100% `EarlyTerminationFailure`** (0 tool calls attempted). The model generated natural language responses and SQL code blocks rather than calling tools via `<|START_ACTION|>{"name": ...}<|END_ACTION|>`.
 
-### 6.3 Robustness & Safety Review (M4.P2)
+### 6.4 Robustness & Safety Review (M4.P2)
 Exhaustive adversarial testing across 6 declared threat vectors verified the runtime perimeter:
 - **Total Adversarial Probes:** 33 targeted probes.
 - **Pass Rate:** **33 / 33 passed (100.0%)**.
@@ -247,14 +260,17 @@ Lexsi/
 │   ├── raw/                               # Authentic Kaggle Olist CSV dataset (CC BY-NC-SA 4.0)
 │   └── sft/                               # Verified SFT trajectories, ShareGPT, and EventLog
 ├── docs/
-│   ├── M0.md - M4.md                      # Milestone specification documents
+│   ├── M0.md - M5.md                      # Milestone specification & remediation documents
 │   ├── M0_report.md - M3_report.md        # Milestone completion and evidence reports
 │   ├── M4_P2_robustness_report.md         # 33-probe adversarial robustness report
 │   ├── M4_P4_candidate_decision.md        # Formal DEFER_LOCKED_TEST decision record
+│   ├── M5_P4_candidate_evaluation.md      # M5 Candidate Evaluation & comparative benchmark report
+│   ├── M5_P6_research_decision.md         # M5 Formal Research Decision (documented NO-GO record)
 │   └── plan.md                            # Comprehensive project work tracker (P0.1 - P6.2)
 ├── notebooks/
 │   ├── verification.ipynb                 # Interactive 23-stage pipeline verification notebook
-│   └── lexsi_kaggle_training.ipynb        # Kaggle 2x T4 GPU SFT training & rollout notebook
+│   ├── kaggle_m5_training.ipynb           # Kaggle 2x T4 GPU M5 multi-turn ReAct rollout notebook
+│   └── lexsi_kaggle_training.ipynb        # Kaggle 2x T4 GPU SFT pilot training & rollout notebook
 ├── references/
 │   ├── model_card.md                      # Complete model card for sft_aya_3b_001
 │   ├── data_card.md                       # Comprehensive data provenance & card
@@ -269,9 +285,10 @@ Lexsi/
 │   ├── run_m4_p1_validation.py            # M4.P1 validation matrix executor
 │   ├── run_m4_p2_robustness_review.py     # M4.P2 33-probe robustness reviewer
 │   ├── run_m4_p3_operational_profile.py   # M4.P3 operational profiling script
+│   ├── evaluate_m5_candidates.py          # M5 Candidate evaluator and paired bootstrap analysis
 │   └── execute_notebook.py                # Automated headless notebook executor
 ├── src/                                   # Typed, modular core library (10/10 quality)
-└── tests/                                 # 159 unit tests covering all components
+└── tests/                                 # 180 unit tests covering all components
 ```
 
 ---

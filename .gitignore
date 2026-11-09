@@ -38,6 +38,7 @@ env/
 *.swo
 *~
 .DS_Store
+**/.DS_Store
 
 # Testing and coverage
 .pytest_cache/

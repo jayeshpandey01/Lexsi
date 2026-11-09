@@ -98,9 +98,22 @@
 - **Scientific Conclusion:**
   The pre-trained conversational priors in `CohereLabs/tiny-aya-global` (which was trained as a conversational instruction follower across 23 languages) overwhelmingly dominate over a small fine-tuning curriculum of 200 optimization steps. Low token cross-entropy loss ($0.36$) did not translate to format adherence in autoregressive inference.
 
-### 4.4 Untuned Base Comparator Status
-- The matched untuned base comparator (`CohereLabs/tiny-aya-global` without fine-tuning) is documented as **`BLOCKED_NO_ROLLOUT`** ([`results/runs/m4_val_base_aya_3b_blocked/run_manifest.json`](../results/runs/m4_val_base_aya_3b_blocked/run_manifest.json)) due to lack of local GPU execution and missing remote rollout.
-- No claims of causal superiority or relative improvement over the base model are asserted.
+### 4.4 Untuned Base Comparator Status (Historical M4)
+- The initial M4 untuned base comparator was documented as `BLOCKED_NO_ROLLOUT` due to local execution constraints.
+
+### 4.5 Milestone 5 Remediation Cycle 2 & Candidate Re-Evaluation
+Under Milestone 5, remote execution on Kaggle 2×T4 GPUs completed full matched evaluations across three conditions with live multi-turn ReAct interactive rollouts:
+
+| Candidate Condition | Model Architecture & LoRA Strategy | $M_1$ Task Success (95% CI) | $M_2$ Tool Accuracy | $M_3$ Schema Validity | Capability Floor Status |
+|:---|:---|:---:|:---:|:---:|:---:|
+| `val_base_aya_3b_matched` | Untuned Base `tiny-aya-global` (3.35B) | 0.0% [0.0%, 0.0%] | **50.0%** | 100.0% | Baseline Comparator Control |
+| `sft_aya_3b_v2_c2` | Attention LoRA ($r=16, \alpha=32$) | 0.0% [0.0%, 0.0%] | 0.0% | 100.0% | **BELOW FLOOR** ($M_1 < 40\%, M_2 < 50\%$) |
+| `sft_aya_3b_v2_c3` | All-Linear LoRA ($r=8, \alpha=16$) | **50.0%** [20.0%, 80.0%] | **0.0%** | 100.0% | **BELOW FLOOR** ($M_2 = 0.0\% < 50\%$) |
+
+- **Forensic Discovery & Zero-Spend Shortcut:**
+  Condition C3 nominally scored $M_1 = 50.0\%$, but achieved $M_2 = 0.0\%$ (zero tool calls). Detailed trace analysis revealed that C3 learned to guess `$0.00` for vendor queries without querying the database, accidentally matching the oracle for 5/5 zero-spend vendor tasks while failing 0/5 inventory valuation tasks.
+- **Formal Release Verdict:**
+  Under the predeclared release floor ($M_1 \ge 40\% \land M_2 \ge 50\%$), Condition C3 failed promotion. Milestone 5 concluded with a **documented NO-GO decision** ([`docs/M5_P6_research_decision.md`](../docs/M5_P6_research_decision.md)), and the sequestered test partition remains 100% sealed.
 
 ---
 

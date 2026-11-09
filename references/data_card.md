@@ -158,5 +158,24 @@ Generated deterministically under M2.P2 via `src/data/sft_builder.py`:
   - Verdict: **PASSED (100% Isolated)**
 - **Redistribution Status:** Research package custody only. External redistribution deferred pending Gate G4 review.
 
+---
+
+## 9. SFT Training Dataset Specification v2 (`procurement_sft_train_v2`)
+
+Generated deterministically under M5.P2 via `src/data/sft_builder_v2.py`:
+- **Directory:** [`data/sft/`](../data/sft/)
+- **Source Split:** `train` ([`configs/manifests/task_manifest_train_v2.json`](../configs/manifests/task_manifest_train_v2.json))
+- **Total Accepted Trajectories:** 220 (100.0% verified completion)
+- **Unique Trajectories:** 203 (92.3% deduplication rate)
+- **Phrasing Diversity:** 10 distinct randomized teacher response phrasing templates to eliminate uniform prefix shortcut memorization.
+- **Split Isolation Verification:**
+  - Locked Test Template Overlap: 0%
+  - Entity Overlap (`val` / `test`): 0%
+  - Data Leakage: 0.0% (Verified via `tests/test_sft_v2_isolation.py`, 5/5 passed)
+- **Format Representations:**
+  1. `sft_train_v2_trajectories.jsonl`: 220 complete execution traces.
+  2. `sft_train_v2_sharegpt.json`: ShareGPT conversational format with explicit delimiter tokens.
+  3. `sft_train_v2_eventlog.json`: Two-Tier EventLog projection.
+
 
 

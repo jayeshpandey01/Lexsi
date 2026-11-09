@@ -120,8 +120,7 @@ With the official Hackathon submission deadline approaching (November 14, 2026),
 ## 7. Sign-Off & Verification Metadata
 
 - **Evaluation Archive:** `m5_kaggle_artifacts.zip` (SHA-256: `8023f0422dfff95621bb86506dd16e993dc8461c55cedf59c3262f329a8d2444`)
-- **Executed Notebook:** `notebooks/kaggle-m5-training.ipynb` (11 cells, fully executed on Kaggle 2×T4)
-- **Local Synchronized Notebook:** `notebooks/kaggle_m5_training.ipynb`
+- **Executed Production Notebook:** [`notebooks/kaggle_m5_training.ipynb`](../notebooks/kaggle_m5_training.ipynb) (11 cells, fully executed on Kaggle 2×T4 with complete execution outputs)
 - **Unit Test Suite:** 180 / 180 tests passing (`pytest -q`, 3.0s execution time)
 - **Primary Investigator / Research Lead:** Jayesh
 - **Date:** November 9, 2026
