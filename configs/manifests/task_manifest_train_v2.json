@@ -1,0 +1,3844 @@
+{
+  "split_name": "train",
+  "count": 220,
+  "is_locked": false,
+  "status": "active_m5_remediation",
+  "tasks": [
+    {
+      "task_id": "task_train_T1_inventory_value_000",
+      "split": "train",
+      "template_id": "T1_inventory_value",
+      "user_query": "Calculate the total inventory valuation for all items in the 'Hardware' category by querying inventory_items and summing unit_cost * stock_level.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 113202.7,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware"
+      },
+      "provenance_hash": "1ec693c06b2671e0641d079b45523a7f81be02dffe24720fafbaf6566d7c444d"
+    },
+    {
+      "task_id": "task_train_T1_inventory_value_001",
+      "split": "train",
+      "template_id": "T1_inventory_value",
+      "user_query": "Determine the aggregate asset value of all items in the 'Hardware' category by querying inventory_items and summing unit_cost * stock_level.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 113202.7,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware"
+      },
+      "provenance_hash": "c92e47e19b3715c354e3cad1eb4fb2b5011c830434df6fde648a303724e54b5c"
+    },
+    {
+      "task_id": "task_train_T1_inventory_value_002",
+      "split": "train",
+      "template_id": "T1_inventory_value",
+      "user_query": "Compute the total monetary value of all items in the 'Hardware' category by querying inventory_items and summing unit_cost * stock_level.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 113202.7,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware"
+      },
+      "provenance_hash": "9c6cca1365cff7cf18805c801aef0758f659ddef737d8d4884b6c62fedc48007"
+    },
+    {
+      "task_id": "task_train_T1_inventory_value_003",
+      "split": "train",
+      "template_id": "T1_inventory_value",
+      "user_query": "Find the complete inventory valuation for all items in the 'Hardware' category by querying inventory_items and summing unit_cost * stock_level.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 113202.7,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware"
+      },
+      "provenance_hash": "3f087370b907f53f9b957b0d6aeb914bf4fac70c483c09d66a816e18dd7a3d79"
+    },
+    {
+      "task_id": "task_train_T1_inventory_value_004",
+      "split": "train",
+      "template_id": "T1_inventory_value",
+      "user_query": "Evaluate the total stock cost for all items in the 'Hardware' category by querying inventory_items and summing unit_cost * stock_level.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 113202.7,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware"
+      },
+      "provenance_hash": "bab5293f983b2fb4c1e405ee91d5239c26c6014a41b360be596cc3ad6971d872"
+    },
+    {
+      "task_id": "task_train_T1_inventory_value_005",
+      "split": "train",
+      "template_id": "T1_inventory_value",
+      "user_query": "Calculate the total inventory valuation for all items in the 'Hardware' category by querying inventory_items and summing unit_cost * stock_level.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 113202.7,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware"
+      },
+      "provenance_hash": "209fca8dffffdcfa5b7b2d6972c6cc8e48e71eb063ee391c505397566fe20a6d"
+    },
+    {
+      "task_id": "task_train_T1_inventory_value_006",
+      "split": "train",
+      "template_id": "T1_inventory_value",
+      "user_query": "Determine the aggregate asset value of all items in the 'Hardware' category by querying inventory_items and summing unit_cost * stock_level.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 113202.7,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware"
+      },
+      "provenance_hash": "e8d02548b610e108dfb778f749b558c6473ef07055afe506a580fe450c584e3d"
+    },
+    {
+      "task_id": "task_train_T1_inventory_value_007",
+      "split": "train",
+      "template_id": "T1_inventory_value",
+      "user_query": "Compute the total monetary value of all items in the 'Hardware' category by querying inventory_items and summing unit_cost * stock_level.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 113202.7,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware"
+      },
+      "provenance_hash": "16506ef682e6c494684554ebb95196919960b0d1b4ceee744eb1f67c0ff05451"
+    },
+    {
+      "task_id": "task_train_T1_inventory_value_008",
+      "split": "train",
+      "template_id": "T1_inventory_value",
+      "user_query": "Find the complete inventory valuation for all items in the 'Hardware' category by querying inventory_items and summing unit_cost * stock_level.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 113202.7,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware"
+      },
+      "provenance_hash": "0f28dcaa6fae7656146115e69ba8b570fa8aeb9ec67fb208039824c25f7d4ccd"
+    },
+    {
+      "task_id": "task_train_T1_inventory_value_009",
+      "split": "train",
+      "template_id": "T1_inventory_value",
+      "user_query": "Evaluate the total stock cost for all items in the 'Hardware' category by querying inventory_items and summing unit_cost * stock_level.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 113202.7,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware"
+      },
+      "provenance_hash": "707fdd11ee7be7e9d2a39aee2f876eba6ee35102bbbadd715acc5f10c0c3b66a"
+    },
+    {
+      "task_id": "task_train_T1_sku_value_010",
+      "split": "train",
+      "template_id": "T1_sku_value",
+      "user_query": "Calculate the inventory valuation for SKU 'SKU-8000' (stock_level * unit_cost).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 1031.09,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware",
+        "item_sku": "SKU-8000"
+      },
+      "provenance_hash": "d0c9053b4a450d99ead38c7977ea607907b46dfff67d21cb2349d6f6411ac598"
+    },
+    {
+      "task_id": "task_train_T1_sku_value_011",
+      "split": "train",
+      "template_id": "T1_sku_value",
+      "user_query": "Determine the total asset value held in inventory for item 'SKU-8000'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 1031.09,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware",
+        "item_sku": "SKU-8000"
+      },
+      "provenance_hash": "276cda22080d04aa2eead39371c90f4dca14307391e2a9b345bf6783375b0c60"
+    },
+    {
+      "task_id": "task_train_T1_sku_value_012",
+      "split": "train",
+      "template_id": "T1_sku_value",
+      "user_query": "Look up SKU 'SKU-8000' in inventory_items and calculate its total stock valuation.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 1031.09,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware",
+        "item_sku": "SKU-8000"
+      },
+      "provenance_hash": "3ce7aa9716352f4ec330893f15b2d9a4361e68286ad0f68248fa43c14f584f3a"
+    },
+    {
+      "task_id": "task_train_T1_sku_value_013",
+      "split": "train",
+      "template_id": "T1_sku_value",
+      "user_query": "Compute stock_level multiplied by unit_cost for inventory item 'SKU-8000'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 1031.09,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware",
+        "item_sku": "SKU-8000"
+      },
+      "provenance_hash": "c4e054d1ae45848f58932900557b1c55ca9938e7fc27ac42a07ef4a2f7637eea"
+    },
+    {
+      "task_id": "task_train_T1_sku_value_014",
+      "split": "train",
+      "template_id": "T1_sku_value",
+      "user_query": "Calculate the inventory valuation for SKU 'SKU-8004' (stock_level * unit_cost).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 6009.64,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware",
+        "item_sku": "SKU-8004"
+      },
+      "provenance_hash": "dc87fa9ca9af39f89237923281911b5e5de4c3ac90356edd444537f18464798d"
+    },
+    {
+      "task_id": "task_train_T1_sku_value_015",
+      "split": "train",
+      "template_id": "T1_sku_value",
+      "user_query": "Determine the total asset value held in inventory for item 'SKU-8004'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 6009.64,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware",
+        "item_sku": "SKU-8004"
+      },
+      "provenance_hash": "26fea6ef765972c0830092c6f12803600882a5fb10b0fce0c18d47935ec86f7c"
+    },
+    {
+      "task_id": "task_train_T1_sku_value_016",
+      "split": "train",
+      "template_id": "T1_sku_value",
+      "user_query": "Look up SKU 'SKU-8004' in inventory_items and calculate its total stock valuation.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 6009.64,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware",
+        "item_sku": "SKU-8004"
+      },
+      "provenance_hash": "f94d7d05500b328d55fbb99ff517d00c3c47d7cc6fab1fa2a2e9331b80794f02"
+    },
+    {
+      "task_id": "task_train_T1_sku_value_017",
+      "split": "train",
+      "template_id": "T1_sku_value",
+      "user_query": "Compute stock_level multiplied by unit_cost for inventory item 'SKU-8004'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 6009.64,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware",
+        "item_sku": "SKU-8004"
+      },
+      "provenance_hash": "1bdd2a6d7694dffcee330ac3959c64fb4a3f9eaa776aa0baa5abdbd4d4d5dcec"
+    },
+    {
+      "task_id": "task_train_T1_sku_value_018",
+      "split": "train",
+      "template_id": "T1_sku_value",
+      "user_query": "Calculate the inventory valuation for SKU 'SKU-8008' (stock_level * unit_cost).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 43406.33,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware",
+        "item_sku": "SKU-8008"
+      },
+      "provenance_hash": "a8b1df184d5e0f920289d58dc4a3492027edfe7d111c6218f4afda6d55e20d9d"
+    },
+    {
+      "task_id": "task_train_T1_sku_value_019",
+      "split": "train",
+      "template_id": "T1_sku_value",
+      "user_query": "Determine the total asset value held in inventory for item 'SKU-8008'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 43406.33,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware",
+        "item_sku": "SKU-8008"
+      },
+      "provenance_hash": "6b0d36f0c8160bd92601197e95a397dd2f0dbed16a9e10c166efc313ba37ec98"
+    },
+    {
+      "task_id": "task_train_T1_sku_value_020",
+      "split": "train",
+      "template_id": "T1_sku_value",
+      "user_query": "Look up SKU 'SKU-8008' in inventory_items and calculate its total stock valuation.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 43406.33,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware",
+        "item_sku": "SKU-8008"
+      },
+      "provenance_hash": "69d48fdf20fb199adc8f35bb00cce0fcb546cfa168c5d902673dc4638d6b8653"
+    },
+    {
+      "task_id": "task_train_T1_sku_value_021",
+      "split": "train",
+      "template_id": "T1_sku_value",
+      "user_query": "Compute stock_level multiplied by unit_cost for inventory item 'SKU-8008'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 43406.33,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware",
+        "item_sku": "SKU-8008"
+      },
+      "provenance_hash": "8ce847a48602f4a82c610662ebad1c6b1bf15589485272c98ac7782649b175b6"
+    },
+    {
+      "task_id": "task_train_T1_sku_value_022",
+      "split": "train",
+      "template_id": "T1_sku_value",
+      "user_query": "Calculate the inventory valuation for SKU 'SKU-8012' (stock_level * unit_cost).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 45821.6,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware",
+        "item_sku": "SKU-8012"
+      },
+      "provenance_hash": "70788d82e09a47221f4676249a138ef894b3431c91390fb0c5ac4a414c0760dd"
+    },
+    {
+      "task_id": "task_train_T1_sku_value_023",
+      "split": "train",
+      "template_id": "T1_sku_value",
+      "user_query": "Determine the total asset value held in inventory for item 'SKU-8012'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 45821.6,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware",
+        "item_sku": "SKU-8012"
+      },
+      "provenance_hash": "3e0e2d215077a6d2de66882e968aae75ff1497e984c6c7bf3336b0bc81ce62cc"
+    },
+    {
+      "task_id": "task_train_T1_sku_value_024",
+      "split": "train",
+      "template_id": "T1_sku_value",
+      "user_query": "Look up SKU 'SKU-8012' in inventory_items and calculate its total stock valuation.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 45821.6,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware",
+        "item_sku": "SKU-8012"
+      },
+      "provenance_hash": "f5edc1a3957e1627a8b0e55e411f2e788dc14d92c6551f3876ab515967958999"
+    },
+    {
+      "task_id": "task_train_T1_sku_value_025",
+      "split": "train",
+      "template_id": "T1_sku_value",
+      "user_query": "Compute stock_level multiplied by unit_cost for inventory item 'SKU-8012'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 45821.6,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware",
+        "item_sku": "SKU-8012"
+      },
+      "provenance_hash": "4f642d94616e74856ca3bf2b9ec3546cdb521f76674a4c4612f507800a710876"
+    },
+    {
+      "task_id": "task_train_T1_sku_value_026",
+      "split": "train",
+      "template_id": "T1_sku_value",
+      "user_query": "Calculate the inventory valuation for SKU 'SKU-8016' (stock_level * unit_cost).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 16934.04,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware",
+        "item_sku": "SKU-8016"
+      },
+      "provenance_hash": "f50be1caec07de28907bc143d487ba9b35f83e75ab79fb73f4aeadba64c801ad"
+    },
+    {
+      "task_id": "task_train_T1_sku_value_027",
+      "split": "train",
+      "template_id": "T1_sku_value",
+      "user_query": "Determine the total asset value held in inventory for item 'SKU-8016'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 16934.04,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware",
+        "item_sku": "SKU-8016"
+      },
+      "provenance_hash": "8c4704af7010b4e907b7c6cb8afe80c36e9e37ca21bed921c209979063c7728b"
+    },
+    {
+      "task_id": "task_train_T1_sku_value_028",
+      "split": "train",
+      "template_id": "T1_sku_value",
+      "user_query": "Look up SKU 'SKU-8016' in inventory_items and calculate its total stock valuation.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 16934.04,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware",
+        "item_sku": "SKU-8016"
+      },
+      "provenance_hash": "969e79bc6c82732173b690e1ffd101ce1008fd4d5463b931a5bb6dbee0620026"
+    },
+    {
+      "task_id": "task_train_T1_sku_value_029",
+      "split": "train",
+      "template_id": "T1_sku_value",
+      "user_query": "Compute stock_level multiplied by unit_cost for inventory item 'SKU-8016'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 16934.04,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware",
+        "item_sku": "SKU-8016"
+      },
+      "provenance_hash": "b63757f22ee77a406c98fd8d764c6dc158f2c38014856997dfe662924daa8921"
+    },
+    {
+      "task_id": "task_train_T1_inventory_metric_030",
+      "split": "train",
+      "template_id": "T1_inventory_metric",
+      "user_query": "Query inventory_items for 'Hardware' and compute the average unit cost (mean of unit_cost).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 86.31,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware",
+        "metric_field": "unit_cost",
+        "operation": "mean"
+      },
+      "provenance_hash": "56d0b63f9a66664ac55ec776e234b3b0fd3ed6c4cee1c460663131a131780b9e"
+    },
+    {
+      "task_id": "task_train_T1_inventory_metric_031",
+      "split": "train",
+      "template_id": "T1_inventory_metric",
+      "user_query": "Query inventory_items for 'Hardware' and compute the average unit cost (mean of unit_cost).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 86.31,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware",
+        "metric_field": "unit_cost",
+        "operation": "mean"
+      },
+      "provenance_hash": "a34e983245af7a091c84e479b3e3c78e2708138d4b56e92abaf5eb92d55d0953"
+    },
+    {
+      "task_id": "task_train_T1_inventory_metric_032",
+      "split": "train",
+      "template_id": "T1_inventory_metric",
+      "user_query": "Query inventory_items for 'Hardware' and compute the average unit cost (mean of unit_cost).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 86.31,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware",
+        "metric_field": "unit_cost",
+        "operation": "mean"
+      },
+      "provenance_hash": "d3daceb7ab957d56f95ea985d44ebf9e799ebeeee61574f04f42aa30efe88825"
+    },
+    {
+      "task_id": "task_train_T1_inventory_metric_033",
+      "split": "train",
+      "template_id": "T1_inventory_metric",
+      "user_query": "Query inventory_items for 'Hardware' and compute the maximum unit cost (max of unit_cost).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 136.07,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware",
+        "metric_field": "unit_cost",
+        "operation": "max"
+      },
+      "provenance_hash": "b859efb62f8504da9319d16dd9bb8d508bc10a66eed76c9b2f5ee84a7639429b"
+    },
+    {
+      "task_id": "task_train_T1_inventory_metric_034",
+      "split": "train",
+      "template_id": "T1_inventory_metric",
+      "user_query": "Query inventory_items for 'Hardware' and compute the maximum unit cost (max of unit_cost).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 136.07,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware",
+        "metric_field": "unit_cost",
+        "operation": "max"
+      },
+      "provenance_hash": "ddc570293016fe910519477fb3bcb15794525033995a8c70141e20ade0199ac4"
+    },
+    {
+      "task_id": "task_train_T1_inventory_metric_035",
+      "split": "train",
+      "template_id": "T1_inventory_metric",
+      "user_query": "Query inventory_items for 'Hardware' and compute the maximum unit cost (max of unit_cost).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 136.07,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware",
+        "metric_field": "unit_cost",
+        "operation": "max"
+      },
+      "provenance_hash": "c8ca212950083fdaf75c4cdd247a9c6644e642b95e1df60d48bd44bed8007328"
+    },
+    {
+      "task_id": "task_train_T1_inventory_metric_036",
+      "split": "train",
+      "template_id": "T1_inventory_metric",
+      "user_query": "Query inventory_items for 'Hardware' and compute the minimum unit cost (min of unit_cost).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 44.83,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware",
+        "metric_field": "unit_cost",
+        "operation": "min"
+      },
+      "provenance_hash": "dcc3c1e1837799b723f9f665cd661979c017c400f0e20c8c76c83aeef949b85b"
+    },
+    {
+      "task_id": "task_train_T1_inventory_metric_037",
+      "split": "train",
+      "template_id": "T1_inventory_metric",
+      "user_query": "Query inventory_items for 'Hardware' and compute the minimum unit cost (min of unit_cost).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 44.83,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware",
+        "metric_field": "unit_cost",
+        "operation": "min"
+      },
+      "provenance_hash": "2f11911faa0c72d9305942648c4603014325b6421a4d4a4af3d6e8d4416abca5"
+    },
+    {
+      "task_id": "task_train_T1_inventory_metric_038",
+      "split": "train",
+      "template_id": "T1_inventory_metric",
+      "user_query": "Query inventory_items for 'Hardware' and compute the minimum unit cost (min of unit_cost).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 44.83,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware",
+        "metric_field": "unit_cost",
+        "operation": "min"
+      },
+      "provenance_hash": "8c6b7104d6c04846e54cc272990ed8cde7a98669ab636fe3670d1d0add9762ba"
+    },
+    {
+      "task_id": "task_train_T1_inventory_metric_039",
+      "split": "train",
+      "template_id": "T1_inventory_metric",
+      "user_query": "Query inventory_items for 'Hardware' and compute the average stock level (mean of stock_level).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 217.6,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware",
+        "metric_field": "stock_level",
+        "operation": "mean"
+      },
+      "provenance_hash": "efd1ec67f37388980d57c04aff63c83c6f6da0d99803ea021feeb5775a84e50a"
+    },
+    {
+      "task_id": "task_train_T1_inventory_metric_040",
+      "split": "train",
+      "template_id": "T1_inventory_metric",
+      "user_query": "Query inventory_items for 'Hardware' and compute the average stock level (mean of stock_level).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 217.6,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware",
+        "metric_field": "stock_level",
+        "operation": "mean"
+      },
+      "provenance_hash": "fa5f323e34dc964bc8ae8637d563d286b0332c97c98549b0907e86598826eef7"
+    },
+    {
+      "task_id": "task_train_T1_inventory_metric_041",
+      "split": "train",
+      "template_id": "T1_inventory_metric",
+      "user_query": "Query inventory_items for 'Hardware' and compute the average stock level (mean of stock_level).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 217.6,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware",
+        "metric_field": "stock_level",
+        "operation": "mean"
+      },
+      "provenance_hash": "223f03b6e865d95b6a03d33a949fa5df3f3c121b3107d82dbe0f2620f4fb0028"
+    },
+    {
+      "task_id": "task_train_T1_inventory_metric_042",
+      "split": "train",
+      "template_id": "T1_inventory_metric",
+      "user_query": "Query inventory_items for 'Hardware' and compute the highest stock quantity (max of stock_level).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 451.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware",
+        "metric_field": "stock_level",
+        "operation": "max"
+      },
+      "provenance_hash": "ddbd288c43a600248a4061a09891942d6f64e9b29b7f0b921f1cbd03fa40a90f"
+    },
+    {
+      "task_id": "task_train_T1_inventory_metric_043",
+      "split": "train",
+      "template_id": "T1_inventory_metric",
+      "user_query": "Query inventory_items for 'Hardware' and compute the highest stock quantity (max of stock_level).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 451.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware",
+        "metric_field": "stock_level",
+        "operation": "max"
+      },
+      "provenance_hash": "1a282d00866cfd6e32cf6222f8000b8022ba21dd5c12a46f8f92d5378a56a12b"
+    },
+    {
+      "task_id": "task_train_T1_inventory_metric_044",
+      "split": "train",
+      "template_id": "T1_inventory_metric",
+      "user_query": "Query inventory_items for 'Hardware' and compute the highest stock quantity (max of stock_level).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 451.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware",
+        "metric_field": "stock_level",
+        "operation": "max"
+      },
+      "provenance_hash": "a4e77cea7feb2923b5c8c279dbcea9d3cfcc8b5871d736969e01ecfdf052d82b"
+    },
+    {
+      "task_id": "task_train_T1_inventory_metric_045",
+      "split": "train",
+      "template_id": "T1_inventory_metric",
+      "user_query": "Query inventory_items for 'Hardware' and compute the total units in stock (sum of stock_level).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 1088.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware",
+        "metric_field": "stock_level",
+        "operation": "sum"
+      },
+      "provenance_hash": "de17144f1c5460bbc6a15dd4e32ce7edb5f1371149531c4d209e6f94de29fb53"
+    },
+    {
+      "task_id": "task_train_T1_inventory_metric_046",
+      "split": "train",
+      "template_id": "T1_inventory_metric",
+      "user_query": "Query inventory_items for 'Hardware' and compute the total units in stock (sum of stock_level).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 1088.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware",
+        "metric_field": "stock_level",
+        "operation": "sum"
+      },
+      "provenance_hash": "ac2693901045a2692ac4fbfb555dfda6887f840ee6061f73877c00f0ae4691db"
+    },
+    {
+      "task_id": "task_train_T1_inventory_metric_047",
+      "split": "train",
+      "template_id": "T1_inventory_metric",
+      "user_query": "Query inventory_items for 'Hardware' and compute the total units in stock (sum of stock_level).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 1088.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "category": "Hardware",
+        "metric_field": "stock_level",
+        "operation": "sum"
+      },
+      "provenance_hash": "e7063d12f9b1c30c22b8841afc5ecbba8026073acfc6d3ba57e15c61c0cf9472"
+    },
+    {
+      "task_id": "task_train_T1_budget_check_048",
+      "split": "train",
+      "template_id": "T1_budget_check",
+      "user_query": "Verify whether total 'Hardware' inventory valuation is within the $50,000 budget threshold.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 113202.7,
+      "oracle_verdict": false,
+      "target_entities": {
+        "category": "Hardware",
+        "budget_cap": 50000.0
+      },
+      "provenance_hash": "ad9e765f27e85f1041636ed1892e0a2101b575385eb93c1c2e47c34b9a04e26c"
+    },
+    {
+      "task_id": "task_train_T1_budget_check_049",
+      "split": "train",
+      "template_id": "T1_budget_check",
+      "user_query": "Audit Hardware stock valuation against the $50,000 cap and check compliance.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 113202.7,
+      "oracle_verdict": false,
+      "target_entities": {
+        "category": "Hardware",
+        "budget_cap": 50000.0
+      },
+      "provenance_hash": "b85b36fdebc2dc9f421552255d42190c2ee352a158a84d4c35afe17d71a57e8a"
+    },
+    {
+      "task_id": "task_train_T1_budget_check_050",
+      "split": "train",
+      "template_id": "T1_budget_check",
+      "user_query": "Determine if the cumulative valuation of all Hardware inventory complies with budget cap $50,000.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 113202.7,
+      "oracle_verdict": false,
+      "target_entities": {
+        "category": "Hardware",
+        "budget_cap": 50000.0
+      },
+      "provenance_hash": "0438e38975c7178b5fa1d7cacdf09155c6bebee8fb5f09fd2a2143bd00fa8e20"
+    },
+    {
+      "task_id": "task_train_T1_budget_check_051",
+      "split": "train",
+      "template_id": "T1_budget_check",
+      "user_query": "Check if total stock valuation for category 'Hardware' exceeds or is within budget limit $50,000.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 113202.7,
+      "oracle_verdict": false,
+      "target_entities": {
+        "category": "Hardware",
+        "budget_cap": 50000.0
+      },
+      "provenance_hash": "89d732b0c8c21b751f1c0f57250a7e9ad32147fb8000c519bebabe142e32333d"
+    },
+    {
+      "task_id": "task_train_T1_budget_check_052",
+      "split": "train",
+      "template_id": "T1_budget_check",
+      "user_query": "Verify whether total 'Hardware' inventory valuation is within the $75,000 budget threshold.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 113202.7,
+      "oracle_verdict": false,
+      "target_entities": {
+        "category": "Hardware",
+        "budget_cap": 75000.0
+      },
+      "provenance_hash": "c293721cc2a890543ecb28ff68a626cc566781b13e3572150635cf57af9f2a4a"
+    },
+    {
+      "task_id": "task_train_T1_budget_check_053",
+      "split": "train",
+      "template_id": "T1_budget_check",
+      "user_query": "Audit Hardware stock valuation against the $75,000 cap and check compliance.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 113202.7,
+      "oracle_verdict": false,
+      "target_entities": {
+        "category": "Hardware",
+        "budget_cap": 75000.0
+      },
+      "provenance_hash": "49e49dd8adcbccd20134a26cd19439edbf0470a2856444eff6cf35b5b70da130"
+    },
+    {
+      "task_id": "task_train_T1_budget_check_054",
+      "split": "train",
+      "template_id": "T1_budget_check",
+      "user_query": "Determine if the cumulative valuation of all Hardware inventory complies with budget cap $75,000.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 113202.7,
+      "oracle_verdict": false,
+      "target_entities": {
+        "category": "Hardware",
+        "budget_cap": 75000.0
+      },
+      "provenance_hash": "b2a6352f1d8335da1caf3a008a9616dcefd11fae1b57f7750f359d18d3f10c66"
+    },
+    {
+      "task_id": "task_train_T1_budget_check_055",
+      "split": "train",
+      "template_id": "T1_budget_check",
+      "user_query": "Check if total stock valuation for category 'Hardware' exceeds or is within budget limit $75,000.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 113202.7,
+      "oracle_verdict": false,
+      "target_entities": {
+        "category": "Hardware",
+        "budget_cap": 75000.0
+      },
+      "provenance_hash": "da3c19908fc5d1dad77ccdcd364c05b86b82e4562f42f7c4786aa0bbaf95cdb5"
+    },
+    {
+      "task_id": "task_train_T1_budget_check_056",
+      "split": "train",
+      "template_id": "T1_budget_check",
+      "user_query": "Verify whether total 'Hardware' inventory valuation is within the $100,000 budget threshold.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 113202.7,
+      "oracle_verdict": false,
+      "target_entities": {
+        "category": "Hardware",
+        "budget_cap": 100000.0
+      },
+      "provenance_hash": "8d790424a46d9c60a2b9ba2c7a6cec6e0c2eb6f884a1a893499d0481ad0d9c27"
+    },
+    {
+      "task_id": "task_train_T1_budget_check_057",
+      "split": "train",
+      "template_id": "T1_budget_check",
+      "user_query": "Audit Hardware stock valuation against the $100,000 cap and check compliance.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 113202.7,
+      "oracle_verdict": false,
+      "target_entities": {
+        "category": "Hardware",
+        "budget_cap": 100000.0
+      },
+      "provenance_hash": "13866ae6dd4ba01dd8ca2e85bd5da30def8c661c0794b69a545a3706b1f09383"
+    },
+    {
+      "task_id": "task_train_T1_budget_check_058",
+      "split": "train",
+      "template_id": "T1_budget_check",
+      "user_query": "Determine if the cumulative valuation of all Hardware inventory complies with budget cap $100,000.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 113202.7,
+      "oracle_verdict": false,
+      "target_entities": {
+        "category": "Hardware",
+        "budget_cap": 100000.0
+      },
+      "provenance_hash": "03836d4b0a40a1fd0a1d9ec5f095a2cadf5ff1755538731e7f4c8b7d20e9b095"
+    },
+    {
+      "task_id": "task_train_T1_budget_check_059",
+      "split": "train",
+      "template_id": "T1_budget_check",
+      "user_query": "Check if total stock valuation for category 'Hardware' exceeds or is within budget limit $100,000.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 113202.7,
+      "oracle_verdict": false,
+      "target_entities": {
+        "category": "Hardware",
+        "budget_cap": 100000.0
+      },
+      "provenance_hash": "f51fba1daeb99a0f11031d57dc355aae4d3c350e3cbad0f9fa829d5981958fbc"
+    },
+    {
+      "task_id": "task_train_T1_budget_check_060",
+      "split": "train",
+      "template_id": "T1_budget_check",
+      "user_query": "Verify whether total 'Hardware' inventory valuation is within the $150,000 budget threshold.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 113202.7,
+      "oracle_verdict": true,
+      "target_entities": {
+        "category": "Hardware",
+        "budget_cap": 150000.0
+      },
+      "provenance_hash": "96c9cb7d0f6689b3cc20221d022958a42b647cb938fd9250f62b975fc61ef45d"
+    },
+    {
+      "task_id": "task_train_T1_budget_check_061",
+      "split": "train",
+      "template_id": "T1_budget_check",
+      "user_query": "Audit Hardware stock valuation against the $150,000 cap and check compliance.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 113202.7,
+      "oracle_verdict": true,
+      "target_entities": {
+        "category": "Hardware",
+        "budget_cap": 150000.0
+      },
+      "provenance_hash": "6299ffd40eea3fbf63dd4143d3d82b37bb3c522dd09c340ca9c6b5b901732ae3"
+    },
+    {
+      "task_id": "task_train_T1_budget_check_062",
+      "split": "train",
+      "template_id": "T1_budget_check",
+      "user_query": "Determine if the cumulative valuation of all Hardware inventory complies with budget cap $150,000.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 113202.7,
+      "oracle_verdict": true,
+      "target_entities": {
+        "category": "Hardware",
+        "budget_cap": 150000.0
+      },
+      "provenance_hash": "1fb4098983cf6cc9f78a40054fc921ab5aca15c7f1c805136993b7a29a966e64"
+    },
+    {
+      "task_id": "task_train_T1_budget_check_063",
+      "split": "train",
+      "template_id": "T1_budget_check",
+      "user_query": "Check if total stock valuation for category 'Hardware' exceeds or is within budget limit $150,000.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 113202.7,
+      "oracle_verdict": true,
+      "target_entities": {
+        "category": "Hardware",
+        "budget_cap": 150000.0
+      },
+      "provenance_hash": "c6a28b8a09930772d342c7c54d8ecb1b0b3be2655ce0461c4c9d247786e07d14"
+    },
+    {
+      "task_id": "task_train_T2_vendor_approved_spend_064",
+      "split": "train",
+      "template_id": "T2_vendor_approved_spend",
+      "user_query": "Determine the total expenditure on vendor 'VND-100' across Approved purchase orders (summing quantity * unit_price).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-100",
+        "order_status": "Approved"
+      },
+      "provenance_hash": "1db67e613e59803462b14ea86ac206b9454eaf045bf515f3931f3bfc99d71ef2"
+    },
+    {
+      "task_id": "task_train_T2_vendor_approved_spend_065",
+      "split": "train",
+      "template_id": "T2_vendor_approved_spend",
+      "user_query": "Calculate the cumulative purchase order spend for vendor 'VND-100' across Approved purchase orders (summing quantity * unit_price).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-100",
+        "order_status": "Approved"
+      },
+      "provenance_hash": "a698b37f5fddd6258edda73917e21f22e88559d1b55649e77626f4bd48cc6684"
+    },
+    {
+      "task_id": "task_train_T2_vendor_approved_spend_066",
+      "split": "train",
+      "template_id": "T2_vendor_approved_spend",
+      "user_query": "Compute the total order cost incurred for vendor 'VND-100' across Approved purchase orders (summing quantity * unit_price).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-100",
+        "order_status": "Approved"
+      },
+      "provenance_hash": "b31e966ddf2208324cc1c53c2525020743a48dc2d47e49624c6bf2f3b2d07114"
+    },
+    {
+      "task_id": "task_train_T2_vendor_approved_spend_067",
+      "split": "train",
+      "template_id": "T2_vendor_approved_spend",
+      "user_query": "What is the total expenditure associated with vendor 'VND-100' across Approved purchase orders (summing quantity * unit_price).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-100",
+        "order_status": "Approved"
+      },
+      "provenance_hash": "0c81d371b2c4d0b0ecd529296c7e25e6b423dc7b1f38720e17f7f2928e06a857"
+    },
+    {
+      "task_id": "task_train_T2_vendor_approved_spend_068",
+      "split": "train",
+      "template_id": "T2_vendor_approved_spend",
+      "user_query": "Summarize the total purchase order valuation for vendor 'VND-100' across Approved purchase orders (summing quantity * unit_price).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-100",
+        "order_status": "Approved"
+      },
+      "provenance_hash": "42800198c64b1c91e5e2c00e814725cf604df849ae50cdb903e6ffe958286550"
+    },
+    {
+      "task_id": "task_train_T2_vendor_approved_spend_069",
+      "split": "train",
+      "template_id": "T2_vendor_approved_spend",
+      "user_query": "Determine the total expenditure on vendor 'VND-101' across Approved purchase orders (summing quantity * unit_price).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 16611.29,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-101",
+        "order_status": "Approved"
+      },
+      "provenance_hash": "19e5d4805c1aeaa61894ff93250e6095c11146ce76bd0032d8e769615dfbff9e"
+    },
+    {
+      "task_id": "task_train_T2_vendor_approved_spend_070",
+      "split": "train",
+      "template_id": "T2_vendor_approved_spend",
+      "user_query": "Calculate the cumulative purchase order spend for vendor 'VND-101' across Approved purchase orders (summing quantity * unit_price).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 16611.29,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-101",
+        "order_status": "Approved"
+      },
+      "provenance_hash": "1ea89dca8e5da0e2f44e0297920651d5f3dd96ee6d7400817682bc1fbdd18d77"
+    },
+    {
+      "task_id": "task_train_T2_vendor_approved_spend_071",
+      "split": "train",
+      "template_id": "T2_vendor_approved_spend",
+      "user_query": "Compute the total order cost incurred for vendor 'VND-101' across Approved purchase orders (summing quantity * unit_price).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 16611.29,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-101",
+        "order_status": "Approved"
+      },
+      "provenance_hash": "73f5354896cd54dd2f029471569bcb87dabc733d7cb0d8c3bd6e024717209d19"
+    },
+    {
+      "task_id": "task_train_T2_vendor_approved_spend_072",
+      "split": "train",
+      "template_id": "T2_vendor_approved_spend",
+      "user_query": "What is the total expenditure associated with vendor 'VND-101' across Approved purchase orders (summing quantity * unit_price).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 16611.29,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-101",
+        "order_status": "Approved"
+      },
+      "provenance_hash": "2d656cfe97dba818a1095a2189cf70e6ccd8c6f0b354f8aa5197d3193e5cc3ab"
+    },
+    {
+      "task_id": "task_train_T2_vendor_approved_spend_073",
+      "split": "train",
+      "template_id": "T2_vendor_approved_spend",
+      "user_query": "Summarize the total purchase order valuation for vendor 'VND-101' across Approved purchase orders (summing quantity * unit_price).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 16611.29,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-101",
+        "order_status": "Approved"
+      },
+      "provenance_hash": "7b11c4bc403e25d58a864d1be9f81591eb01ed63e200ebb31db9744fa1da51a5"
+    },
+    {
+      "task_id": "task_train_T2_vendor_approved_spend_074",
+      "split": "train",
+      "template_id": "T2_vendor_approved_spend",
+      "user_query": "Determine the total expenditure on vendor 'VND-102' across Approved purchase orders (summing quantity * unit_price).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-102",
+        "order_status": "Approved"
+      },
+      "provenance_hash": "6fdcc77c083d48d57324f0b0bd88675f3734ca9e8df7367d341a2ec3d8ecda41"
+    },
+    {
+      "task_id": "task_train_T2_vendor_approved_spend_075",
+      "split": "train",
+      "template_id": "T2_vendor_approved_spend",
+      "user_query": "Calculate the cumulative purchase order spend for vendor 'VND-102' across Approved purchase orders (summing quantity * unit_price).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-102",
+        "order_status": "Approved"
+      },
+      "provenance_hash": "173ca9aa113dc15cea61312addf58b2013e6a76d3a29b8b34e05dd195c621357"
+    },
+    {
+      "task_id": "task_train_T2_vendor_approved_spend_076",
+      "split": "train",
+      "template_id": "T2_vendor_approved_spend",
+      "user_query": "Compute the total order cost incurred for vendor 'VND-102' across Approved purchase orders (summing quantity * unit_price).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-102",
+        "order_status": "Approved"
+      },
+      "provenance_hash": "80df13abb835faf663801635597429256575e829637c633baa4ee7235c643482"
+    },
+    {
+      "task_id": "task_train_T2_vendor_approved_spend_077",
+      "split": "train",
+      "template_id": "T2_vendor_approved_spend",
+      "user_query": "What is the total expenditure associated with vendor 'VND-102' across Approved purchase orders (summing quantity * unit_price).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-102",
+        "order_status": "Approved"
+      },
+      "provenance_hash": "e88005acd2c4378fab3d180fd860b0d9ee6a95015e4b160fc7f5f609bee3d3af"
+    },
+    {
+      "task_id": "task_train_T2_vendor_approved_spend_078",
+      "split": "train",
+      "template_id": "T2_vendor_approved_spend",
+      "user_query": "Summarize the total purchase order valuation for vendor 'VND-102' across Approved purchase orders (summing quantity * unit_price).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-102",
+        "order_status": "Approved"
+      },
+      "provenance_hash": "ab9e0811a4f8de019318bcf1c64cac2bc397bb3c94b77e0b3c0be95c413c2f78"
+    },
+    {
+      "task_id": "task_train_T2_vendor_approved_spend_079",
+      "split": "train",
+      "template_id": "T2_vendor_approved_spend",
+      "user_query": "Determine the total expenditure on vendor 'VND-103' across Approved purchase orders (summing quantity * unit_price).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-103",
+        "order_status": "Approved"
+      },
+      "provenance_hash": "99d5a530583a83d8c4d6ccfc345ab06ab23f3782f27310b04ba74999fb2be9bb"
+    },
+    {
+      "task_id": "task_train_T2_vendor_approved_spend_080",
+      "split": "train",
+      "template_id": "T2_vendor_approved_spend",
+      "user_query": "Calculate the cumulative purchase order spend for vendor 'VND-103' across Approved purchase orders (summing quantity * unit_price).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-103",
+        "order_status": "Approved"
+      },
+      "provenance_hash": "37587f5935d1528dfc4feb030882647b75bf52266d2e01732ed5d9ae146054f5"
+    },
+    {
+      "task_id": "task_train_T2_vendor_approved_spend_081",
+      "split": "train",
+      "template_id": "T2_vendor_approved_spend",
+      "user_query": "Compute the total order cost incurred for vendor 'VND-103' across Approved purchase orders (summing quantity * unit_price).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-103",
+        "order_status": "Approved"
+      },
+      "provenance_hash": "143e1ef5f1cbcb58d8abd05178d45c49f62f8d3ee538a3b2b305d801014fc9a0"
+    },
+    {
+      "task_id": "task_train_T2_vendor_approved_spend_082",
+      "split": "train",
+      "template_id": "T2_vendor_approved_spend",
+      "user_query": "What is the total expenditure associated with vendor 'VND-103' across Approved purchase orders (summing quantity * unit_price).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-103",
+        "order_status": "Approved"
+      },
+      "provenance_hash": "e35d40ad178eed369a850cdf3ef713baf46bc530ccb5a56b504a7a1dd2a6609c"
+    },
+    {
+      "task_id": "task_train_T2_vendor_approved_spend_083",
+      "split": "train",
+      "template_id": "T2_vendor_approved_spend",
+      "user_query": "Summarize the total purchase order valuation for vendor 'VND-103' across Approved purchase orders (summing quantity * unit_price).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-103",
+        "order_status": "Approved"
+      },
+      "provenance_hash": "2771e65bc05f980a41c43fe18689cc71d014cb023a83e9d1964414f378b9acec"
+    },
+    {
+      "task_id": "task_train_T2_vendor_approved_spend_084",
+      "split": "train",
+      "template_id": "T2_vendor_approved_spend",
+      "user_query": "Determine the total expenditure on vendor 'VND-104' across Approved purchase orders (summing quantity * unit_price).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-104",
+        "order_status": "Approved"
+      },
+      "provenance_hash": "629c948accc2ed8c9b503550ec37953ea85a74c3b05ee4b10214a5cb6215ddbe"
+    },
+    {
+      "task_id": "task_train_T2_vendor_approved_spend_085",
+      "split": "train",
+      "template_id": "T2_vendor_approved_spend",
+      "user_query": "Calculate the cumulative purchase order spend for vendor 'VND-104' across Approved purchase orders (summing quantity * unit_price).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-104",
+        "order_status": "Approved"
+      },
+      "provenance_hash": "c94b548f9e47f49a6158f5e6b42fb154523023ad640ba1b866f321012052b538"
+    },
+    {
+      "task_id": "task_train_T2_vendor_approved_spend_086",
+      "split": "train",
+      "template_id": "T2_vendor_approved_spend",
+      "user_query": "Compute the total order cost incurred for vendor 'VND-104' across Approved purchase orders (summing quantity * unit_price).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-104",
+        "order_status": "Approved"
+      },
+      "provenance_hash": "738260833e8292acd1d091fb36c54350af113963971672e5f683f6f13034e0bc"
+    },
+    {
+      "task_id": "task_train_T2_vendor_approved_spend_087",
+      "split": "train",
+      "template_id": "T2_vendor_approved_spend",
+      "user_query": "What is the total expenditure associated with vendor 'VND-104' across Approved purchase orders (summing quantity * unit_price).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-104",
+        "order_status": "Approved"
+      },
+      "provenance_hash": "b17581c98cc0678b515ab094e9efcf2c7c0d795e39e5fd028660c6557a99ee70"
+    },
+    {
+      "task_id": "task_train_T2_vendor_approved_spend_088",
+      "split": "train",
+      "template_id": "T2_vendor_approved_spend",
+      "user_query": "Summarize the total purchase order valuation for vendor 'VND-104' across Approved purchase orders (summing quantity * unit_price).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-104",
+        "order_status": "Approved"
+      },
+      "provenance_hash": "ade4e16886fe39708e6ce34d7f7f980c194b9169d2638ecb459b5d494674618f"
+    },
+    {
+      "task_id": "task_train_T2_vendor_approved_spend_089",
+      "split": "train",
+      "template_id": "T2_vendor_approved_spend",
+      "user_query": "Determine the total expenditure on vendor 'VND-105' across Approved purchase orders (summing quantity * unit_price).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 12818.16,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-105",
+        "order_status": "Approved"
+      },
+      "provenance_hash": "2950751471b2648a738ab2b6832aea59f5188d30e0c91383900f274536e5d7e4"
+    },
+    {
+      "task_id": "task_train_T2_vendor_approved_spend_090",
+      "split": "train",
+      "template_id": "T2_vendor_approved_spend",
+      "user_query": "Calculate the cumulative purchase order spend for vendor 'VND-105' across Approved purchase orders (summing quantity * unit_price).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 12818.16,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-105",
+        "order_status": "Approved"
+      },
+      "provenance_hash": "f498e34a0c429ce8feaff2366fa9baef3808b2a60e855126abaa3ad6106fa2d9"
+    },
+    {
+      "task_id": "task_train_T2_vendor_approved_spend_091",
+      "split": "train",
+      "template_id": "T2_vendor_approved_spend",
+      "user_query": "Compute the total order cost incurred for vendor 'VND-105' across Approved purchase orders (summing quantity * unit_price).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 12818.16,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-105",
+        "order_status": "Approved"
+      },
+      "provenance_hash": "08b6d778e75bbe28967c07dcb8dd9e8b4dcddceabe3ad1d65aef3667d64e8782"
+    },
+    {
+      "task_id": "task_train_T2_vendor_approved_spend_092",
+      "split": "train",
+      "template_id": "T2_vendor_approved_spend",
+      "user_query": "What is the total expenditure associated with vendor 'VND-105' across Approved purchase orders (summing quantity * unit_price).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 12818.16,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-105",
+        "order_status": "Approved"
+      },
+      "provenance_hash": "ab87c068c18a68ad56ad63ef4c6bf3292dc2a433a28a9c10c855b967cc019606"
+    },
+    {
+      "task_id": "task_train_T2_vendor_approved_spend_093",
+      "split": "train",
+      "template_id": "T2_vendor_approved_spend",
+      "user_query": "Summarize the total purchase order valuation for vendor 'VND-105' across Approved purchase orders (summing quantity * unit_price).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 12818.16,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-105",
+        "order_status": "Approved"
+      },
+      "provenance_hash": "c45dae3bfd2a50d8cea37d4d654b1ec77fea4c4c905810c0e3886e2fa837d8f5"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_094",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Calculate the total Fulfilled purchase order expenditure for vendor 'VND-100'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-100",
+        "order_status": "Fulfilled"
+      },
+      "provenance_hash": "4d8eeeca7f4230edec2c281084bee093e966defcac460ab2005379a1ff1a1044"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_095",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Sum quantity * unit_price for all 'Fulfilled' orders placed with vendor 'VND-100'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-100",
+        "order_status": "Fulfilled"
+      },
+      "provenance_hash": "ca3ab9fc5a2298849ee40afb470df2ad50dc09464d78303295ff080ea436f831"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_096",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Determine cumulative order spend for vendor 'VND-100' with order status 'Fulfilled'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-100",
+        "order_status": "Fulfilled"
+      },
+      "provenance_hash": "552be49ae792cc6fa0d6bf471436d87f39e297719de5767cc623fafc90123b09"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_097",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Calculate the total Draft purchase order expenditure for vendor 'VND-100'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 14922.26,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-100",
+        "order_status": "Draft"
+      },
+      "provenance_hash": "c83adf946413fb807020a7ad12f20fca622f8f2895aca2d94c4ef03cd62c9ac6"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_098",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Sum quantity * unit_price for all 'Draft' orders placed with vendor 'VND-100'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 14922.26,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-100",
+        "order_status": "Draft"
+      },
+      "provenance_hash": "f949a841cdeccfc735b0f53c0bab882d48e5e34446a66a040ed4e51eeb9d4116"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_099",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Determine cumulative order spend for vendor 'VND-100' with order status 'Draft'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 14922.26,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-100",
+        "order_status": "Draft"
+      },
+      "provenance_hash": "ef4a432cd4bad7bab275eaad88d0a9864b8d85aec90cef6f34dc9c8bb1c16cf6"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_100",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Calculate the total Cancelled purchase order expenditure for vendor 'VND-100'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-100",
+        "order_status": "Cancelled"
+      },
+      "provenance_hash": "125f27fef601161fa83a057f1a9125ec386850430f52db9ef324a1789b8c1a79"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_101",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Sum quantity * unit_price for all 'Cancelled' orders placed with vendor 'VND-100'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-100",
+        "order_status": "Cancelled"
+      },
+      "provenance_hash": "1e806a2211f66d08c89889ad919d1079673053c3d60e0e62cd1aaa927a6900c4"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_102",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Determine cumulative order spend for vendor 'VND-100' with order status 'Cancelled'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-100",
+        "order_status": "Cancelled"
+      },
+      "provenance_hash": "8e4d2068c395fa9355bdf7eb41c50a3dbca60514dc67cb877638f25290e90c9e"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_103",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Calculate the total Fulfilled purchase order expenditure for vendor 'VND-101'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-101",
+        "order_status": "Fulfilled"
+      },
+      "provenance_hash": "1d54b0fe0de7c2c5446bae9a8e47c32f88e1bc6c5fa1a52b50ca7495cf1a4ddb"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_104",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Sum quantity * unit_price for all 'Fulfilled' orders placed with vendor 'VND-101'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-101",
+        "order_status": "Fulfilled"
+      },
+      "provenance_hash": "4c4931fa7fe649610db98efd9af268b60422fbb0a8ea97b9dad8204438cf679c"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_105",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Determine cumulative order spend for vendor 'VND-101' with order status 'Fulfilled'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-101",
+        "order_status": "Fulfilled"
+      },
+      "provenance_hash": "f8289bf4f4175c473a31bc3929c3677d9eee2da94915aa4347fc2d14229afb6f"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_106",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Calculate the total Draft purchase order expenditure for vendor 'VND-101'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-101",
+        "order_status": "Draft"
+      },
+      "provenance_hash": "c69a606ee3a60f26875ac5fa94c8b96307a5dae19fceae30b10acae9555bac9f"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_107",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Sum quantity * unit_price for all 'Draft' orders placed with vendor 'VND-101'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-101",
+        "order_status": "Draft"
+      },
+      "provenance_hash": "e25cb7d6b094afe9ecfeb050df7b00359e6610fee1bd139fe69bf0206d60124f"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_108",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Determine cumulative order spend for vendor 'VND-101' with order status 'Draft'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-101",
+        "order_status": "Draft"
+      },
+      "provenance_hash": "ecd276b9dfdbb10aa825d230813ea563940647e1eb540ea705972ff4f6261cbc"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_109",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Calculate the total Cancelled purchase order expenditure for vendor 'VND-101'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-101",
+        "order_status": "Cancelled"
+      },
+      "provenance_hash": "c18a5e7f36de8018c4323a5dc66490be30bd17d545a1fe25d28bb70315c3b82f"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_110",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Sum quantity * unit_price for all 'Cancelled' orders placed with vendor 'VND-101'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-101",
+        "order_status": "Cancelled"
+      },
+      "provenance_hash": "797bf1e325139ed283d5c76dddbfd094f12bb480c91b5b3aff108d73ab3f76ee"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_111",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Determine cumulative order spend for vendor 'VND-101' with order status 'Cancelled'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-101",
+        "order_status": "Cancelled"
+      },
+      "provenance_hash": "1f2d4855f5c76314ea2a0132679b6be69969c6eea16b38719ac7026f25da6c37"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_112",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Calculate the total Fulfilled purchase order expenditure for vendor 'VND-102'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 20465.06,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-102",
+        "order_status": "Fulfilled"
+      },
+      "provenance_hash": "7f727d158caa06177ff00d59a4c05d0aa375b8afbe86203fb9f359f99fb75390"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_113",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Sum quantity * unit_price for all 'Fulfilled' orders placed with vendor 'VND-102'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 20465.06,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-102",
+        "order_status": "Fulfilled"
+      },
+      "provenance_hash": "cd3cbc008aa42585ed875097ea3d61b7f668c24d47de933e84fa7751295a5264"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_114",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Determine cumulative order spend for vendor 'VND-102' with order status 'Fulfilled'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 20465.06,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-102",
+        "order_status": "Fulfilled"
+      },
+      "provenance_hash": "c111f7d704059e4ccd97854a7369ff0501901945b6ecb261fee931dda37e5390"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_115",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Calculate the total Draft purchase order expenditure for vendor 'VND-102'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-102",
+        "order_status": "Draft"
+      },
+      "provenance_hash": "120c17cccc2f08884c940a22e5c99d5a9085d49e330ef8f3adfeb0c42107bf66"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_116",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Sum quantity * unit_price for all 'Draft' orders placed with vendor 'VND-102'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-102",
+        "order_status": "Draft"
+      },
+      "provenance_hash": "dd3c8dae4f5639aef6d426d01fc2ccac1851683aa66069fcc5e3408db105fdc3"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_117",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Determine cumulative order spend for vendor 'VND-102' with order status 'Draft'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-102",
+        "order_status": "Draft"
+      },
+      "provenance_hash": "87d91427ae66aa625bfff73d8046a0875da7181ab3602f4c6685186aa44bcae2"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_118",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Calculate the total Cancelled purchase order expenditure for vendor 'VND-102'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-102",
+        "order_status": "Cancelled"
+      },
+      "provenance_hash": "a7a6a6eb820e9dcfe3849cd3f982c47c5cd75a0d0702886760aa31912a51f137"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_119",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Sum quantity * unit_price for all 'Cancelled' orders placed with vendor 'VND-102'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-102",
+        "order_status": "Cancelled"
+      },
+      "provenance_hash": "e71960aba8c2244853c33e83c7e0639cce5a9455bcc1836db03f25fb9675824c"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_120",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Determine cumulative order spend for vendor 'VND-102' with order status 'Cancelled'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-102",
+        "order_status": "Cancelled"
+      },
+      "provenance_hash": "7dfb67e879956ab60446fe8601719f3f9f26e42e5e58fe8bc7728b76ee8cd2fe"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_121",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Calculate the total Fulfilled purchase order expenditure for vendor 'VND-103'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-103",
+        "order_status": "Fulfilled"
+      },
+      "provenance_hash": "2e072b5acb64d350195cf395fc83011e698c16d72ec2c7d71a24ac7355e31fec"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_122",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Sum quantity * unit_price for all 'Fulfilled' orders placed with vendor 'VND-103'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-103",
+        "order_status": "Fulfilled"
+      },
+      "provenance_hash": "6cb9d58e008b8ae62708e60ffc585b89c9358bdf2622824d600c8e94d4fb3d3d"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_123",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Determine cumulative order spend for vendor 'VND-103' with order status 'Fulfilled'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-103",
+        "order_status": "Fulfilled"
+      },
+      "provenance_hash": "54aab148e7a2c2b211d0cf94aa8d6da38ae2e6a607ced3f4d5a5a65a996624ba"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_124",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Calculate the total Draft purchase order expenditure for vendor 'VND-103'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-103",
+        "order_status": "Draft"
+      },
+      "provenance_hash": "58719d6d18b18c06de739fca589a8486d40f437bfaf8dda13c6eab27be23d3fe"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_125",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Sum quantity * unit_price for all 'Draft' orders placed with vendor 'VND-103'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-103",
+        "order_status": "Draft"
+      },
+      "provenance_hash": "d2ee4f708cca49257492246e0cb3dfb609050ad70baf26f777c780f03340eca3"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_126",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Determine cumulative order spend for vendor 'VND-103' with order status 'Draft'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-103",
+        "order_status": "Draft"
+      },
+      "provenance_hash": "bef80de76c820fc9510a9dc7228dbf917a43fbe33c556825232e0a1715516629"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_127",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Calculate the total Cancelled purchase order expenditure for vendor 'VND-103'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 20645.27,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-103",
+        "order_status": "Cancelled"
+      },
+      "provenance_hash": "fe8bc77702af30d7d7d9f5f12e19126b4f4eabf548e1c4d4c053eec2707bb27a"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_128",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Sum quantity * unit_price for all 'Cancelled' orders placed with vendor 'VND-103'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 20645.27,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-103",
+        "order_status": "Cancelled"
+      },
+      "provenance_hash": "9cb10db261e41d09fce2613ef06062fb466317fdc6fce7ee77f4b0f5a0f9eb61"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_129",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Determine cumulative order spend for vendor 'VND-103' with order status 'Cancelled'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 20645.27,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-103",
+        "order_status": "Cancelled"
+      },
+      "provenance_hash": "b950ca275bc1737ed55a17e75cd1907663955fabb56eb667339422c1046e1edf"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_130",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Calculate the total Fulfilled purchase order expenditure for vendor 'VND-104'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-104",
+        "order_status": "Fulfilled"
+      },
+      "provenance_hash": "4c4e4e187e8a4d62567e2c62509271c681516fb619dc04bf73279c160919eeaf"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_131",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Sum quantity * unit_price for all 'Fulfilled' orders placed with vendor 'VND-104'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-104",
+        "order_status": "Fulfilled"
+      },
+      "provenance_hash": "a6b145059e02b1f396f362fac7c382c5e5f2e68fad288693f595b8615c82f85d"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_132",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Determine cumulative order spend for vendor 'VND-104' with order status 'Fulfilled'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-104",
+        "order_status": "Fulfilled"
+      },
+      "provenance_hash": "2b07a8a9b4cc6eca04b4de6bafb50d048ecde3873b9b02574ebd2f62ed89e300"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_133",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Calculate the total Draft purchase order expenditure for vendor 'VND-104'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 18344.79,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-104",
+        "order_status": "Draft"
+      },
+      "provenance_hash": "bf10bf15b6b04e1d0dc20a99c0255f0ea3e3536648f2fbda784970ee1da54baf"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_134",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Sum quantity * unit_price for all 'Draft' orders placed with vendor 'VND-104'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 18344.79,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-104",
+        "order_status": "Draft"
+      },
+      "provenance_hash": "2f4681c2510555d94e41d44e12e0caf6f003e8930338fec8d9c8b06ef2ab9ff3"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_135",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Determine cumulative order spend for vendor 'VND-104' with order status 'Draft'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 18344.79,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-104",
+        "order_status": "Draft"
+      },
+      "provenance_hash": "3d6d3927a6de70f30a0cb9d049005f750cc6f200bf1b60bf4250ec8d176a5226"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_136",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Calculate the total Cancelled purchase order expenditure for vendor 'VND-104'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-104",
+        "order_status": "Cancelled"
+      },
+      "provenance_hash": "bf49ff1d0e3b1d8fa564f5e8fa0b0899f5526dfcdad1d2176828a61f72750baf"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_137",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Sum quantity * unit_price for all 'Cancelled' orders placed with vendor 'VND-104'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-104",
+        "order_status": "Cancelled"
+      },
+      "provenance_hash": "b231982067654e7930152be0d2336776aeed1c925096a3ca9200f584dd300a8b"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_138",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Determine cumulative order spend for vendor 'VND-104' with order status 'Cancelled'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-104",
+        "order_status": "Cancelled"
+      },
+      "provenance_hash": "783144ebbed40b9b9d8ad4e01d997ba4d8584158a82ecba490e7f6db4bed6c6f"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_139",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Calculate the total Fulfilled purchase order expenditure for vendor 'VND-105'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-105",
+        "order_status": "Fulfilled"
+      },
+      "provenance_hash": "24f18f577e61af291a6a61a402ca929193bcc21a6d8daac7ee9558a47337ab0a"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_140",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Sum quantity * unit_price for all 'Fulfilled' orders placed with vendor 'VND-105'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-105",
+        "order_status": "Fulfilled"
+      },
+      "provenance_hash": "c267b292d05c5351045e9442f11b30089094e9a22d1675eca44428f0fcb8e022"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_141",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Determine cumulative order spend for vendor 'VND-105' with order status 'Fulfilled'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-105",
+        "order_status": "Fulfilled"
+      },
+      "provenance_hash": "1d06c6f5d65c1e14ac6b609dd1df9e350882726e315faa309ccd26c2d2c70be3"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_142",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Calculate the total Draft purchase order expenditure for vendor 'VND-105'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-105",
+        "order_status": "Draft"
+      },
+      "provenance_hash": "970b01eb82a64aa877d867407e6b19b872a701953c6fa2d1ca87f5b21c0eada9"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_143",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Sum quantity * unit_price for all 'Draft' orders placed with vendor 'VND-105'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-105",
+        "order_status": "Draft"
+      },
+      "provenance_hash": "0b76c6a4fe0bf9ef5e8bef6996fd1c56f44926b90c1557bcb55f225e3ae78fcf"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_144",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Determine cumulative order spend for vendor 'VND-105' with order status 'Draft'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-105",
+        "order_status": "Draft"
+      },
+      "provenance_hash": "498d39d26a52c30437b2d19f3f0a45fface476e92a0b07d6e94b31d144580c73"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_145",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Calculate the total Cancelled purchase order expenditure for vendor 'VND-105'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-105",
+        "order_status": "Cancelled"
+      },
+      "provenance_hash": "cdde598aaa16955fe0d5b7ab713a275954027de0c9c1c7a06fe6f16be0778402"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_146",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Sum quantity * unit_price for all 'Cancelled' orders placed with vendor 'VND-105'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-105",
+        "order_status": "Cancelled"
+      },
+      "provenance_hash": "505781979344fa91afe32cf43b2ca649a7adfa04c3ac8ad9441b72ffb6b67551"
+    },
+    {
+      "task_id": "task_train_T2_vendor_status_spend_147",
+      "split": "train",
+      "template_id": "T2_vendor_status_spend",
+      "user_query": "Determine cumulative order spend for vendor 'VND-105' with order status 'Cancelled'.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-105",
+        "order_status": "Cancelled"
+      },
+      "provenance_hash": "685e1c2b3827f330503fe709cd861331b7e0e12740025adffaf354bb2098af82"
+    },
+    {
+      "task_id": "task_train_T2_vendor_order_metric_148",
+      "split": "train",
+      "template_id": "T2_vendor_order_metric",
+      "user_query": "Look up purchase orders for vendor 'VND-100' and compute the average unit price (mean of unit_price).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 74.3367,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-100",
+        "field_name": "unit_price",
+        "operation": "mean"
+      },
+      "provenance_hash": "576544f51fb8859f33278aebbff1c366c8caa8b0f466b700ceb026c1f4f2cab4"
+    },
+    {
+      "task_id": "task_train_T2_vendor_order_metric_149",
+      "split": "train",
+      "template_id": "T2_vendor_order_metric",
+      "user_query": "Look up purchase orders for vendor 'VND-100' and compute the highest unit price (max of unit_price).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 106.26,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-100",
+        "field_name": "unit_price",
+        "operation": "max"
+      },
+      "provenance_hash": "d7f5b77a89e3c1fe8365a9654840ceac33c9c071ac3ba48b464eb069b2ca8e93"
+    },
+    {
+      "task_id": "task_train_T2_vendor_order_metric_150",
+      "split": "train",
+      "template_id": "T2_vendor_order_metric",
+      "user_query": "Look up purchase orders for vendor 'VND-100' and compute the total items ordered (sum of quantity).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 177.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-100",
+        "field_name": "quantity",
+        "operation": "sum"
+      },
+      "provenance_hash": "66d3f003ba3550f57e15ae23e3b190a1fb4294b84d6afe78e820cc216205427c"
+    },
+    {
+      "task_id": "task_train_T2_vendor_order_metric_151",
+      "split": "train",
+      "template_id": "T2_vendor_order_metric",
+      "user_query": "Look up purchase orders for vendor 'VND-101' and compute the average unit price (mean of unit_price).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 91.2033,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-101",
+        "field_name": "unit_price",
+        "operation": "mean"
+      },
+      "provenance_hash": "de3e08be3c2a844b999ed0d788e94d78204bc9375e600975a1b13362328b9f5e"
+    },
+    {
+      "task_id": "task_train_T2_vendor_order_metric_152",
+      "split": "train",
+      "template_id": "T2_vendor_order_metric",
+      "user_query": "Look up purchase orders for vendor 'VND-101' and compute the highest unit price (max of unit_price).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 172.23,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-101",
+        "field_name": "unit_price",
+        "operation": "max"
+      },
+      "provenance_hash": "064eadd67fe4e16b4fe7a28af7a00ee0c3febb456f7cf09332d80eebac43a688"
+    },
+    {
+      "task_id": "task_train_T2_vendor_order_metric_153",
+      "split": "train",
+      "template_id": "T2_vendor_order_metric",
+      "user_query": "Look up purchase orders for vendor 'VND-101' and compute the total items ordered (sum of quantity).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 149.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-101",
+        "field_name": "quantity",
+        "operation": "sum"
+      },
+      "provenance_hash": "968b81d24c85895533edd3eec06e8c98c75c4497506b8d687e6a16fd797a2fde"
+    },
+    {
+      "task_id": "task_train_T2_vendor_order_metric_154",
+      "split": "train",
+      "template_id": "T2_vendor_order_metric",
+      "user_query": "Look up purchase orders for vendor 'VND-102' and compute the average unit price (mean of unit_price).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 87.02,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-102",
+        "field_name": "unit_price",
+        "operation": "mean"
+      },
+      "provenance_hash": "2305b5517e47bbf09812ea1550ace0a4b15e8dde24ddb6ce81e4ba0088566929"
+    },
+    {
+      "task_id": "task_train_T2_vendor_order_metric_155",
+      "split": "train",
+      "template_id": "T2_vendor_order_metric",
+      "user_query": "Look up purchase orders for vendor 'VND-102' and compute the highest unit price (max of unit_price).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 171.92,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-102",
+        "field_name": "unit_price",
+        "operation": "max"
+      },
+      "provenance_hash": "c060f0de19aa5f1bdedfeaf3b2f81e7d82f3a5159fddaa5049136771b2042a55"
+    },
+    {
+      "task_id": "task_train_T2_vendor_order_metric_156",
+      "split": "train",
+      "template_id": "T2_vendor_order_metric",
+      "user_query": "Look up purchase orders for vendor 'VND-102' and compute the total items ordered (sum of quantity).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 159.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-102",
+        "field_name": "quantity",
+        "operation": "sum"
+      },
+      "provenance_hash": "1d713023b1af164df73a358f8bdee896a6fd6bc2dbcf769e64e1b886047c5d1a"
+    },
+    {
+      "task_id": "task_train_T2_vendor_order_metric_157",
+      "split": "train",
+      "template_id": "T2_vendor_order_metric",
+      "user_query": "Look up purchase orders for vendor 'VND-103' and compute the average unit price (mean of unit_price).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 148.43,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-103",
+        "field_name": "unit_price",
+        "operation": "mean"
+      },
+      "provenance_hash": "9b9b7e1978e7afbdaa228009763cc171e27617052687624dc621656224848f5e"
+    },
+    {
+      "task_id": "task_train_T2_vendor_order_metric_158",
+      "split": "train",
+      "template_id": "T2_vendor_order_metric",
+      "user_query": "Look up purchase orders for vendor 'VND-103' and compute the highest unit price (max of unit_price).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 155.8,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-103",
+        "field_name": "unit_price",
+        "operation": "max"
+      },
+      "provenance_hash": "893aa2cf34c2105e08e8362769395a78c528cf38adcd153928303b7cf3ad0e7d"
+    },
+    {
+      "task_id": "task_train_T2_vendor_order_metric_159",
+      "split": "train",
+      "template_id": "T2_vendor_order_metric",
+      "user_query": "Look up purchase orders for vendor 'VND-103' and compute the total items ordered (sum of quantity).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 143.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-103",
+        "field_name": "quantity",
+        "operation": "sum"
+      },
+      "provenance_hash": "da45135da69a59cc514616edb1094440d8c333862bd4b81d04a9d1078cc8d2e7"
+    },
+    {
+      "task_id": "task_train_T2_vendor_order_metric_160",
+      "split": "train",
+      "template_id": "T2_vendor_order_metric",
+      "user_query": "Look up purchase orders for vendor 'VND-104' and compute the average unit price (mean of unit_price).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 102.4367,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-104",
+        "field_name": "unit_price",
+        "operation": "mean"
+      },
+      "provenance_hash": "49f27fbd2e4a01ead00fb7569fc04e386edaca09325c1795cba58c33b0827989"
+    },
+    {
+      "task_id": "task_train_T2_vendor_order_metric_161",
+      "split": "train",
+      "template_id": "T2_vendor_order_metric",
+      "user_query": "Look up purchase orders for vendor 'VND-104' and compute the highest unit price (max of unit_price).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 146.29,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-104",
+        "field_name": "unit_price",
+        "operation": "max"
+      },
+      "provenance_hash": "80accd5dbca29be4e1b41f77d8fd9cc3410bb75f54a48e1256e18c4d40ce6d30"
+    },
+    {
+      "task_id": "task_train_T2_vendor_order_metric_162",
+      "split": "train",
+      "template_id": "T2_vendor_order_metric",
+      "user_query": "Look up purchase orders for vendor 'VND-104' and compute the total items ordered (sum of quantity).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 165.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-104",
+        "field_name": "quantity",
+        "operation": "sum"
+      },
+      "provenance_hash": "152329d5820fa0d5dbb8acdaef9ae114d063230f5fbeef28d929ba803a39cd14"
+    },
+    {
+      "task_id": "task_train_T2_vendor_order_metric_163",
+      "split": "train",
+      "template_id": "T2_vendor_order_metric",
+      "user_query": "Look up purchase orders for vendor 'VND-105' and compute the average unit price (mean of unit_price).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 100.5733,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-105",
+        "field_name": "unit_price",
+        "operation": "mean"
+      },
+      "provenance_hash": "ff9814a5e9ed19a03c5d2f5e0278156bb6fdfe52b9cd5b48442d071ce9ef5ffe"
+    },
+    {
+      "task_id": "task_train_T2_vendor_order_metric_164",
+      "split": "train",
+      "template_id": "T2_vendor_order_metric",
+      "user_query": "Look up purchase orders for vendor 'VND-105' and compute the highest unit price (max of unit_price).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 162.21,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-105",
+        "field_name": "unit_price",
+        "operation": "max"
+      },
+      "provenance_hash": "d44df7592f030119593c84f16fe74fc7163d6900a981717f2445a433e53e197c"
+    },
+    {
+      "task_id": "task_train_T2_vendor_order_metric_165",
+      "split": "train",
+      "template_id": "T2_vendor_order_metric",
+      "user_query": "Look up purchase orders for vendor 'VND-105' and compute the total items ordered (sum of quantity).",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate"
+      ],
+      "oracle_answer": 155.0,
+      "oracle_verdict": null,
+      "target_entities": {
+        "vendor_id": "VND-105",
+        "field_name": "quantity",
+        "operation": "sum"
+      },
+      "provenance_hash": "e410bda36adefa2df12115fd2edbbc4f2540834b97c258b709a423a3cd050721"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_166",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Verify whether vendor 'VND-100' Approved purchase order expenditure is within the $2,500 limit.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-100",
+        "budget_cap": 2500.0
+      },
+      "provenance_hash": "23100817c024fd44bef8122d7f045c0ed726dcc40eb3b23a7e9545b030c889fb"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_167",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Check if total Approved expenditure for vendor 'VND-100' complies with budget cap $2,500.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-100",
+        "budget_cap": 2500.0
+      },
+      "provenance_hash": "75107e3ca2921ea9becbfe3f3b0dbfe89f344306a2c08254b7b86af0a60ca7d4"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_168",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Verify whether vendor 'VND-100' Approved purchase order expenditure is within the $5,000 limit.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-100",
+        "budget_cap": 5000.0
+      },
+      "provenance_hash": "333c126b840fc8b8e2cdce956637a8bbeb497b0dfcaadff229f4abacc9a24181"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_169",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Check if total Approved expenditure for vendor 'VND-100' complies with budget cap $5,000.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-100",
+        "budget_cap": 5000.0
+      },
+      "provenance_hash": "e4d7112d05faceae31723efa190669ac54697d89c3a09864031304f090114ea4"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_170",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Verify whether vendor 'VND-100' Approved purchase order expenditure is within the $10,000 limit.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-100",
+        "budget_cap": 10000.0
+      },
+      "provenance_hash": "676d48b86e283f03976ac69cd5d2c6389d1a388e98867ea8d3a07fd76492212c"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_171",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Check if total Approved expenditure for vendor 'VND-100' complies with budget cap $10,000.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-100",
+        "budget_cap": 10000.0
+      },
+      "provenance_hash": "68e4794909020e6a9836a897899b4bce761c4b49d2bc2032e9463b9af7320284"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_172",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Verify whether vendor 'VND-100' Approved purchase order expenditure is within the $15,000 limit.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-100",
+        "budget_cap": 15000.0
+      },
+      "provenance_hash": "e8ddbe2904935874d6edde359c01be9724f832789193f717322a596fb50baefc"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_173",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Check if total Approved expenditure for vendor 'VND-100' complies with budget cap $15,000.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-100",
+        "budget_cap": 15000.0
+      },
+      "provenance_hash": "418b0e8a4716cc3e4339323ebd97ea05652d1f7499bad7eb4f7d1d29737c3e89"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_174",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Verify whether vendor 'VND-100' Approved purchase order expenditure is within the $25,000 limit.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-100",
+        "budget_cap": 25000.0
+      },
+      "provenance_hash": "e7192d4221792655ce132dc4c05a16e02d662be6ea23d87c2115973af04c8888"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_175",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Check if total Approved expenditure for vendor 'VND-100' complies with budget cap $25,000.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-100",
+        "budget_cap": 25000.0
+      },
+      "provenance_hash": "94b4a2d0140912ddec67f32afcd7a92c44db150ade82adb342ddb40eb389d5f1"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_176",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Verify whether vendor 'VND-100' Approved purchase order expenditure is within the $30,000 limit.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-100",
+        "budget_cap": 30000.0
+      },
+      "provenance_hash": "0582d70260bc22419d00de93387facdabcc645a79572463e9870564cef817ab2"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_177",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Check if total Approved expenditure for vendor 'VND-100' complies with budget cap $30,000.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-100",
+        "budget_cap": 30000.0
+      },
+      "provenance_hash": "7def9ad490536c5cde0440543a17922b631205b33c08c1c1af3539c36d681184"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_178",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Verify whether vendor 'VND-101' Approved purchase order expenditure is within the $2,500 limit.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 16611.29,
+      "oracle_verdict": false,
+      "target_entities": {
+        "vendor_id": "VND-101",
+        "budget_cap": 2500.0
+      },
+      "provenance_hash": "bdf90558b4f7966a0285bbd7b35a9a804e0515b7afc04ac83643295d034f16d8"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_179",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Check if total Approved expenditure for vendor 'VND-101' complies with budget cap $2,500.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 16611.29,
+      "oracle_verdict": false,
+      "target_entities": {
+        "vendor_id": "VND-101",
+        "budget_cap": 2500.0
+      },
+      "provenance_hash": "7bbe68ff7806922b305bfb727d3f2f8cfb5858684b7716c12e2b0911602139fb"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_180",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Verify whether vendor 'VND-101' Approved purchase order expenditure is within the $5,000 limit.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 16611.29,
+      "oracle_verdict": false,
+      "target_entities": {
+        "vendor_id": "VND-101",
+        "budget_cap": 5000.0
+      },
+      "provenance_hash": "9f5a3eed3989a7f4473089bf7b8226dfe99310a2e1ed1672df1a19c0e93ff2c8"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_181",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Check if total Approved expenditure for vendor 'VND-101' complies with budget cap $5,000.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 16611.29,
+      "oracle_verdict": false,
+      "target_entities": {
+        "vendor_id": "VND-101",
+        "budget_cap": 5000.0
+      },
+      "provenance_hash": "8190b82802c4ce3c5edc155554da0a9b1e8d11484a5392a40c18b221b492c290"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_182",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Verify whether vendor 'VND-101' Approved purchase order expenditure is within the $10,000 limit.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 16611.29,
+      "oracle_verdict": false,
+      "target_entities": {
+        "vendor_id": "VND-101",
+        "budget_cap": 10000.0
+      },
+      "provenance_hash": "74059b6f7a93389bc06b351d1a078ae46e3664e358f9ca23e1b850cb219d6359"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_183",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Check if total Approved expenditure for vendor 'VND-101' complies with budget cap $10,000.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 16611.29,
+      "oracle_verdict": false,
+      "target_entities": {
+        "vendor_id": "VND-101",
+        "budget_cap": 10000.0
+      },
+      "provenance_hash": "78b1267d5a4e76fd5b36d1428e6f196bb0dbb6eee425eef4c8755d6a66f0ec49"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_184",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Verify whether vendor 'VND-101' Approved purchase order expenditure is within the $15,000 limit.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 16611.29,
+      "oracle_verdict": false,
+      "target_entities": {
+        "vendor_id": "VND-101",
+        "budget_cap": 15000.0
+      },
+      "provenance_hash": "96c02f96667d2c9feb857d97421757a6d5d3956bf783f27dcf62ecd570dbca28"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_185",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Check if total Approved expenditure for vendor 'VND-101' complies with budget cap $15,000.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 16611.29,
+      "oracle_verdict": false,
+      "target_entities": {
+        "vendor_id": "VND-101",
+        "budget_cap": 15000.0
+      },
+      "provenance_hash": "3b2aa52731fef4ebff4daf393a495bd95ba0112fce475787d9023cbe844e1c59"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_186",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Verify whether vendor 'VND-101' Approved purchase order expenditure is within the $25,000 limit.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 16611.29,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-101",
+        "budget_cap": 25000.0
+      },
+      "provenance_hash": "e097003aa2767fb8d9e1e6f20833a1f14d9955cc0a03228841806fc6ade0852a"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_187",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Check if total Approved expenditure for vendor 'VND-101' complies with budget cap $25,000.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 16611.29,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-101",
+        "budget_cap": 25000.0
+      },
+      "provenance_hash": "14d2d6e4f13d039c32a1a8baf8da3c1f64687b997732d9daf2188eda6180ddd5"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_188",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Verify whether vendor 'VND-101' Approved purchase order expenditure is within the $30,000 limit.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 16611.29,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-101",
+        "budget_cap": 30000.0
+      },
+      "provenance_hash": "76725c365ab53ab7a36110c80a9b5863737a1bd632590a68bcfa5be67e0bdda4"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_189",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Check if total Approved expenditure for vendor 'VND-101' complies with budget cap $30,000.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 16611.29,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-101",
+        "budget_cap": 30000.0
+      },
+      "provenance_hash": "5562b38eba9d5f5116c348f96e48c605cbff579a1a03728f0368c63196d48cf8"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_190",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Verify whether vendor 'VND-102' Approved purchase order expenditure is within the $2,500 limit.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-102",
+        "budget_cap": 2500.0
+      },
+      "provenance_hash": "c49e310c659a40f91b7d419368ff165ac7313f53e8452a9086459e93cd1754e4"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_191",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Check if total Approved expenditure for vendor 'VND-102' complies with budget cap $2,500.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-102",
+        "budget_cap": 2500.0
+      },
+      "provenance_hash": "adb5ea44dccc2820c0e9279b6f48b5e2cbfa9faf7a4b3d235e208053a82c0c8a"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_192",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Verify whether vendor 'VND-102' Approved purchase order expenditure is within the $5,000 limit.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-102",
+        "budget_cap": 5000.0
+      },
+      "provenance_hash": "d9efe0e3987630c25296e0125fccc8a025edc0a406e8358aafab83c16adcc9f6"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_193",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Check if total Approved expenditure for vendor 'VND-102' complies with budget cap $5,000.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-102",
+        "budget_cap": 5000.0
+      },
+      "provenance_hash": "aec0cbbbfa2fef7a52f559384abd04bf430c17e093ee079f86ed85dd50156f50"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_194",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Verify whether vendor 'VND-102' Approved purchase order expenditure is within the $10,000 limit.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-102",
+        "budget_cap": 10000.0
+      },
+      "provenance_hash": "95151485ef8688cbd523f1b6b903b055381db84b82064fa8ba0d9bbc8ee6d7f0"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_195",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Check if total Approved expenditure for vendor 'VND-102' complies with budget cap $10,000.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-102",
+        "budget_cap": 10000.0
+      },
+      "provenance_hash": "c5cac7d5d410382ec3e8115d40b6c20188cc798759c1db01ab70dd66f7b18993"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_196",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Verify whether vendor 'VND-102' Approved purchase order expenditure is within the $15,000 limit.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-102",
+        "budget_cap": 15000.0
+      },
+      "provenance_hash": "1b6c528610c4bb6c3972aa947070e6a2eefb63ea021ab4dd632b4eefcf39c8c3"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_197",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Check if total Approved expenditure for vendor 'VND-102' complies with budget cap $15,000.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-102",
+        "budget_cap": 15000.0
+      },
+      "provenance_hash": "2598443a17cbff7bf4dd7e5f6d4f1bf8a506a8a31087ed621f8b7e9758479c18"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_198",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Verify whether vendor 'VND-102' Approved purchase order expenditure is within the $25,000 limit.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-102",
+        "budget_cap": 25000.0
+      },
+      "provenance_hash": "0c6f6987c0aad632d73cf24bf1c9c18b5ccf92344424bbdf003f98d680586722"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_199",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Check if total Approved expenditure for vendor 'VND-102' complies with budget cap $25,000.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-102",
+        "budget_cap": 25000.0
+      },
+      "provenance_hash": "8902a5e537bf247efccedcc776c56661489ed12b0280a303b0c3ba5ed832aa8c"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_200",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Verify whether vendor 'VND-102' Approved purchase order expenditure is within the $30,000 limit.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-102",
+        "budget_cap": 30000.0
+      },
+      "provenance_hash": "ab679804e1109475d8ffe9e7ad28ba3c50304af3a0feaee95ab3e48baf1d6580"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_201",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Check if total Approved expenditure for vendor 'VND-102' complies with budget cap $30,000.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-102",
+        "budget_cap": 30000.0
+      },
+      "provenance_hash": "e22902cee08cb94676138892758f79607affe4b7f20cba327b649098d4ab1cf2"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_202",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Verify whether vendor 'VND-103' Approved purchase order expenditure is within the $2,500 limit.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-103",
+        "budget_cap": 2500.0
+      },
+      "provenance_hash": "05c600f9b0e8a6e3636045b9fc22839c8b1eb33957ff3ac702d6e4598f9bb2f9"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_203",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Check if total Approved expenditure for vendor 'VND-103' complies with budget cap $2,500.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-103",
+        "budget_cap": 2500.0
+      },
+      "provenance_hash": "ccacb373ce535e4d571e0c040934333c7de7b46fe43db4601527fcd3b522fa18"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_204",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Verify whether vendor 'VND-103' Approved purchase order expenditure is within the $5,000 limit.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-103",
+        "budget_cap": 5000.0
+      },
+      "provenance_hash": "7eae2d55b55984a36384ca6711936c59aa014459041bd5d6199007ce69817c22"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_205",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Check if total Approved expenditure for vendor 'VND-103' complies with budget cap $5,000.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-103",
+        "budget_cap": 5000.0
+      },
+      "provenance_hash": "6881f26fba2404d6eda702e12d3f15a23e285a76eb5e433b330a5c851c30ab5e"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_206",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Verify whether vendor 'VND-103' Approved purchase order expenditure is within the $10,000 limit.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-103",
+        "budget_cap": 10000.0
+      },
+      "provenance_hash": "9b7ab1c2a2727bd522481ca57b40bfd5c1ad1cb6ad35d1b70ae39a64831cdfd5"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_207",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Check if total Approved expenditure for vendor 'VND-103' complies with budget cap $10,000.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-103",
+        "budget_cap": 10000.0
+      },
+      "provenance_hash": "1d7ba0a0215ae24f54b0e97bff6d92d243f2421ac65b4f5f34f10c4dfe9acb56"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_208",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Verify whether vendor 'VND-103' Approved purchase order expenditure is within the $15,000 limit.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-103",
+        "budget_cap": 15000.0
+      },
+      "provenance_hash": "c40fb7f0f5bd078a6783b81462d70756b232bb1b157b4e3e5586742fc1995918"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_209",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Check if total Approved expenditure for vendor 'VND-103' complies with budget cap $15,000.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-103",
+        "budget_cap": 15000.0
+      },
+      "provenance_hash": "ace5bd6f1447185a28e99cbf91f8a0a1cd784a79bebaefe5336fd4dab1a7fc9f"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_210",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Verify whether vendor 'VND-103' Approved purchase order expenditure is within the $25,000 limit.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-103",
+        "budget_cap": 25000.0
+      },
+      "provenance_hash": "111fb9d7dfe94ba849cc59712f79901ce39e20df2310d06618a2c7765ef66e6d"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_211",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Check if total Approved expenditure for vendor 'VND-103' complies with budget cap $25,000.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-103",
+        "budget_cap": 25000.0
+      },
+      "provenance_hash": "779cbb564b107b080c6ae96ba78e645f0202849af497e071290dae227790dbf8"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_212",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Verify whether vendor 'VND-103' Approved purchase order expenditure is within the $30,000 limit.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-103",
+        "budget_cap": 30000.0
+      },
+      "provenance_hash": "61ecf64d6867f7e8ac41c2387305bab8ac838f38994fa03193736b473810be8e"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_213",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Check if total Approved expenditure for vendor 'VND-103' complies with budget cap $30,000.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-103",
+        "budget_cap": 30000.0
+      },
+      "provenance_hash": "6605d3e52c8ca58f5d7af3916c17307e492324c7525aa298c608e06e5e4d9067"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_214",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Verify whether vendor 'VND-104' Approved purchase order expenditure is within the $2,500 limit.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-104",
+        "budget_cap": 2500.0
+      },
+      "provenance_hash": "06da63cb853404cfa1b4091e0ae52a6a77da1d41a422d4f23468a20cf3e01dcf"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_215",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Check if total Approved expenditure for vendor 'VND-104' complies with budget cap $2,500.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-104",
+        "budget_cap": 2500.0
+      },
+      "provenance_hash": "d227607b08635879c1efbebbdc64fb2545c15ede253a8333d12b7d478570ff1e"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_216",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Verify whether vendor 'VND-104' Approved purchase order expenditure is within the $5,000 limit.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-104",
+        "budget_cap": 5000.0
+      },
+      "provenance_hash": "fe9877e6ad8e73423cc72dbd0b73177d54a4482510daaecadf60a5f465f11eca"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_217",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Check if total Approved expenditure for vendor 'VND-104' complies with budget cap $5,000.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-104",
+        "budget_cap": 5000.0
+      },
+      "provenance_hash": "c3bbe9ec65750e77f1ae0cd2c70159f5c62bb3eb69aeea0b1c373f21096cb9ba"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_218",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Verify whether vendor 'VND-104' Approved purchase order expenditure is within the $10,000 limit.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-104",
+        "budget_cap": 10000.0
+      },
+      "provenance_hash": "88dbcea1cf8cf1b9804afdf342333f86ba1e80c140ea15544887fbfda75c6290"
+    },
+    {
+      "task_id": "task_train_T2_vendor_spend_cap_check_219",
+      "split": "train",
+      "template_id": "T2_vendor_spend_cap_check",
+      "user_query": "Check if total Approved expenditure for vendor 'VND-104' complies with budget cap $10,000.",
+      "expected_tools": [
+        "lookup_records",
+        "compute_aggregate",
+        "verify_constraint"
+      ],
+      "oracle_answer": 0.0,
+      "oracle_verdict": true,
+      "target_entities": {
+        "vendor_id": "VND-104",
+        "budget_cap": 10000.0
+      },
+      "provenance_hash": "240858955ef3fb2e3808467010a05bfc508c0d8956f4a6f81158e1eb4a9dee00"
+    }
+  ]
+}

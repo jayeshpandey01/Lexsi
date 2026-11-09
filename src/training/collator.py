@@ -60,23 +60,23 @@ class DeterministicCommandRTokenizer:
 
     def encode(self, text: str, add_special_tokens: bool = False) -> List[int]:
         """Encode text string into token ID sequence."""
+        import re
+
         tokens: List[int] = []
         if add_special_tokens:
             tokens.append(self.bos_token_id)
 
-        # Tokenize by matching special tokens and whitespace
-        words = text.split()
-        for w in words:
-            if w in self.special_tokens:
-                tokens.append(self.special_tokens[w])
-            elif "<|START_ACTION|>" in w and "<|END_ACTION|>" in w:
-                tokens.append(self.special_tokens["<|START_ACTION|>"])
-                inner = w.replace("<|START_ACTION|>", "").replace("<|END_ACTION|>", "")
-                for char_chunk in inner.split():
-                    tokens.append(self._get_word_id(char_chunk))
-                tokens.append(self.special_tokens["<|END_ACTION|>"])
+        # Tokenize by isolating atomic special tokens before splitting words
+        escaped_tokens = [re.escape(k) for k in sorted(self.special_tokens.keys(), key=len, reverse=True)]
+        pattern = re.compile(f"({'|'.join(escaped_tokens)})")
+        segments = [s for s in pattern.split(text) if s]
+
+        for seg in segments:
+            if seg in self.special_tokens:
+                tokens.append(self.special_tokens[seg])
             else:
-                tokens.append(self._get_word_id(w))
+                for w in seg.split():
+                    tokens.append(self._get_word_id(w))
 
         if add_special_tokens:
             tokens.append(self.eos_token_id)

@@ -260,12 +260,26 @@ class DatabaseManager:
             await conn.run_sync(Base.metadata.create_all)
         logger.info("Database relational tables initialized successfully.")
 
+    def close_sync(self) -> None:
+        """Synchronously dispose of the libSQL client and resources."""
+        if self._libsql_client is not None:
+            try:
+                self._libsql_client.close()
+            except Exception:
+                pass
+            self._libsql_client = None
+
     async def close(self) -> None:
         """Dispose of the database engine and connection pool."""
+        self.close_sync()
         if self._async_engine:
             await self._async_engine.dispose()
             self._async_engine = None
             self._session_factory = None
+
+    def __del__(self) -> None:
+        """Defensive destructor to prevent dangling libSQL worker threads."""
+        self.close_sync()
 
 
 # Global singleton instance
@@ -278,4 +292,12 @@ def get_db_manager() -> DatabaseManager:
     if _db_manager is None:
         _db_manager = DatabaseManager()
     return _db_manager
+
+
+def reset_db_manager() -> None:
+    """Dispose and reset the global singleton DatabaseManager."""
+    global _db_manager
+    if _db_manager is not None:
+        _db_manager.close_sync()
+        _db_manager = None
 

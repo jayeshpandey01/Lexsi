@@ -100,6 +100,7 @@ Splits are strictly partitioned at the entity and template levels to evaluate bo
 - **`procurement_inventory_benchmark`:** Fully synthetic closed-world benchmark. Marked as `not separately asserted (synthetic closed-world benchmark)`. Code under Apache-2.0.
 - **`olist_ecommerce`:** Kaggle Brazilian E-Commerce dataset licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). Non-commercial academic research and benchmarking use only.
 - **Model Output Rights:** Cohere Labs Command / Aya family under CC-BY-NC-4.0 and Cohere Acceptable Use Policy.
+- **Redistribution Policy:** Neither the auxiliary Olist dataset nor the sequestered locked-test manifest is approved for public redistribution. Package artifacts are provided exclusively for local reproducible research and audit under Gate G4 custody.
 
 ### 5.2 PII & Privacy Safeguards
 - **Synthetic Data:** Contains zero real individuals, phone numbers, addresses, or proprietary corporate data. All company names (`Apex Global`, `Nordic Logistics`) and IDs (`VND-100`) are synthetically fabricated.
@@ -140,7 +141,7 @@ Before generating any supervised fine-tuning (SFT) training trajectories:
 Generated deterministically under M2.P2 via `src/data/sft_builder.py`:
 - **Directory:** [`data/sft/`](../data/sft/)
 - **Source Split:** `train` ([`configs/manifests/task_manifest_train.json`](../configs/manifests/task_manifest_train.json))
-- **Dataset SHA-256 Digest:** `51f642c0d4d39464d922aa1bd580bf6e5068f42c61ed0300d4908f371c899a23`
+- **Dataset SHA-256 Digest:** `14f7de32aa13d3905a0a6f3dc6cd0330f4e52774a7fc37a7b1f96da5be9f4573`
 - **Total Accepted Trajectories:** 20 (100.0% verified completion)
 - **Unique Trajectories:** 7 (1 canonical T1 on `Hardware`, 6 canonical T2 across `VND-100`–`VND-105`)
 - **Total Executed Tool Calls:** 40 calls (mean 2.0 tool calls/episode)
@@ -155,6 +156,26 @@ Generated deterministically under M2.P2 via `src/data/sft_builder.py`:
   - Entity Overlap (`val` / `test`): 0% (Clean)
   - Max Query Jaccard with Locked Test: 0.25 (Threshold < 0.85)
   - Verdict: **PASSED (100% Isolated)**
+- **Redistribution Status:** Research package custody only. External redistribution deferred pending Gate G4 review.
+
+---
+
+## 9. SFT Training Dataset Specification v2 (`procurement_sft_train_v2`)
+
+Generated deterministically under M5.P2 via `src/data/sft_builder_v2.py`:
+- **Directory:** [`data/sft/`](../data/sft/)
+- **Source Split:** `train` ([`configs/manifests/task_manifest_train_v2.json`](../configs/manifests/task_manifest_train_v2.json))
+- **Total Accepted Trajectories:** 220 (100.0% verified completion)
+- **Unique Trajectories:** 203 (92.3% deduplication rate)
+- **Phrasing Diversity:** 10 distinct randomized teacher response phrasing templates to eliminate uniform prefix shortcut memorization.
+- **Split Isolation Verification:**
+  - Locked Test Template Overlap: 0%
+  - Entity Overlap (`val` / `test`): 0%
+  - Data Leakage: 0.0% (Verified via `tests/test_sft_v2_isolation.py`, 5/5 passed)
+- **Format Representations:**
+  1. `sft_train_v2_trajectories.jsonl`: 220 complete execution traces.
+  2. `sft_train_v2_sharegpt.json`: ShareGPT conversational format with explicit delimiter tokens.
+  3. `sft_train_v2_eventlog.json`: Two-Tier EventLog projection.
 
 
 

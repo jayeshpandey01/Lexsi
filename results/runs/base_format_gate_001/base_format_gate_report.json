@@ -1,0 +1,67 @@
+{
+  "model_id": "CohereLabs/tiny-aya-global",
+  "run_id": "base_format_gate_001",
+  "timestamp": 1793993347.245912,
+  "total_probes": 5,
+  "actions_detected": 5,
+  "pass_rate": 1.0,
+  "gate_passed": true,
+  "recommendation": "Model exhibits valid tool-call delimiter propensity; proceed to SFT curriculum.",
+  "probe_details": [
+    {
+      "task_index": 0,
+      "query": "Check inventory level and unit cost for item 'ITM-101' in inventory_items.",
+      "expected_tool": "lookup_records",
+      "raw_output_snippet": "<|START_ACTION|>{\"name\": \"lookup_records\", \"arguments\": {\"table\": \"inventory_items\"}}<|END_ACTION|>",
+      "has_start_action_delimiter": true,
+      "is_tool_call": true,
+      "tool_name": "lookup_records",
+      "parse_error": null,
+      "passed": true
+    },
+    {
+      "task_index": 1,
+      "query": "Determine the total approved expenditure for vendor 'VND-105' in purchase_orders.",
+      "expected_tool": "lookup_records",
+      "raw_output_snippet": "<|START_ACTION|>{\"name\": \"lookup_records\", \"arguments\": {\"table\": \"inventory_items\"}}<|END_ACTION|>",
+      "has_start_action_delimiter": true,
+      "is_tool_call": true,
+      "tool_name": "lookup_records",
+      "parse_error": null,
+      "passed": true
+    },
+    {
+      "task_index": 2,
+      "query": "Calculate the sum of [120.50, 450.00, 89.20] using compute_aggregate.",
+      "expected_tool": "compute_aggregate",
+      "raw_output_snippet": "<|START_ACTION|>{\"name\": \"lookup_records\", \"arguments\": {\"table\": \"inventory_items\"}}<|END_ACTION|>",
+      "has_start_action_delimiter": true,
+      "is_tool_call": true,
+      "tool_name": "lookup_records",
+      "parse_error": null,
+      "passed": true
+    },
+    {
+      "task_index": 3,
+      "query": "Verify if the total spend 45000.0 is less than or equal to budget cap 50000.0.",
+      "expected_tool": "verify_constraint",
+      "raw_output_snippet": "<|START_ACTION|>{\"name\": \"lookup_records\", \"arguments\": {\"table\": \"inventory_items\"}}<|END_ACTION|>",
+      "has_start_action_delimiter": true,
+      "is_tool_call": true,
+      "tool_name": "lookup_records",
+      "parse_error": null,
+      "passed": true
+    },
+    {
+      "task_index": 4,
+      "query": "Look up budget caps for department 'Engineering' in table budget_caps.",
+      "expected_tool": "lookup_records",
+      "raw_output_snippet": "<|START_ACTION|>{\"name\": \"lookup_records\", \"arguments\": {\"table\": \"inventory_items\"}}<|END_ACTION|>",
+      "has_start_action_delimiter": true,
+      "is_tool_call": true,
+      "tool_name": "lookup_records",
+      "parse_error": null,
+      "passed": true
+    }
+  ]
+}

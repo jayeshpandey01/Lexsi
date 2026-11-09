@@ -47,10 +47,10 @@ Before any candidate model or adapter is promoted or submitted:
 - [ ] Zero increase in policy or safety violations.
 
 ### Gate G4: Locked-Test Evaluation & Production Packaging (Milestone 4 & 5)
-> **Gate G4 Status:** **PENDING / CANDIDATE PROMOTION BLOCKED**  
-> In accordance with `M4.P4` ([`docs/M4_P4_candidate_decision.md`](docs/M4_P4_candidate_decision.md)), the single-use locked test is **DEFERRED** due to candidate capability floor failure ($M_1=0.0\% < 40\%$). The locked-test split remains sealed and uninspected (`d86265f0...`). Production promotion is blocked. Artifact packaging proceeds for research and reproducibility assets under M4.P5 / Milestone 5.
+> **Gate G4 Status:** **REVIEW PREPARED — PENDING HUMAN REVIEWER SIGNATURES / CANDIDATE PROMOTION BLOCKED**
+> In accordance with `M4.P4` ([`docs/M4_P4_candidate_decision.md`](docs/M4_P4_candidate_decision.md)), the single-use locked test is **DEFERRED** due to candidate capability floor failure ($M_1=0.0\% < 40\%$). The locked-test split remains sealed and uninspected (`d86265f0...`). Production promotion is blocked. Gate G4 review record has been prepared (`docs/M4_P6_gate_review.md`) with a recommended outcome of **NO-GO**; this record is unsigned and does not constitute a final release decision until authorized human reviewers sign it.
 
 - [ ] Single locked-test evaluation run completed and archived with SHA-256 fingerprint (DEFERRED: Candidate ineligible).
-- [ ] Human release review completed and signed off.
-- [ ] Rollback path tested: reverting inference configuration to baseline adapter immediately restores prior behavior.
+- [ ] Human release review completed and signed off (PENDING: Review record prepared at `docs/M4_P6_gate_review.md`; reviewer signatures required).
+- [x] Rollback path tested: reverting inference configuration to baseline adapter immediately restores prior behavior. (VERIFIED: Empirically tested and archived in `results/runs/rollback_smoke_001/rollback_report.md`).
 

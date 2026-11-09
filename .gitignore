@@ -38,6 +38,7 @@ env/
 *.swo
 *~
 .DS_Store
+**/.DS_Store
 
 # Testing and coverage
 .pytest_cache/
@@ -62,6 +63,7 @@ wandb/
 *.gguf
 checkpoints/
 models/
+results/runs/**/tokenizer.json
 
 # Large binaries, databases, and archives
 *.db

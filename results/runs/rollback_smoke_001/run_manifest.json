@@ -1,0 +1,35 @@
+{
+  "run_id": "rollback_smoke_001",
+  "timestamp": 1793993249.955654,
+  "status": "COMPLETED_ROLLBACK_TEST",
+  "rollback_verified": true,
+  "pre_rollback_adapter": {
+    "adapter_id": "sft_aya_3b_001",
+    "sha256": "a73583f3aade1026ec9d5d53813d2ff9ffa66d0a84a17ae07ef06e39000b2a8d"
+  },
+  "rollback_target": {
+    "model_id": "cohere/command-r7b-12-2024",
+    "type": "active_baseline"
+  },
+  "metrics": {
+    "M1_task_success_rate": 0.1,
+    "M2_tool_call_accuracy": 1.0,
+    "M3_schema_validity": 1.0,
+    "M4_call_order_validity": 1.0,
+    "M5_trajectory_step_efficiency": 3.0,
+    "M6_redundant_call_rate": 0.0,
+    "M7_loop_and_stall_frequency": 0.0
+  },
+  "baseline_comparison": {
+    "historical_baseline_m1": 0.1,
+    "post_rollback_m1": 0.1,
+    "discrepancy": 0.0,
+    "tolerance": 0.15,
+    "is_within_tolerance": true
+  },
+  "configuration_provenance": {
+    "original_config_sha256": "5d58182a908227d22a4c7efd877d7940a525860450e71a697a4ea98d64564946",
+    "restored_config_sha256": "5d58182a908227d22a4c7efd877d7940a525860450e71a697a4ea98d64564946",
+    "configs_match": true
+  }
+}
