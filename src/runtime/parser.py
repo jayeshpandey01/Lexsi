@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import json
 import re
-from typing import Optional, Tuple
+from typing import Collection, Optional, Tuple
 from pydantic import ValidationError
 
 from src.data.schemas import ToolCallAction
@@ -14,6 +14,56 @@ COHERE_ACTION_PATTERN = re.compile(r"<\|START_ACTION\|>(.*?)<\|END_ACTION\|>", r
 XML_ACTION_PATTERN = re.compile(r"<(?:tool_call|action)>(.*?)</(?:tool_call|action)>", re.DOTALL)
 MARKDOWN_JSON_PATTERN = re.compile(r"```(?:json)?\s*(\{.*?\})\s*```", re.DOTALL)
 THOUGHT_PATTERN = re.compile(r"<\|START_THINKING\|>(.*?)<\|END_THINKING\|>", re.DOTALL)
+
+DEFAULT_KNOWN_TOOLS = {"lookup_records", "compute_aggregate", "verify_constraint"}
+
+
+def _find_embedded_tool_json(
+    text: str,
+    allowed_tools: Optional[Collection[str]] = None,
+) -> Tuple[Optional[ToolCallAction], Optional[str]]:
+    """Scan arbitrary text for embedded JSON tool call invocations.
+
+    Guarantees:
+    - Extracts valid JSON tool calls even when wrapped in conversational prefixes like <|START_RESPONSE|>.
+    - Restricts candidate tool names to recognized tools to prevent false positives from conversational JSON.
+    - Requires 'arguments' or 'parameters' key in the embedded dictionary.
+    - Returns (action, None) for the first valid tool call found, or (None, err) if a tool call to a known tool is malformed.
+    """
+    valid_tools = set(allowed_tools) if allowed_tools is not None else DEFAULT_KNOWN_TOOLS
+    decoder = json.JSONDecoder()
+    idx = 0
+    length = len(text)
+
+    while idx < length:
+        if text[idx] == "{":
+            try:
+                obj, end_offset = decoder.raw_decode(text[idx:])
+                if isinstance(obj, dict):
+                    # Check for OpenAI tool_calls wrapper
+                    if "tool_calls" in obj:
+                        action, err = _extract_dict_action(obj)
+                        if action and action.tool_name in valid_tools:
+                            return action, None
+                        if err:
+                            return None, err
+
+                    # Direct action dictionary
+                    tool_name = obj.get("name") or obj.get("tool_name")
+                    if tool_name and tool_name in valid_tools:
+                        if "arguments" in obj or "parameters" in obj:
+                            action, err = _extract_dict_action(obj)
+                            if err:
+                                return None, err
+                            if action:
+                                return action, None
+                idx += max(end_offset, 1)
+                continue
+            except (json.JSONDecodeError, ValueError):
+                pass
+        idx += 1
+
+    return None, None
 
 
 def _extract_dict_action(parsed: dict) -> Tuple[Optional[ToolCallAction], Optional[str]]:
@@ -58,13 +108,14 @@ def _extract_dict_action(parsed: dict) -> Tuple[Optional[ToolCallAction], Option
 
 def parse_agent_output(
     text: str,
+    allowed_tools: Optional[Collection[str]] = None,
 ) -> Tuple[Optional[str], Optional[ToolCallAction], Optional[str], Optional[str]]:
     """Parse raw model output into (thought, tool_action, final_answer, parse_error).
 
     Guarantees:
     - Never throws unhandled exceptions on malformed text.
     - Explicit parse error reported if action tags are truncated, malformed, or contain non-JSON payload.
-    - Multi-format support: Cohere delimiters, XML <tool_call>, Markdown json blocks, and OpenAI tool_calls.
+    - Multi-format support: Cohere delimiters, XML <tool_call>, Markdown json blocks, OpenAI tool_calls, and embedded JSON in conversational prefixes.
     - Rejects non-dict tool argument payloads safely with typed errors.
     """
     if not text or not text.strip():
@@ -151,10 +202,19 @@ def parse_agent_output(
             if '"name"' in stripped or '"tool"' in stripped:
                 return thought, None, None, f"JSON_PARSE_ERROR: {str(e)}"
 
-    # 7. Otherwise treat text as final answer
+    # 7. Check for embedded JSON tool action (M6 remediation: un-delimited or <|START_RESPONSE|>-wrapped tool calls)
+    embedded_action, embedded_err = _find_embedded_tool_json(text, allowed_tools=allowed_tools)
+    if embedded_action is not None:
+        return thought, embedded_action, None, None
+    if embedded_err is not None:
+        return thought, None, None, embedded_err
+
+    # 8. Otherwise treat text as final answer
     cleaned_final = re.sub(COHERE_ACTION_PATTERN, "", text)
     cleaned_final = re.sub(XML_ACTION_PATTERN, "", cleaned_final)
     cleaned_final = re.sub(MARKDOWN_JSON_PATTERN, "", cleaned_final)
-    cleaned_final = re.sub(THOUGHT_PATTERN, "", cleaned_final).strip()
+    cleaned_final = re.sub(THOUGHT_PATTERN, "", cleaned_final)
+    cleaned_final = re.sub(r"<\|(?:START|END)_(?:RESPONSE|THINKING|ACTION)\|>", "", cleaned_final)
+    cleaned_final = cleaned_final.replace("<|END_OF_TURN_TOKEN|>", "").strip()
     return thought, None, cleaned_final, None
 

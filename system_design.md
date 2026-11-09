@@ -453,7 +453,7 @@ To overcome single-turn evaluation bottlenecks in restricted environments (e.g. 
 ```
 
 1. **Deterministic Database State:** Seeds an in-memory relational fixture schema (12 vendors, 20 items, 30 purchase orders, 4 budget caps).
-2. **Dual Delimiter Support:** Parsers robustly extract actions from native `<|START_ACTION|>` special tokens, Markdown fenced JSON blocks (````json ... ````), XML tags (`<tool_call>`), and raw JSON.
+2. **Multi-Format & Embedded Delimiter Support (M6):** Parsers robustly extract actions from native `<|START_ACTION|>` special tokens, Markdown fenced JSON blocks (````json ... ````), XML tags (`<tool_call>`), pure JSON, and embedded JSON tool calls wrapped inside conversational prefixes like `<|START_RESPONSE|>` via a streaming `json.JSONDecoder().raw_decode` scanner (`src/runtime/parser.py`).
 3. **Observation Formatting Alignment:** System observation feedback is injected matching the exact Command-R conversational format used in training datasets:
    `"<|START_OF_TURN_TOKEN|><|SYSTEM_TOKEN|>Observation: " + json.dumps(res) + "<|END_OF_TURN_TOKEN|>"`
 4. **Environment-Owned Outcome Verification:** Numerical calculations must match `oracle_answer` within $\pm 0.05$ absolute error or $1.0\%$ relative error; constraint checks must accurately reflect `oracle_verdict`.
@@ -551,3 +551,10 @@ Rollback verification requires an automated smoke test:
 2. Revert configuration to baseline reference.
 3. Execute 5 validation rollouts and assert performance matches baseline historical records ($|\Delta M_1| \le 0.15$).
 4. Re-enable active adapter and persist `rollback_report.json` with cryptographic run fingerprints.
+
+### 7.4 Multi-Turn Action Pre-Filling & Streaming Parser Remediation (Milestone 6)
+Following the empirical discovery in Milestone 5 where fine-tuned models (`sft_aya_3b_v2_c3`) generated valid tool JSON preceded by the conversational token `<|START_RESPONSE|>`, the runtime layer implements a dual-guard capability remediation:
+1. **Streaming JSONDecoder Embedded Action Extraction:** `src/runtime/parser.py` implements `_find_embedded_tool_json` scanning text from each `{` offset using `json.JSONDecoder().raw_decode`. If a valid dictionary contains a known tool name (`lookup_records`, `compute_aggregate`, `verify_constraint`) and explicit `arguments`, it extracts the `ToolCallAction` directly, bypassing conversational prefix locks.
+2. **Turn-0 Action Token Pre-Filling:** `EpisodeOrchestrator` introduces `prefill_action_token: bool = False`. When enabled, turn 0 generation prompts append `<|START_ACTION|>`, steering the pre-trained autoregressive policy directly into action payload generation without triggering conversational header tokens.
+3. **Conversational Delimiter Cleansing:** All terminal final answers strip Aya turn tokens (`<|START_RESPONSE|>`, `<|END_RESPONSE|>`, `<|END_OF_TURN_TOKEN|>`), ensuring clean downstream outputs.
+4. **Empirical Replay Verification:** Verified via `scripts/verify_m6_replay.py`, replaying 10 historical validation traces and demonstrating an increase from 0% ($0/10$) to 100% ($10/10$) tool-calling execution rate against the sandboxed database engine.

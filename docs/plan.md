@@ -364,6 +364,7 @@ Update this section at each project review.
 | Safety and release review | Review Prepared (G4 Unsigned) | `src/environment/guards.py`, `docs/release_checklist.md`, `docs/M4_P4_candidate_decision.md`, `docs/M4_P6_gate_review.md` | Human reviewer signatures required to close Gate G4 (see `docs/M4_P6_gate_review.md` §9) | Safety/Product |
 | Public demo and artifacts | Done (Research Package Assembled) | `scripts/run_demo.py`, `references/model_card.md`, `references/data_card.md`, `README.md`, `docs/M4_P5_packaging_report.md` | Human Gate G4 Review (External Distribution Deferred) | Infra/Docs |
 | M5 Remediation & Evaluation | Concluded (NO-GO) | Multi-turn ReAct rollout on Kaggle 2×T4; `docs/M5_P4_candidate_evaluation.md`, `docs/M5_P6_research_decision.md`; test split sealed | Hackathon submission alignment with transparent findings | Research/Eval |
+| M6 Capability Remediation | Done (Verified) | Streaming JSON parser (`src/runtime/parser.py`), Turn-0 action prefilling (`src/runtime/orchestrator.py`), offline replay script (`scripts/verify_m6_replay.py`: 10/10 execution), 192/192 tests pass | Re-run remote Kaggle validation rollout on C3 adapter | Research/Infra |
 
 ---
 

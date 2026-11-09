@@ -36,10 +36,12 @@ class EpisodeOrchestrator:
         run_id: Optional[str] = None,
         environment_version: str = "0.1.0",
         use_database: bool = False,
+        prefill_action_token: bool = False,
     ) -> None:
         self.seed = seed
         self.run_id = run_id
         self.environment_version = environment_version
+        self.prefill_action_token = prefill_action_token
         self.engine = SandboxedToolEngine(
             seed=seed,
             allowed_tools=allowed_tools,
@@ -105,10 +107,22 @@ class EpisodeOrchestrator:
 
             # 2. Policy generation
             step_start = time.perf_counter()
-            model_output = policy_fn(dialog_history)
+            input_prompt = dialog_history
+            if self.prefill_action_token and current_step == 0:
+                input_prompt = f"{dialog_history}\n<|START_ACTION|>"
+            model_output = policy_fn(input_prompt)
+
+            # When prefilling <|START_ACTION|>, reconstruct full output if not already present
+            effective_output = model_output
+            if self.prefill_action_token and current_step == 0:
+                if not effective_output.lstrip().startswith("<|START_ACTION|>"):
+                    effective_output = f"<|START_ACTION|>{effective_output}"
 
             # 3. Output parsing
-            thought, action, answer, parse_err = parse_agent_output(model_output)
+            thought, action, answer, parse_err = parse_agent_output(
+                effective_output,
+                allowed_tools=self.engine.allowed_tools,
+            )
 
             if parse_err:
                 step_elapsed = (time.perf_counter() - step_start) * 1000.0
@@ -149,7 +163,7 @@ class EpisodeOrchestrator:
                             elapsed_ms=round(step_elapsed, 2),
                         )
                     )
-                    dialog_history += f"\n{model_output}\nObservation Error: {obs.error_message}"
+                    dialog_history += f"\n{effective_output}\nObservation Error: {obs.error_message}"
                 else:
                     sanitized_res = self.guard.sanitize_observation(obs.result)
                     steps.append(
@@ -161,7 +175,7 @@ class EpisodeOrchestrator:
                             elapsed_ms=round(step_elapsed, 2),
                         )
                     )
-                    dialog_history += f"\n{model_output}\nObservation: {sanitized_res}"
+                    dialog_history += f"\n{effective_output}\nObservation: {sanitized_res}"
 
             current_step += 1
 
@@ -197,6 +211,7 @@ class EpisodeOrchestrator:
                 "max_steps": self.guard.max_steps,
                 "timeout_seconds": self.guard.timeout_seconds,
                 "allowed_tools": sorted(list(self.engine.allowed_tools)),
+                "prefill_action_token": self.prefill_action_token,
             },
         )
 
