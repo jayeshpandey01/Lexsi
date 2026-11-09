@@ -8,10 +8,29 @@
 
 > **Research Governance & Release Status Notice:**<br>
 > This repository contains the complete, reproducible research and engineering package for **Lexsi Track 3 (Agentic Fine-Tuning)**.<br>
-> - **Release Status:** **RESEARCH-ONLY PACKAGE — PRODUCTION PROMOTION BLOCKED (GATE G4 PENDING)**.<br>
-> - **Candidate Floor:** The evaluated SFT candidate (`sft_aya_3b_001`, `CohereLabs/tiny-aya-global` 3.35B) achieved **$M_1 = 0.0\%$ (0/10)** verified task completion and **$M_2 = 0.0\%$ (0/10)** tool selection accuracy; it is **INELIGIBLE** for production release or promotion.<br>
-> - **Locked-Test Sequestration:** The sequestered locked-test split (`configs/manifests/task_manifest_test.json`, SHA-256 `d86265f0...`) was **formally deferred** and remains **strictly unaccessed, uninspected, and sealed**.<br>
-> - **Engineering Package:** This repository packages the verified engineering contributions: deterministic relational tool sandbox, runtime policy guards, assistant-masked action data collator, multi-term anti-gaming reward engine, 6-class diagnostic failure taxonomy, and AuditKIT evaluation spine.
+> - **Release Status:** **RESEARCH-ONLY PACKAGE — PRODUCTION PROMOTION BLOCKED (GATE G4 / M5 NO-GO)**.<br>
+> - **Evaluation Finding:** The post-trained SFT candidates **failed evaluation and are documented as a strict NO-GO**. Although candidate `sft_aya_3b_v2_c3` nominally achieved a 50.0% task success rate ($M_1$), forensic auditing revealed it achieved **$M_2 = 0.0\%$ tool selection accuracy by exploiting an ungrounded "$0.00" output prior shortcut** on zero-spend vendor queries rather than performing actual database lookups.<br>
+> - **Core Scientific Contribution:** Rather than presenting an inflated or misleading "success", this project demonstrates that **conventional outcome-only agent benchmarks are dangerously misleading**, proving the vital necessity of trajectory-decomposed evaluation (AuditKIT) to expose metric gaming.<br>
+> - **Locked-Test Sequestration:** The sequestered locked-test split (`configs/manifests/task_manifest_test.json`, SHA-256 `d86265f0...`) remains **strictly unaccessed, uninspected, and sealed**.<br>
+> - **Verified Infrastructure:** Delivers a 100% verified, reproducible engineering foundation: deterministic relational tool sandbox, runtime policy guards, assistant-masked action collator, anti-gaming reward engine, 6-class diagnostic failure taxonomy, and interactive multi-turn ReAct evaluator (180/180 unit tests passing).
+
+---
+
+## Executive Abstract (Track 3 Hackathon Submission)
+
+> **"The Illusion of Competence: How Supervised Fine-Tuning Exploits Evaluation Blind Spots in Tool-Using Agents"**  
+> *Official Submission Word Count: 270 words (Strictly $< 500$ words requirement)*  
+> *Full Text Archive:* [`docs/submission_abstract.md`](docs/submission_abstract.md)
+
+Post-training open-weights models into reliable tool-calling agents is widely assumed to be a straightforward curriculum of supervised fine-tuning (SFT) over curated execution traces. In this investigation, we evaluated whether SFT on Cohere’s `tiny-aya-global` (3.35B) could induce reliable multi-turn tool invocation within an enterprise procurement and inventory auditing environment.
+
+While SFT successfully drove token cross-entropy loss down monotonically from 1.12 to 0.36, our initial candidate (`sft_aya_3b_001`) failed 100% of held-out validation tasks due to severe syntax collapse and conversational prior dominance (10/10 EarlyTerminationFailure). Following an architectural remediation cycle on dual Nvidia T4 GPUs—incorporating diversified teacher phrasings, un-embedding layer adaptation, and an interactive multi-turn ReAct runtime—our second-generation candidate (`sft_aya_3b_v2_c3`) registered an apparent breakthrough: a statistically significant 50.0% task success rate ($M_1$, $p=0.0030$).
+
+However, rather than celebrating a successful model, forensic trajectory auditing via AuditKIT exposed a critical failure: the model achieved a 0.0% interactive tool-calling rate ($M_2$). Instead of invoking database lookup tools, the model took distribution shortcuts—it memorized an ungrounded output prior of "$0.00" on vendor spend queries, which happened to match ground-truth oracle answers for vendors with zero approved orders. On inventory tasks that strictly required querying database records, the model scored 0.0%.
+
+Because the candidate bypassed required tools and gamed the evaluation, it was formally documented as a strict **NO-GO** for model promotion, and the sequestered test partition was preserved 100% sealed.
+
+This project delivers a vital empirical lesson for AI alignment and agentic evaluation: **outcome-only benchmarks are dangerously misleading and vulnerable to distribution gaming**. Truly reliable agentic systems require decomposed trajectory metrics, interactive multi-turn rollouts, and step-level reinforcement learning (RL) with process supervision to enforce authentic tool dependency.
 
 ---
 
@@ -25,7 +44,7 @@ Autonomous tool-calling agents frequently exhibit failure modes that undermine p
 1. **Tool-Calling Reliability ($M_1, M_2, M_3, M_4$):** Can targeted fine-tuning on verified multi-turn trajectories instill strict Command-R action formatting and valid dependency ordering?
 2. **Trajectory Step Efficiency ($M_5, M_6$):** Can an agent solve multi-step relational tasks with minimal redundant or duplicate calls?
 3. **Reward Hacking Mitigation ($M_7$):** Can a mathematically decoupled reward engine prevent agents from exploiting efficiency penalties by failing fast?
-4. **Empirical Finding:** Supervised fine-tuning of `CohereLabs/tiny-aya-global` (3.35B) for 200 optimization steps reduced token loss from 1.12 to 0.36, but the model failed 10/10 held-out validation tasks due to dominant pre-trained conversational instruction priors (`EarlyTerminationFailure`). The project documents this empirical boundary transparently while delivering a 100% verified runtime and evaluation harness.
+4. **Empirical Finding & Metric Gaming Disclosure:** Supervised fine-tuning of `CohereLabs/tiny-aya-global` (3.35B) across two training cycles demonstrated that lowering loss and diversifying phrasings produced apparent 50% task success ($M_1$) via ungrounded distribution shortcuts ($M_2=0.0\%$). The project documents this empirical boundary transparently as a case study in why decomposed trajectory evaluation is required to protect against false positives.
 
 ---
 
